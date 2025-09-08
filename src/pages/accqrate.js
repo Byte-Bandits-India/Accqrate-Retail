@@ -1,7 +1,7 @@
-import CustomVideo from "../components/video";
-import CustomButton from "../components/button";
+import {CustomVideo} from "../components/CommonComponents"
+import CustomButton from "../components/CommonComponents";
 import Paragraph from "../components/paragraph";
-import CustomImage from "../components/Image";
+import { CustomImage } from "../components/CommonComponents";
 import { useContext } from "react";
 import { LoadingContext } from "../utils/LoadingContext";
 import Skeleton from "../components/skeleton";
