@@ -1,10 +1,14 @@
-// src/pages/index.js
+import dynamic from "next/dynamic"; 
+
 import Choose from "./choose";
 import Tools from "./tools";
-import Accqrate from "./accqrate";
 import Sales from "./sales";
 import Transform from "./transform";
 import Pos from "./pos";
+
+const Accqrate = dynamic(() => import("./accqrate"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
