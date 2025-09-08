@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   html, body {
     @apply w-full h-full overflow-x-hidden;
@@ -13,64 +12,70 @@
   }
   
   button {
-    @apply  py-2 text-sm rounded-lg;
+    @apply py-2 text-sm rounded-lg;
   }
 
-  @media (min-width: 768px) {
-    button {
-      @apply  py-3 text-base;
-    }
+  /* Mobile styles (base) */
+  img {
+    @apply max-w-full h-auto;
   }
 
-  @media (min-width: 1024px) {
-    button {
-      @apply px-8 py-4 text-lg;
-    }
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-lg;
   }
 
-  @media (max-width: 767px) {
-    html, body {
-      @apply text-base leading-relaxed ;
-    }
-
-    
-
-    img {
-      @apply max-w-full h-auto;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      @apply text-lg;
-    }
-
-    p {
-      @apply text-sm;
-    }
+  p {
+    @apply text-sm;
   }
+}
+
+@screen sm {
+  /* Small devices (phones, 640px and up) */
+  button {
+    @apply py-3 text-base;
+  }
+}
+
+/* Custom breakpoints */
+@screen xs {
+  /* Extra small devices (phones, 320px and up) */
+}
+
+@screen lg {
+  /* Large devices (desktops, 1024px and up) */
+}
+
+@screen xl {
+  /* Extra large devices (large desktops, 1280px and up) */
+}
+
+@screen 2xl {
+  /* 2X large devices (1440px and up) */
 }
 
 :root {
-  --stack-top-offset: 80px;
-  --stack-overlap: 28px;
+  --stack-top-offset: 60px;
+  --stack-overlap: 20px;
 }
 
-@media (max-width: 480px) {
-  :root {
-    --stack-top-offset: 60px;
-    --stack-overlap: 20px;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 1023px) {
+@screen sm {
   :root {
     --stack-top-offset: 70px;
     --stack-overlap: 24px;
   }
 }
-@media (min-width: 1024px) {
+
+@screen md {
   :root {
     --stack-top-offset: 80px;
     --stack-overlap: 28px;
+  }
+}
+
+@screen xl {
+  :root {
+    --stack-top-offset: 90px;
+    --stack-overlap: 32px;
   }
 }
 
@@ -79,6 +84,7 @@ main{
   padding-left:0;
   padding-right:0;
 }
+
 body {
   background-color: #ffffff;
   color: #000000;
