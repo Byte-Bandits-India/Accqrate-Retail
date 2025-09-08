@@ -2,109 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* Base styles (applied globally) */
 @layer base {
   html, body {
-    @apply w-full h-full overflow-x-hidden;
+    @apply w-full h-full overflow-x-hidden bg-white text-black font-sans m-0 p-0;
   }
 
   main {
     @apply w-full px-4;
   }
-  
+
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-lg;
+  }
+
+  p {
+    @apply text-sm;
+  }
+}
+
+/* Component styles (reusable UI pieces) */
+@layer components {
   button {
-    @apply  py-2 text-sm rounded-lg;
-  }
-
-  @media (min-width: 768px) {
-    button {
-      @apply  py-3 text-base;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    button {
-      @apply px-8 py-4 text-lg;
-    }
-  }
-
-  @media (max-width: 767px) {
-    html, body {
-      @apply text-base leading-relaxed ;
-    }
-
-    
-
-    img {
-      @apply max-w-full h-auto;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      @apply text-lg;
-    }
-
-    p {
-      @apply text-sm;
-    }
+    @apply py-2 text-sm rounded-lg;
   }
 }
 
+/* Responsive overrides */
+@screen sm {
+  button {
+    @apply py-3 text-base;
+  }
+}
+
+@screen lg {
+  button {
+    @apply px-8 py-4 text-lg;
+  }
+}
+
+/* Utility-style custom CSS */
 :root {
-  --stack-top-offset: 80px;
-  --stack-overlap: 28px;
-}
-
-@media (max-width: 480px) {
-  :root {
-    --stack-top-offset: 60px;
-    --stack-overlap: 20px;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 1023px) {
-  :root {
-    --stack-top-offset: 70px;
-    --stack-overlap: 24px;
-  }
-}
-@media (min-width: 1024px) {
-  :root {
-    --stack-top-offset: 80px;
-    --stack-overlap: 28px;
-  }
-}
-
-main{
-  width:100%;
-  padding-left:0;
-  padding-right:0;
-}
-body {
-  background-color: #ffffff;
-  color: #000000;
-  font-family: 'Inter';
-  width: 100%;
-  margin:0;
-  padding: 0;
-  overflow-x: hidden;
-  box-sizing: border-box;
-  
-}
-*{
-  box-sizing:border-box;
-  font-family:'Inter';
+  --stack-top-offset: 60px;
+  --stack-overlap: 20px;
 }
 
 .skeleton-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
+  @apply flex flex-col gap-5 p-5;
 }
+
+/* Hide unwanted badge */
 [data-next-badge] {
   display: none;
 }
 
+/* Example of a very specific class */
 .accqrate {
-    max-width: 10px;
+  max-width: 10px; /* confirm if this is really intended */
 }
