@@ -1,6 +1,6 @@
 import {CustomVideo} from "../components/CommonComponents"
 import CustomButton from "../components/CommonComponents";
-import Paragraph from "../components/paragraph";
+import {Paragraph} from "../components/CommonComponents";
 import { CustomImage } from "../components/CommonComponents";
 import { useContext } from "react";
 import { LoadingContext } from "../utils/LoadingContext";

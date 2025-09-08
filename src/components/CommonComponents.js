@@ -26,3 +26,17 @@ export function CustomVideo({ width = "100%", height = 300, className, ...props 
   if (loading) return <Skeleton height={height} width={width} style={{ margin: "8px 0" }} />;
   return <video {...props} className={className}  />;
 }
+
+export function Paragraph({ children, lines = 3 }) {
+  const { loading } = useContext(LoadingContext);
+  if (loading) {
+    return (
+      <div>
+        {Array.from({ length: lines }).map((_, i) => (
+          <Skeleton key={i} height="20px" width={`${90 - i * 10}%`} style={{ marginBottom: "8px" }} />
+        ))}
+      </div>
+    );
+  }
+  return <p>{children}</p>;
+}
