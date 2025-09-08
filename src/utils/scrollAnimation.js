@@ -4,6 +4,7 @@ export default function useGsapSmoothScroll() {
   useEffect(() => {
     let smoother;
 
+    // Ensure this runs only in the browser
     if (typeof window !== "undefined") {
       (async () => {
         const gsap = (await import("gsap")).default;
@@ -15,9 +16,9 @@ export default function useGsapSmoothScroll() {
         smoother = ScrollSmoother.create({
           wrapper: "#smooth-wrapper",
           content: "#smooth-content",
-          smooth: 2.5,
-          effects: true,
-          smoothTouch: 0.3,
+          smooth: 2.5,  // Smoothness for desktop 
+          effects: true, // Enable effects
+          smoothTouch: 0.3,  // Smoothness for touch devices
         });
       })();
     }
