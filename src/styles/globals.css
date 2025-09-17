@@ -4,18 +4,18 @@
 
 @layer base {
   html, body {
-    @apply w-full h-full overflow-x-hidden;
+    @apply w-full h-full overflow-x-hidden bg-white text-black m-0 p-0 box-border;
+    font-family: 'Inter', sans-serif;
   }
 
   main {
-    @apply w-full px-4;
+    @apply w-full px-0;
   }
-  
+
   button {
     @apply py-2 text-sm rounded-lg;
   }
 
-  /* Mobile styles (base) */
   img {
     @apply max-w-full h-auto;
   }
@@ -27,90 +27,25 @@
   p {
     @apply text-sm;
   }
-}
 
-@screen sm {
-  /* Small devices (phones, 640px and up) */
-  button {
-    @apply py-3 text-base;
+  * {
+    @apply box-border;
+    font-family: 'Inter', sans-serif;
   }
 }
 
-/* Custom breakpoints */
-@screen xs {
-  /* Extra small devices (phones, 320px and up) */
-}
+@layer components {
+  .skeleton-container {
+    @apply flex flex-col gap-5 p-5;
+  }
 
-@screen lg {
-  /* Large devices (desktops, 1024px and up) */
-}
-
-@screen xl {
-  /* Extra large devices (large desktops, 1280px and up) */
-}
-
-@screen 2xl {
-  /* 2X large devices (1440px and up) */
-}
-
-:root {
-  --stack-top-offset: 60px;
-  --stack-overlap: 20px;
-}
-
-@screen sm {
-  :root {
-    --stack-top-offset: 70px;
-    --stack-overlap: 24px;
+  .accqrate {
+    @apply max-w-[10px];
   }
 }
 
-@screen md {
-  :root {
-    --stack-top-offset: 80px;
-    --stack-overlap: 28px;
+@layer utilities {
+  [data-next-badge] {
+    @apply hidden;
   }
-}
-
-@screen xl {
-  :root {
-    --stack-top-offset: 90px;
-    --stack-overlap: 32px;
-  }
-}
-
-main{
-  width:100%;
-  padding-left:0;
-  padding-right:0;
-}
-
-body {
-  background-color: #ffffff;
-  color: #000000;
-  font-family: 'Inter';
-  width: 100%;
-  margin:0;
-  padding: 0;
-  overflow-x: hidden;
-  box-sizing: border-box;
-  
-}
-*{
-  box-sizing:border-box;
-  font-family:'Inter';
-}
-
-.skeleton-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-}
-[data-next-badge] {
-  display: none;
-}
-
-.accqrate {
-    max-width: 10px;
 }
