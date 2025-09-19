@@ -122,55 +122,56 @@ export default function Transform() {
           </motion.div>
 
           {/* Cards */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
-            variants={itemVariant}
-          >
-            {[
-              {
-                title: "No POS hardware needed",
-                desc: "Works instantly on Android, iOS, Windows, and Mac",
-                video: "/videos/card1.mp4",
-              },
-              {
-                title: "Zero hassle setup",
-                desc: "Cloud-based and ready to use — no installations or IT assistance needed.",
-                video: "/videos/card2.mp4",
-              },
-              {
-                title: "Plug-and-Play Printers",
-                desc: "No drivers, no manual setup—automatic detection and configuration",
-                video: "/videos/card3.mp4",
-              },
-              {
-                title: "Auto-Print & Cut",
-                desc: "Receipts print, cut and display for customers instantly.",
-                video: "/videos/card4.mp4",
-              },
-            ].map((card, idx) => (
-              <motion.div
-                key={idx}
-                className="bg-[#A1A1A1] text-white px-4 rounded-lg w-auto h-[250px] md:h-[320px] flex flex-col items-center justify-start py-2 cursor-pointer transition-colors duration-300 hover:bg-[#C2185B] group"
-                variants={itemVariant}
-              >
-                <p className="text-fluid-body font-medium text-left mb-2">
-                  {card.title}
-                </p>
-                <p className="text-fluid-small mt-6 text-left transition-opacity duration-300 group-hover:opacity-0">
-                  {card.desc}
-                </p>
-                <video
-                  src={card.video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  className="hidden group-hover:block h-36 -mt-12 md:h-56 md:-mt-12 rounded-md"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+<motion.div
+  className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+  variants={itemVariant}
+>
+  {[
+    {
+      title: "No POS hardware needed",
+      desc: "Works instantly on Android, iOS, Windows, and Mac",
+      video: "/videos/card1.mp4",
+    },
+    {
+      title: "Zero hassle setup",
+      desc: "Cloud-based and ready to use — no installations or IT assistance needed.",
+      video: "/videos/card2.mp4",
+    },
+    {
+      title: "Plug-and-Play Printers",
+      desc: "No drivers, no manual setup—automatic detection and configuration",
+      video: "/videos/card3.mp4",
+    },
+    {
+      title: "Auto-Print & Cut",
+      desc: "Receipts print, cut and display for customers instantly.",
+      video: "/videos/card4.mp4",
+    },
+  ].map((card, idx) => (
+    <motion.div
+      key={idx}
+      className="bg-[#A1A1A1] text-white px-4 rounded-lg w-full h-[250px] md:h-[320px] flex flex-col items-center justify-start py-2 cursor-pointer transition-colors duration-300 hover:bg-[#C2185B] group"
+      variants={itemVariant}
+    >
+      <p className="text-fluid-body font-medium text-left mb-2">
+        {card.title}
+      </p>
+      <p className="text-fluid-small mt-6 text-left transition-opacity duration-300 group-hover:opacity-0">
+        {card.desc}
+      </p>
+      <video
+        src={card.video}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="hidden group-hover:block h-36 -mt-12 md:h-56 md:-mt-12 rounded-md"
+      />
+    </motion.div>
+  ))}
+</motion.div>
+
         </motion.div>
       </section>
 
