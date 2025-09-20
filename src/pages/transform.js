@@ -3,11 +3,11 @@ import Skeleton from "../components/skeleton";
 import { LoadingContext } from "../utils/LoadingContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import AccordionCard from "../components/ui/accordion";
 export default function Transform() {
   const { loading } = useContext(LoadingContext);
   const [isVisible, setIsVisible] = useState(false);
- const [openIndex, setOpenIndex] = useState(null);
-
+  const [openIndex, setOpenIndex] = useState(null);
 
   // Intersection Observer to trigger animation
   useEffect(() => {
@@ -93,7 +93,6 @@ export default function Transform() {
     },
   };
 
-  
   const cards = [
     {
       title: "No POS hardware needed",
@@ -119,97 +118,51 @@ export default function Transform() {
 
   return (
     <>
-    <h1 className="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px px-24px">Transform Your Retail Operations with <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding</h1>
-       <p className="text-center text-fluid-caption mt-16px px-24px font-light tracking--2  text-black  ">Get up and running in minutes, not days. Accqrate Retail’s cloud-native architecture means you can onboard each outlet effortlessly—no dedicated POS hardware, no complex installations.</p>
-       <section id="transformSection" className={sectionPadding}>
-      {/* Grid Layout: 1 col mobile, 2 col tablet, 4 col desktop */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[24px]">
-  {cards.map((card, idx) => (
-    <div
-      key={idx}
-      className="bg-[#C2185B] text-white rounded-lg w-full
-                 sm:h-[280px] md:h-[320px] lg:h-[340px]"
-    >
-      {/* Header */}
-      <div
-        className="flex justify-between items-center px-3 py-8 cursor-pointer"
-        onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-      >
-        <p className="font-medium text-[18px] leading-snug text-center mx-auto md:mx-0 md:text-left">{card.title}</p>
-        {openIndex === idx ? (
-          <ChevronUp className="w-5 h-5" />
-        ) : (
-          <ChevronDown className="w-5 h-5" />
-        )}
-      </div>
-
-      {/* Mobile: Accordion dropdown */}
-      <div className="block sm:hidden">
-        <AnimatePresence>
-          {openIndex === idx && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              className="px-4 pb-4"
-            >
-              <p className="text-sm mb-3 ">{card.desc}</p>
-              <video
-                src={card.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-[200px] rounded-lg"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {/* Tablet & Desktop: Fixed-size content area */}
-      <div className="hidden sm:flex flex-col h-[calc(90%-56px)] px-4 pb-4">
-        {openIndex === idx ? (
-          <video
-            src={card.video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-contain rounded-lg"
-          />
-        ) : (
-          <p className="text-sm">{card.desc}</p>
-        )}
-      </div>
-    </div>
-  ))}
-</div>
-
-    </section>
+      <h1 className="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px px-24px">
+        Transform Your Retail Operations with{" "}
+        <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
+      </h1>
+      <p className="text-center text-fluid-caption mt-16px px-24px font-light tracking--2  text-black  ">
+        Get up and running in minutes, not days. Accqrate Retail’s cloud-native
+        architecture means you can onboard each outlet effortlessly—no dedicated
+        POS hardware, no complex installations.
+      </p>
+      <section id="transformSection" className={sectionPadding}>
+        {/* Grid Layout: 1 col mobile, 2 col tablet, 4 col desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[24px]">
+          {cards.map((card, idx) => (
+            <AccordionCard
+              key={idx}
+              title={card.title}
+              desc={card.desc}
+              video={card.video}
+              isOpen={openIndex === idx}
+              onToggle={() => setOpenIndex(openIndex === idx ? null : idx)}
+            />
+          ))}
+        </div>
+      </section>
       {/* Owner Section */}
       <section
-  id="ownerSection"
-  className="bg-[#F2F2F2] w-full max-w-[1280px] h-auto md:h-[190px] mx-auto flex items-center justify-center mt-24px rounded-lg px-24px py-8 md:py-0 "
->
-  <motion.div
-    className="flex items-center justify-center"
-    variants={variant}
-    initial="hidden"
-    animate={isVisible ? "visible" : "hidden"}
-  >
-    <div className=" md:px-6 text-left">
-      <p className="font-light leading-snug max-w-[250px] md:max-w-2xl text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5">
-        “We set up 5 new outlets in under an hour no IT team needed.”
-      </p>
-      <p className="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end">
-        — Retail Owner, Jeddah
-      </p>
-    </div>
-  </motion.div>
-</section>
-
+        id="ownerSection"
+        className="bg-[#F2F2F2] w-full max-w-[1280px] h-auto md:h-[190px] mx-auto flex items-center justify-center mt-24px rounded-lg px-24px py-8 md:py-0 "
+      >
+        <motion.div
+          className="flex items-center justify-center"
+          variants={variant}
+          initial="hidden"
+          animate={isVisible ? "visible" : "hidden"}
+        >
+          <div className=" md:px-6 text-left">
+            <p className="font-light leading-snug max-w-[250px] md:max-w-2xl text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5">
+              “We set up 5 new outlets in under an hour no IT team needed.”
+            </p>
+            <p className="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end">
+              — Retail Owner, Jeddah
+            </p>
+          </div>
+        </motion.div>
+      </section>
     </>
   );
 }
