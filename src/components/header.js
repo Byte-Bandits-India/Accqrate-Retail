@@ -631,7 +631,7 @@ const Header = () => {
 
       {/* Mobile Menu (<1280px) */}
       {isMobileMenuOpen && (
-        <div className="xl:hidden fixed top-[70px] md:top-[80px] left-0 w-full h-screen overflow-y-auto bg-white border-t border-gray-200 px-6 md:px-[32px] py-4 z-[999]">
+        <div className="xl:hidden fixed top-[80px] left-0 w-full h-screen overflow-y-auto bg-white border-t border-gray-200 px-6 md:px-[32px] py-4 z-[999]">
           <Accordion type="single" collapsible className="w-full">
             {menus.map(({ id, title, sections }) => (
               <AccordionItem key={id} value={id}>
