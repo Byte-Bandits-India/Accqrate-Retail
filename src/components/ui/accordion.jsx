@@ -45,9 +45,9 @@ export default function AccordionCard({ title, desc, video, isOpen, onToggle }) 
     <motion.div
       layout
       initial={false}
-      animate={{ height: isOpen ? 353 : 126 }}
+      animate={{ height: isOpen ? "auto" : 126 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
-      className="bg-[#C2185B] text-white rounded-lg w-full overflow-hidden"
+      className="bg-[#C2185B] text-white rounded-lg w-full overflow-hidden md:!h-[299px] lg:!h-[350px]"
     >
       {/* Header */}
       <div
@@ -82,7 +82,7 @@ export default function AccordionCard({ title, desc, video, isOpen, onToggle }) 
               loop
               muted
               playsInline
-              className="w-full h-[200px] rounded-lg object-contain"
+              className="w-full h-[200px] md:h-[157] rounded-lg object-contain"
             />
           </motion.div>
         )}

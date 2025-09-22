@@ -126,7 +126,10 @@ export default function Pos() {
   return (
     <>
       {/* Pos Section */}
-      <section id="posSection" className=" px-24px rounded-xl  mt-48px">
+      <section
+        id="posSection"
+        className=" px-24px md:px-[32px] rounded-xl  mt-48px md:mt-[56px]"
+      >
         <motion.div
           variants={variant}
           initial="hidden"
@@ -148,7 +151,7 @@ export default function Pos() {
             collapsible
             className="flex flex-col gap-[24px]
     sm:grid sm:grid-cols-2
-    md:grid md:grid-cols-3 md:max-w-5xl mx-auto  mt-24px"
+    md:grid md:grid-cols-3 md:max-w-5xl mx-auto  mt-24px md:mt-[32px]"
           >
             {/* Card 1 */}
             <AccordionCard
@@ -191,7 +194,7 @@ export default function Pos() {
       {/* Erp Section */}
       <section
         id="erpSection"
-        className="px-24px max-w-[1200px] mx-auto text-center mt-48px"
+        className="px-24px md:px-[32px] max-w-[1200px] mx-auto text-center mt-48px md:mt-[56px] "
       >
         <motion.div
           variants={containerVariant}
@@ -206,7 +209,7 @@ export default function Pos() {
               Instantly
             </span>
           </h2>
-          <p className="text-fluid-caption text-[#737373] mt-16px tracking--2 max-w-4xl mx-auto">
+          <p className="text-fluid-caption text-[#737373] mt-16px md:mt-[24px] tracking--2 max-w-4xl mx-auto">
             As your business grows, Accqrate Retail grows with you. Flip the
             switch to add procurement, finance, HR and supply-chain modules—no
             data migration, no downtime.
@@ -228,7 +231,7 @@ export default function Pos() {
           ].map((feature, i) => (
             <motion.div
               key={i}
-              className="flex flex-col  lg:flex-row lg:items-start  justify-between gap-10 mt-24px"
+              className="flex flex-col  lg:flex-row lg:items-start  justify-between gap-10 mt-24px md:mt-[32px] "
               initial={{ x: 100, opacity: 0 }}
               animate={isVisible ? { x: 0, opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: i * 0.2 }}
