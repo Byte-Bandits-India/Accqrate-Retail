@@ -4,6 +4,10 @@ import { LoadingContext } from "../utils/LoadingContext";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+//animattion scrollreveal
+import ScrollReveal from "../components/ui/ScrollReveal";
+
+
 export default function Choose() {
   const { loading } = useContext(LoadingContext);
   const [isVisible, setIsVisible] = useState(false);

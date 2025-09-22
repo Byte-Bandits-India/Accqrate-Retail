@@ -9,6 +9,10 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/src/components/ui/accordion";
+
+// import scrollreveal for text animations
+import ScrollReveal from "../components/ui/ScrollReveal";
+
 export default function Pos() {
   const { loading } = useContext(LoadingContext);
   const [isVisible, setIsVisible] = useState(false);
@@ -198,19 +202,19 @@ export default function Pos() {
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          <h2 className="text-fluid-h2 font-medium tracking--2 leading-tight ">
+          <ScrollReveal as="h2" containerClassName="text-fluid-h2 font-medium tracking--2 leading-tight ">
             Grows with Your Business
             <br />
             <span className="text-fluid-h2 font-medium">
               Scale to Full <span className="text-[#C2185B]">ERP</span>{" "}
               Instantly
             </span>
-          </h2>
-          <p className="text-fluid-caption text-[#737373] mt-16px tracking--2 max-w-4xl mx-auto">
+          </ScrollReveal>
+          <ScrollReveal as="p" textclassname="text-fluid-caption text-[#737373] mt-16px tracking--2 max-w-4xl mx-auto">
             As your business grows, Accqrate Retail grows with you. Flip the
             switch to add procurement, finance, HR and supply-chain modules—no
             data migration, no downtime.
-          </p>
+          </ScrollReveal>
 
           {[
             {
@@ -253,5 +257,5 @@ export default function Pos() {
         </motion.div>
       </section>
     </>
-  );
-}
+  );   
+}  

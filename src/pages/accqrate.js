@@ -5,6 +5,10 @@ import Skeleton from "../components/skeleton";
 import { motion } from "framer-motion";
 import ButtonGroup from "../components/ui/ButtonGroup";
 
+// import scrollreveal for text animations
+import ScrollReveal from "../components/ui/ScrollReveal";
+
+
 export default function Accqrate() {
   const { loading } = useContext(LoadingContext);
 
@@ -135,16 +139,16 @@ if (loading) {
           viewport={{ once: false, amount: 0.3 }} // animate every time in view
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-fluid-h2 font-semibold text-[#C2185B] tracking--2">
+          <ScrollReveal as="h2" containerClassName="text-fluid-h2 font-semibold text-[#C2185B] tracking--2">
             Built-In{" "}
             <span className="text-[#C2185B] font-semibold tracking--2">
               E-Invoicing Compliance
             </span>
-          </h2>
-          <p className=" text-black mx-auto mt-32px text-fluid-h3 md:max-w-[500px]  sm:text-base tracking--2 font-normal">
+          </ScrollReveal>
+          <ScrollReveal as="p" textClassName=" text-black mx-auto mt-32px text-fluid-h3 md:max-w-[500px]  sm:text-base tracking--2 font-normal">
             <span className="font-semibold text-black">100% ZATCA</span> phase 2
             compliance: Issue e-invoice receipts with every sale, no extra fees
-          </p>
+          </ScrollReveal>
         </motion.div>
 
         {/* Image */}

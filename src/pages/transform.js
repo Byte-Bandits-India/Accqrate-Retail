@@ -4,6 +4,10 @@ import { LoadingContext } from "../utils/LoadingContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import AccordionCard from "../components/ui/accordion";
+
+// import scrollreveal for text animations
+import ScrollReveal from "../components/ui/ScrollReveal";
+
 export default function Transform() {
   const { loading } = useContext(LoadingContext);
   const [isVisible, setIsVisible] = useState(false);
@@ -136,15 +140,15 @@ export default function Transform() {
 
   return (
     <>
-      <h1 className="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px px-24px">
+      <ScrollReveal as="h1" containerClassName="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px px-24px">
         Transform Your Retail Operations with{" "}
         <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
-      </h1>
-      <p className="text-center text-fluid-caption mt-16px px-24px font-light tracking--2  text-black  ">
+      </ScrollReveal>
+      < ScrollReveal as="p" textClassName="text-center text-fluid-caption mt-16px px-24px font-light tracking--2  text-black  ">
         Get up and running in minutes, not days. Accqrate Retail’s cloud-native
         architecture means you can onboard each outlet effortlessly—no dedicated
         POS hardware, no complex installations.
-      </p>
+      </ScrollReveal>
       <section id="transformSection" className={sectionPadding}>
         {/* Grid Layout: 1 col mobile, 2 col tablet, 4 col desktop */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[16px]">
@@ -171,14 +175,14 @@ export default function Transform() {
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          <div className=" md:px-6 text-left">
+          <ScrollReveal as="div" containerClassName=" md:px-6 text-left">
             <p className="font-light leading-snug max-w-[250px] md:max-w-2xl text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5">
               “We set up 5 new outlets in under an hour no IT team needed.”
             </p>
             <p className="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end">
               — Retail Owner, Jeddah
             </p>
-          </div>
+          </ScrollReveal>
         </motion.div>
       </section>
     </>

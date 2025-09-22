@@ -1,6 +1,9 @@
 import Image from "next/image";
 import React from "react";
 
+//ScrollReveal component can be used for animating text on scroll
+import ScrollReveal from "../components/ui/ScrollReveal";
+
 export default function Sales() {
   const images = [
     { src: "/images/discount.webp", label: "Discount" },
@@ -23,13 +26,13 @@ export default function Sales() {
 
   return (
     <section className="bg-white text-center px-24px mt-24px">
-      <h2 className="text-fluid-h2 font-medium tracking--5  text-black">
+      <ScrollReveal as="h2" containerClassName="text-fluid-h2 font-medium tracking--5  text-black">
         Supercharge Sales with <span className="text-[#C2185B]">Powerful POS</span> Capabilities
-      </h2>
-      <p className="text-[#000000B2] leading-snug mt-12px text-fluid-caption tracking--2 max-w-2xl mx-auto ">
+      </ScrollReveal>
+      <ScrollReveal as="p" textClassName="text-[#000000B2] leading-snug mt-12px text-fluid-caption tracking--2 max-w-2xl mx-auto ">
         Empower your front-end team and delight your customers with
         <span className="font-bold"> intuitive, high-speed transactions:</span>
-      </p>
+      </ScrollReveal>
 
       <div className="flex flex-col items-center relative mt-24px">
         {/* Marquee Card */}
