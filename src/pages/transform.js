@@ -160,19 +160,19 @@ export default function Transform() {
           ))}
         </div>
       </section>
-      {/* Owner Section */}
       <section
         id="ownerSection"
-        className="bg-[#F2F2F2] w-full max-w-[1280px] h-auto md:h-[190px] mx-auto flex items-center justify-center mt-24px rounded-lg px-24px py-8 md:py-0 "
+        className="bg-[#F2F2F2] w-full max-w-[1280px] mx-auto mt-24px rounded-lg px-24px py-8 md:py-0"
       >
         <motion.div
-          className="flex items-center justify-center"
+          className="w-full"
           variants={variant}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          <div className=" md:px-6 text-left">
-            <p className="font-light leading-snug max-w-[250px] md:max-w-2xl text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5">
+          {/* On mobile → max-w, on md+ → full width */}
+          <div className="max-w-[1168px] mx-auto text-left md:max-w-full">
+            <p className="font-light leading-snug text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5">
               “We set up 5 new outlets in under an hour no IT team needed.”
             </p>
             <p className="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end">
