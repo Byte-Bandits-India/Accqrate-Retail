@@ -41,18 +41,35 @@ const AccordionContent = React.forwardRef(({ className, children, ...props }, re
 AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
 export default function AccordionCard({ title, desc, video, isOpen, onToggle }) {
+  const [isDesktop, setIsDesktop] = React.useState(false)
+
+  React.useEffect(() => {
+    const checkSize = () => setIsDesktop(window.innerWidth >= 1024)
+    checkSize()
+    window.addEventListener("resize", checkSize)
+    return () => window.removeEventListener("resize", checkSize)
+  }, [])
   return (
     <motion.div
       layout
       initial={false}
       animate={{ height: isOpen ? "auto" : 126 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
-      className="bg-[#C2185B] text-white rounded-lg w-full overflow-hidden md:!h-[299px] lg:!h-[350px]"
+      // 👇 default gray background on desktop, pink otherwise
+      className={cn(
+        "rounded-lg w-full overflow-hidden transition-colors duration-300 md:!h-[299px] lg:!h-[350px]",
+        isDesktop
+          ? isOpen
+            ? "bg-[#C2185B] text-white"
+            : "bg-[#6666669C] text-white hover:bg-[#C2185B]"
+          : "bg-[#C2185B] text-white"
+      )}
+      onMouseEnter={() => isDesktop && onToggle(true)}
+      onMouseLeave={() => isDesktop && onToggle(false)}
     >
-      {/* Header */}
       <div
         className="flex justify-between items-center px-10 py-6 cursor-pointer"
-        onClick={onToggle}
+        onClick={() => !isDesktop && onToggle(!isOpen)}
       >
         <h1 className="font-medium text-[24px] leading-snug text-left">
           {title}
@@ -64,7 +81,6 @@ export default function AccordionCard({ title, desc, video, isOpen, onToggle }) 
         )}
       </div>
 
-      {/* Expanded content */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -82,7 +98,7 @@ export default function AccordionCard({ title, desc, video, isOpen, onToggle }) 
               loop
               muted
               playsInline
-              className="w-full h-[200px] md:h-[157] rounded-lg object-contain"
+              className="w-full h-[200px] md:h-[157px] rounded-lg object-contain"
             />
           </motion.div>
         )}
