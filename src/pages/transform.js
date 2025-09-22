@@ -26,7 +26,7 @@ export default function Transform() {
   }, []);
 
   const sectionPadding =
-    "mt-24px md:mt-[32px] mx-24px md:mx-[32px] max-w-[1200px] mx-auto";
+    "mt-24px md:mt-[32px] lg:mt-[40px] px-24px md:px-[32px] max-w-[1280px] mx-auto";
 
   if (loading || !isVisible) {
     return (
@@ -137,18 +137,18 @@ export default function Transform() {
 
   return (
     <>
-      <h1 className="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px md:mt-[56px] px-24px md:px-[32px]">
+      <h1 className="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px md:mt-[56px] lg:mt-[80px] px-24px md:px-[32px]">
         Transform Your Retail Operations with{" "}
         <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
       </h1>
-      <p className="text-center text-fluid-caption mt-16px md:mt-[32px] px-24px md:px-[32px] font-light tracking--2  text-black  ">
+      <p className="text-center text-fluid-caption mt-16px md:mt-[32px] px-24px md:px-[32px] lg:mt-[40px] font-light tracking--2  text-black  ">
         Get up and running in minutes, not days. Accqrate Retail’s cloud-native
         architecture means you can onboard each outlet effortlessly—no dedicated
         POS hardware, no complex installations.
       </p>
       <section id="transformSection" className={sectionPadding}>
         {/* Grid Layout: 1 col mobile, 2 col tablet, 4 col desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[16px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[16px] w-full max-w-[1280px] mx-auto">
           {cards.map((card, idx) => (
             <AccordionCard
               key={idx}
@@ -163,7 +163,7 @@ export default function Transform() {
       </section>
       <section
         id="ownerSection"
-        className="bg-[#F2F2F2] w-full max-w-[1280px] mx-auto mt-24px md:mt-[32px] rounded-lg px-24px py-8"
+        className="bg-[#F2F2F2] w-full max-w-[1280px] mx-auto mt-24px md:mt-[32px] lg:mt-[40px] rounded-lg px-24px py-8 lg:py-10"
       >
         <motion.div
           className="w-full"

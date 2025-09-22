@@ -92,7 +92,7 @@ export default function Choose() {
         animate={isVisible ? "visible" : "hidden"}
       >
         <motion.h2
-          className="text-fluid-h2 font-semibold py-8 tracking--5"
+          className="text-fluid-h2 font-semibold py-8 lg:py-[40px] tracking--5"
           variants={fadeInLeft}
         >
           Why Choose <span className="text-[#C2185B]">Accqrate Retail?</span>
@@ -153,12 +153,12 @@ export default function Choose() {
       {/* Ready Section */}
       <motion.section
         id="readySection"
-        className=" mt-48px px-24px text-center min-h-full md:mt-[56px] md:px-[32px]"
+        className=" mt-48px px-24px text-center min-h-full md:mt-[56px] lg:mt-[80px] md:px-[32px]"
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
       >
         <motion.h2
-          className="text-black font-semibold  text-fluid-h2"
+          className="text-black font-semibold text-fluid-h2"
           variants={fadeInRight}
         >
           Ready to accelerate your retail business?

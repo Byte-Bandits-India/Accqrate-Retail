@@ -30,17 +30,17 @@ export default function Sales() {
   ];
 
   return (
-    <section className="bg-white text-center px-24px md:px-[32px] mt-48px md:mt-[56px] ">
-      <h2 className="text-fluid-h2 font-medium tracking--5 mb-[24px] md:mb-[32px] text-black">
+    <section className="bg-white text-center px-24px md:px-[32px] mt-48px md:mt-[56px] lg:mt-[80px] ">
+      <h2 className="text-fluid-h2 font-medium tracking--5 mb-[24px] md:mb-[32px] lg:mb-[40px] text-black">
         Supercharge Sales with{" "}
         <span className="text-[#C2185B]">Powerful POS</span> Capabilities
       </h2>
-      <p className="text-[#000000B2] leading-snug mb-[24px] md:mb-[32px] text-fluid-caption tracking--2 max-w-2xl mx-auto ">
+      <p className="text-[#000000B2] leading-snug mb-[24px] md:mb-[32px] lg:mb-[40px] text-fluid-caption tracking--2 max-w-2xl mx-auto ">
         Empower your front-end team and delight your customers with
         <span className="font-bold"> intuitive, high-speed transactions:</span>
       </p>
 
-      <div className="flex flex-col items-center relative mt-24px">
+      <div className="flex flex-col items-center relative">
         {/* Marquee Card */}
         <div className="sticky h-[240px] md:h-[450px]  bg-white border border-gray-400 rounded-2xl shadow-xl p-4 max-w-4xl w-full z-10">
           <div className="text-fluid-h3 leading-tight font-bold text-pink-700 text-center mb-5">
