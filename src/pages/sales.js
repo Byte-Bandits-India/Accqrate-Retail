@@ -42,7 +42,7 @@ export default function Sales() {
 
       <div className="flex flex-col items-center relative mt-24px">
         {/* Marquee Card */}
-        <div className="sticky h-[240px] md:h-[245px]  bg-white border border-gray-400 rounded-2xl shadow-xl p-4 max-w-4xl w-full z-10">
+        <div className="sticky h-[240px] md:h-[450px]  bg-white border border-gray-400 rounded-2xl shadow-xl p-4 max-w-4xl w-full z-10">
           <div className="text-fluid-h3 leading-tight font-bold text-pink-700 text-center mb-5">
             10+ Promotions & Discount Engines
           </div>
@@ -67,7 +67,7 @@ export default function Sales() {
         {videoCards.map((card, idx) => (
           <div
             key={idx}
-            className="sticky h-[300px] mt-24px border border-gray-400 top-10 bg-white rounded-2xl shadow-xl  p-6 max-w-4xl w-full"
+            className="sticky h-[300px] md:h-[450px] mt-24px border border-gray-400 top-10 bg-white rounded-2xl shadow-xl  p-6 max-w-4xl w-full"
             style={{
               zIndex: 20 + idx, // progressive stacking
             }}
