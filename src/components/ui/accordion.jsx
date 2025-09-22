@@ -54,7 +54,7 @@ export default function AccordionCard({ title, desc, video, isOpen, onToggle }) 
         className="flex justify-between items-center px-10 py-6 cursor-pointer"
         onClick={onToggle}
       >
-        <h1 className="font-medium text-[18px] leading-snug text-left">
+        <h1 className="font-medium text-[24px] leading-snug text-left">
           {title}
         </h1>
         {isOpen ? (
@@ -75,7 +75,7 @@ export default function AccordionCard({ title, desc, video, isOpen, onToggle }) 
             transition={{ duration: 0.3 }}
             className="px-10 pb-10 text-left"
           >
-            <p className="text-sm mb-6">{desc}</p>
+            <p className="text-sm">{desc}</p>
             <video
               src={video}
               autoPlay
