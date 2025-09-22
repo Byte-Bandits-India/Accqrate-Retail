@@ -147,7 +147,7 @@ export default function Transform() {
       </p>
       <section id="transformSection" className={sectionPadding}>
         {/* Grid Layout: 1 col mobile, 2 col tablet, 4 col desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[24px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[16px]">
           {cards.map((card, idx) => (
             <AccordionCard
               key={idx}

@@ -42,77 +42,52 @@ AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
 export default function AccordionCard({ title, desc, video, isOpen, onToggle }) {
   return (
-    <div
-      className="bg-[#C2185B] text-white rounded-lg w-full
-                 sm:h-[280px] md:h-[320px] lg:h-[340px]"
+    <motion.div
+      layout
+      initial={false}
+      animate={{ height: isOpen ? 353 : 126 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      className="bg-[#C2185B] text-white rounded-lg w-full overflow-hidden"
     >
       {/* Header */}
       <div
-        className="flex justify-between items-center px-3 py-8 cursor-pointer"
+        className="flex justify-between items-center px-10 py-6 cursor-pointer"
         onClick={onToggle}
       >
-        {/* Show title only when closed */}
-        {!isOpen && (
-          <p className="font-medium text-[18px] leading-snug text-left">
-            {title}
-          </p>
-        )}
-
-        {/* Chevron always on the right */}
-        <div className="ml-auto">
-          {isOpen ? (
-            <ChevronUp className="w-5 h-5" />
-          ) : (
-            <ChevronDown className="w-5 h-5" />
-          )}
-        </div>
-      </div>
-
-      {/* Mobile: Accordion dropdown */}
-      <div className="block sm:hidden">
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ maxHeight: 0, opacity: 0 }}
-              animate={{ maxHeight: 600, opacity: 1 }} // pick a safe max height
-              exit={{ maxHeight: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="overflow-hidden px-[40px] pb-[40px] text-left"
-            >
-              <h1 className="font-medium text-[18px] leading-snug text-left mb-6">
-                {title}
-              </h1>
-              <p className="text-sm mb-3">{desc}</p>
-
-              <video
-                src={video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-[200px] rounded-lg"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {/* Tablet & Desktop: Fixed-size content */}
-      <div className="hidden sm:flex flex-col h-[calc(90%-56px)] px-4 pb-4">
+        <h1 className="font-medium text-[18px] leading-snug text-left">
+          {title}
+        </h1>
         {isOpen ? (
-          <video
-            src={video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-contain rounded-lg"
-          />
+          <ChevronUp className="w-5 h-5 ml-auto" />
         ) : (
-          <p className="text-sm">{desc}</p>
+          <ChevronDown className="w-5 h-5 ml-auto" />
         )}
       </div>
-    </div>
+
+      {/* Expanded content */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="px-10 pb-10 text-left"
+          >
+            <p className="text-sm mb-6">{desc}</p>
+            <video
+              src={video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-[200px] rounded-lg object-contain"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
