@@ -101,16 +101,16 @@ export default function Tools() {
     <>
       <motion.section
         id="toolsSection"
-        className="bg-white mt-48px px-24px md:px-[32px] max-w-[1200px] mx-auto"
+        className="bg-white mt-48px md:mt-[56px] lg:mt-[80px] px-24px md:px-[32px] max-w-[1200px] mx-auto"
         variants={containerVariant}
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
       >
-        <h2 className="text-center text-fluid-h2 font-medium tracking--5 mb-[24px] md:mb-[32px] ">
+        <h2 className="text-center text-fluid-h2 font-medium tracking--5 mb-[24px] md:mb-[32px] lg:mb-[40px]">
           Robust Control &{" "}
           <span className="text-[#C2185B] font-medium">Compliance Tools</span>
         </h2>
-        <p className="text-center text-[#000000B2] tracking--2 text-fluid-caption max-w-lg mb-[24px] md:mb-[32px] leading-tight mx-auto">
+        <p className="text-center text-[#000000B2] tracking--2 text-fluid-caption max-w-lg mb-[24px] md:mb-[32px] lg:mb-[40px] leading-tight mx-auto">
           Maintain tight governance over your retail footprint, from terminal
           permissions to financial integrity
         </p>
@@ -135,7 +135,7 @@ export default function Tools() {
         ].map((section, idx) => (
           <motion.div
             key={idx}
-            className="flex flex-col lg:flex-row lg:items-start gap-[24px]  mt-24px md:mt-[32px] tracking--5"
+            className="flex flex-col lg:flex-row lg:items-start gap-[24px] tracking--5"
             initial={{ x: -100, opacity: 0 }}
             animate={isVisible ? { x: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: idx * 0.2 }}
@@ -165,12 +165,12 @@ export default function Tools() {
       {/* onboardingSection */}
       <motion.section
         id="onboardingSection"
-        className="px-6 md:px-[32px] max-w-6xl mx-auto md:mt-[56px] mt-48px"
+        className="px-6 md:px-[32px] max-w-6xl mx-auto md:mt-[56px] lg:mt-[60px] mt-48px"
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
       >
         <motion.h2
-          className="text-center font-medium text-fluid-h2 mb-[24px] md:mb-[32px] tracking--5 "
+          className="text-center font-medium text-fluid-h2 mb-[24px] md:mb-[32px] lg:mb-[40px] tracking--5 "
           variants={cardVariant}
         >
           Fast Data Onboarding & Customization
@@ -188,7 +188,7 @@ export default function Tools() {
         ].map((item, idx) => (
           <motion.div
             key={idx}
-            className="bg-gray-100 border border-pink-700 rounded-xl p-6 mt-24px md:p-[32px] shadow-sm mx-auto"
+            className="bg-gray-100 border border-pink-700 rounded-xl p-6 mb-[24px] md:mb-[32px] lg:mb-[40px] shadow-sm mx-auto"
             variants={cardVariant}
             transition={{ delay: idx * 0.2 }}
           >
