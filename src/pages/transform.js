@@ -25,7 +25,8 @@ export default function Transform() {
     return () => element && observer.unobserve(element);
   }, []);
 
-  const sectionPadding = "mt-24px px-24px max-w-[1200px] mx-auto";
+  const sectionPadding =
+    "mt-24px md:mt-[32px] mx-24px md:mx-[32px] max-w-[1200px] mx-auto";
 
   if (loading || !isVisible) {
     return (
@@ -136,11 +137,11 @@ export default function Transform() {
 
   return (
     <>
-      <h1 className="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px px-24px">
+      <h1 className="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px md:mt-[56px] px-24px md:px-[32px]">
         Transform Your Retail Operations with{" "}
         <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
       </h1>
-      <p className="text-center text-fluid-caption mt-16px px-24px font-light tracking--2  text-black  ">
+      <p className="text-center text-fluid-caption mt-16px md:mt-[32px] px-24px md:px-[32px] font-light tracking--2  text-black  ">
         Get up and running in minutes, not days. Accqrate Retail’s cloud-native
         architecture means you can onboard each outlet effortlessly—no dedicated
         POS hardware, no complex installations.
@@ -162,7 +163,7 @@ export default function Transform() {
       </section>
       <section
         id="ownerSection"
-        className="bg-[#F2F2F2] w-full max-w-[1280px] mx-auto mt-24px rounded-lg px-24px py-8 md:py-0"
+        className="bg-[#F2F2F2] w-full max-w-[1280px] mx-auto mt-24px md:mt-[32px] rounded-lg px-24px py-8"
       >
         <motion.div
           className="w-full"
