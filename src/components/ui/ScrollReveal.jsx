@@ -33,6 +33,7 @@ const ScrollReveal = ({
   }, [children]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return; // SSR-safe
     const el = containerRef.current;
     if (!el) return;
 
@@ -56,7 +57,7 @@ const ScrollReveal = ({
             start: "top bottom",
             end: rotationEnd,
             scrub: true,
-            invalidateOnRefresh: true // ✅ Fix for initial render issues
+            invalidateOnRefresh: true // Fix for initial render issues
           }
         }
       ).scrollTrigger
