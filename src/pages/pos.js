@@ -1,62 +1,73 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Skeleton from "../components/skeleton";
-import { LoadingContext } from "../utils/LoadingContext";
-import { motion } from "framer-motion";
 import AccordionCard from "../components/ui/AccordionSilverCard";
 import {
   Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
 } from "@/src/components/ui/accordion";
-
-// import scrollreveal for text animations
+import { motion } from "framer-motion";
 import ScrollReveal from "../components/ui/ScrollReveal";
 
 export default function Pos() {
-  const { loading } = useContext(LoadingContext);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isPosVisible, setIsPosVisible] = useState(false);
+  const [isErpVisible, setIsErpVisible] = useState(false);
 
-  // Intersection Observer to trigger animation
+  // IntersectionObserver for multiple sections
   useEffect(() => {
-    const element = document.getElementById("posSection", "erpSection");
-    if (!element) return;
+    const posSection = document.getElementById("posSection");
+    const erpSection = document.getElementById("erpSection");
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target.id === "posSection") setIsPosVisible(true);
+            if (entry.target.id === "erpSection") setIsErpVisible(true);
+          }
+        });
       },
-      { rootMargin: "0px", threshold: 0.3 }
+      { threshold: 0.3 }
     );
-    observer.observe(element);
-    return () => element && observer.unobserve(element);
+
+    if (posSection) observer.observe(posSection);
+    if (erpSection) observer.observe(erpSection);
+
+    return () => {
+      if (posSection) observer.unobserve(posSection);
+      if (erpSection) observer.unobserve(erpSection);
+    };
   }, []);
 
-  if (loading || !isVisible) {
+  // Variants for staggered animation
+  const containerVariant = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, when: "beforeChildren" },
+    },
+  };
+
+  const itemVariant = {
+    hidden: { x: -50, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  const itemVariantRight = {
+    hidden: { x: 50, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  // Skeleton Loader for pro-level experience
+  if (!isPosVisible && !isErpVisible) {
     return (
       <>
-        {/* POS Section Skeleton */}
-        <section id="posSection" className="px-24px rounded-xl mt-48px">
+        <section id="posSection" className="px-6 mt-12 md:mt-24">
           <div className="max-w-[1000px] mx-auto">
-            {/* Video placeholder */}
             <Skeleton height="220px" width="100%" className="rounded-lg mb-6" />
-
-            {/* Accordion cards skeleton */}
-            <div
-              className="flex flex-col gap-[24px]
-              sm:grid sm:grid-cols-2
-              md:grid md:grid-cols-3 md:max-w-5xl mx-auto mt-24px"
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="bg-gray-200 w-full h-auto rounded-lg p-[24px] flex flex-col gap-4"
-                >
-                  {/* Icon placeholder */}
+                <div key={i} className="bg-gray-200 rounded-lg p-4 flex flex-col gap-2">
                   <Skeleton height="45px" width="45px" className="mb-2" />
-                  {/* Title placeholder */}
                   <Skeleton height="24px" width="80%" className="mb-2" />
-                  {/* Small text line */}
                   <Skeleton height="16px" width="60%" />
                 </div>
               ))}
@@ -64,42 +75,17 @@ export default function Pos() {
           </div>
         </section>
 
-        {/* ERP Section Skeleton */}
-        <section
-          id="erpSection"
-          className="px-24px max-w-[1200px] mx-auto text-center mt-48px"
-        >
-          {/* Heading */}
-          <Skeleton height="36px" width="70%" className="mb-6 mx-auto" />
-          <Skeleton height="20px" width="90%" className="mb-4 mx-auto" />
-
-          {/* 3 Feature rows */}
+        <section id="erpSection" className="px-6 mt-24 md:mt-32">
+          <Skeleton height="36px" width="70%" className="mx-auto mb-4" />
+          <Skeleton height="20px" width="90%" className="mx-auto mb-6" />
           {[...Array(3)].map((_, i) => (
-            <div
-              key={i}
-              className="flex flex-col lg:flex-row lg:items-start justify-between gap-10 mt-24px"
-            >
-              {/* Text block skeleton */}
+            <div key={i} className="flex flex-col lg:flex-row gap-6 mt-6">
               <div className="flex-1">
-                <Skeleton
-                  height="20px"
-                  width="80%"
-                  className="mb-3 mx-auto lg:mx-0"
-                />
-                <Skeleton
-                  height="20px"
-                  width="60%"
-                  className="mb-3 mx-auto lg:mx-0"
-                />
+                <Skeleton height="20px" width="80%" className="mb-2" />
+                <Skeleton height="20px" width="60%" />
               </div>
-
-              {/* Video placeholder */}
               <div className="flex-1 flex justify-center">
-                <Skeleton
-                  height="220px"
-                  width="100%"
-                  className="max-w-md rounded-lg"
-                />
+                <Skeleton height="220px" width="100%" className="rounded-lg max-w-md" />
               </div>
             </div>
           ))}
@@ -108,39 +94,33 @@ export default function Pos() {
     );
   }
 
-  // Framer Motion variants for left-to-right slide
-  const variant = {
-    hidden: { x: -100, opacity: 0 }, // start offscreen left
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" },
+  // Features for ERP Section
+  const erpFeatures = [
+    {
+      text: "Central procurement: Manage suppliers and POs across all locations.",
+      video: "/videos/pos.mp4",
     },
-  };
-
-  const containerVariant = {
-    hidden: { x: 100, opacity: 0 }, // start offscreen right
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" },
+    {
+      text: "Real-time inventory: See live stock updates and automate reordering.",
+      video: "/videos/dashboard.mp4",
     },
-  };
+    {
+      text: "Safety-stock alerts: Never run out, never over-order.",
+      video: "/videos/crm.mp4",
+    },
+  ];
 
   return (
     <>
-      {/* Pos Section */}
-      <section
-        id="posSection"
-        className=" px-24px md:px-[32px] rounded-xl  mt-48px md:mt-[56px] lg:mt-[80px] "
-      >
+      {/* POS Section */}
+      <section id="posSection" className="px-6 md:px-8 mt-12 md:mt-24">
         <motion.div
-          variants={variant}
+          variants={containerVariant}
           initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
+          animate={isPosVisible ? "visible" : "hidden"}
           className="max-w-[1000px] mx-auto"
         >
-          <div className="">
+          <motion.div variants={itemVariant}>
             <video
               src="/videos/barcode.mp4"
               muted
@@ -149,97 +129,48 @@ export default function Pos() {
               playsInline
               className="w-full h-auto object-contain rounded-lg"
             />
-          </div>
-          <Accordion
-            type="single"
-            collapsible
-            className="flex flex-col gap-[24px]
-    sm:grid sm:grid-cols-2
-    md:grid md:grid-cols-3 md:max-w-5xl mx-auto  mt-24px md:mt-[32px] lg:mt-[40px] "
-          >
-            {/* Card 1 */}
-            <AccordionCard
-              value="card-1"
-              icon="/images/instant.png"
-              title="Direct Interface to Tax Portals"
-            >
-              <>
-                Extra details about <b>Instant Access</b> will appear here when
-                expanded.
-              </>
-            </AccordionCard>
+          </motion.div>
 
-            {/* Card 2 */}
-            <AccordionCard
-              value="card-2"
-              icon="/images/invoice.png"
-              title="Custom Invoices Templates"
-            >
-              <>
-                Extra details about <b>Automated Data Migration</b> will be
-                shown here.
-              </>
+          <Accordion type="single" collapsible className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+            <AccordionCard value="card-1" icon="/images/instant.png" title="Direct Interface to Tax Portals">
+              Extra details about <b>Instant Access</b> will appear here when expanded.
             </AccordionCard>
-
-            {/* Card 3 */}
-            <AccordionCard
-              value="card-3"
-              icon="/images/audit.png"
-              title="Audit Trails & Deletion Logs"
-            >
-              <>
-                Extra details about <b>Role-Based User Setup</b> will go here.
-              </>
+            <AccordionCard value="card-2" icon="/images/invoice.png" title="Custom Invoices Templates">
+              Extra details about <b>Automated Data Migration</b> will be shown here.
+            </AccordionCard>
+            <AccordionCard value="card-3" icon="/images/audit.png" title="Audit Trails & Deletion Logs">
+              Extra details about <b>Role-Based User Setup</b> will go here.
             </AccordionCard>
           </Accordion>
         </motion.div>
       </section>
 
-      {/* Erp Section */}
-      <section
-        id="erpSection"
-        className="px-24px md:px-[32px] max-w-[1200px] mx-auto text-center mt-48px md:mt-[56px] lg:mt-[80px] "
-      >
-        <motion.div
-          variants={containerVariant}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          < ScrollReveal as="h2" containerClassName="text-fluid-h2 font-medium tracking--2 leading-tight ">
+      {/* ERP Section */}
+      <section id="erpSection" className="px-6 md:px-8 max-w-[1200px] mx-auto text-center mt-24 md:mt-32">
+        <motion.div variants={containerVariant} initial="hidden" animate={isErpVisible ? "visible" : "hidden"}>
+          <ScrollReveal
+            as="h2"
+            containerClassName="text-fluid-h2 font-medium tracking-tight leading-tight"
+          >
             Grows with Your Business
             <br />
             <span className="text-fluid-h2 font-medium">
-              Scale to Full <span className="text-[#C2185B]">ERP</span>{" "}
-              Instantly
+              Scale to Full <span className="text-[#C2185B]">ERP</span> Instantly
             </span>
           </ScrollReveal>
 
-          <ScrollReveal as="p" containerClassName="text-fluid-caption text-[#737373] mt-16px md:mt-[24px] lg:mt-[32px] tracking--2 max-w-4xl mx-auto">
-            As your business grows, Accqrate Retail grows with you. Flip the
-            switch to add procurement, finance, HR and supply-chain modules—no
-            data migration, no downtime.
+          <ScrollReveal
+            as="p"
+            containerClassName="text-fluid-caption text-[#737373] mt-6 md:mt-8 lg:mt-10 max-w-4xl mx-auto"
+          >
+            As your business grows, Accqrate Retail grows with you. Flip the switch to add procurement, finance, HR and supply-chain modules—no data migration, no downtime.
           </ScrollReveal>
 
-          {[
-            {
-              text: "Central procurement: Manage suppliers and POs across all locations.",
-              video: "/videos/pos.mp4",
-            },
-            {
-              text: "Real-time inventory: See live stock updates and automate reordering.",
-              video: "/videos/dashboard.mp4",
-            },
-            {
-              text: "Safety-stock alerts: Never run out, never over-order.",
-              video: "/videos/crm.mp4",
-            },
-          ].map((feature, i) => (
+          {erpFeatures.map((feature, i) => (
             <motion.div
               key={i}
-              className="flex flex-col  lg:flex-row lg:items-start  justify-between gap-10 mt-24px md:mt-[32px] lg:mt-[40px] "
-              initial={{ x: 100, opacity: 0 }}
-              animate={isVisible ? { x: 0, opacity: 1 } : {}}
-              transition={{ duration: 0.8, delay: i * 0.2 }}
+              className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mt-6 md:mt-8 lg:mt-10"
+              variants={itemVariantRight}
             >
               <p className="flex-1 text-left leading-snug text-fluid-h3 text-[#C2185B] font-light max-w-lg">
                 {feature.text}
@@ -251,9 +182,7 @@ export default function Pos() {
                   autoPlay
                   loop
                   playsInline
-                  controls={false}
-                  preload="auto"
-                  className="w-full max-w-md h-auto"
+                  className="w-full max-w-md h-auto rounded-lg"
                 />
               </div>
             </motion.div>
