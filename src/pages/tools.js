@@ -3,6 +3,9 @@ import Skeleton from "../components/skeleton";
 import { LoadingContext } from "../utils/LoadingContext";
 import { motion } from "framer-motion";
 
+// import scrollreveal for text animations
+import ScrollReveal from "../components/ui/ScrollReveal";
+
 export default function Tools() {
   const { loading } = useContext(LoadingContext);
   const [isVisible, setIsVisible] = useState(false);
@@ -106,14 +109,14 @@ export default function Tools() {
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
       >
-        <h2 className="text-center text-fluid-h2 font-medium tracking--5 mb-[24px] md:mb-[32px] lg:mb-[40px]">
+        <ScrollReveal as="h2" containerClassName="text-center text-fluid-h2 font-medium tracking--5 mb-[24px] md:mb-[32px] lg:mb-[40px]">
           Robust Control &{" "}
           <span className="text-[#C2185B] font-medium">Compliance Tools</span>
-        </h2>
-        <p className="text-center text-[#000000B2] tracking--2 text-fluid-caption max-w-lg mb-[24px] md:mb-[32px] lg:mb-[40px] leading-tight mx-auto">
+        </ScrollReveal>
+        <ScrollReveal as="p" containerClassName="text-center text-[#000000B2] tracking--2 text-fluid-caption max-w-lg mb-[24px] md:mb-[32px] lg:mb-[40px] leading-tight mx-auto">
           Maintain tight governance over your retail footprint, from terminal
           permissions to financial integrity
-        </p>
+        </ScrollReveal>
 
         {/* Sections */}
         {[

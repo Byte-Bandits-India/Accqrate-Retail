@@ -1,6 +1,9 @@
 import Image from "next/image";
 import React from "react";
 
+// import scrollreveal for text animations
+import ScrollReveal from "../components/ui/ScrollReveal";
+
 export default function Sales() {
   const images = [
     { src: "/images/discount.webp", label: "Discount" },
@@ -31,14 +34,14 @@ export default function Sales() {
 
   return (
     <section className="bg-white text-center px-24px md:px-[32px] mt-48px md:mt-[56px] lg:mt-[80px] ">
-      <h2 className="text-fluid-h2 font-medium tracking--5 mb-[24px] md:mb-[32px] lg:mb-[40px] text-black">
+      <ScrollReveal as="h2" containerClassName="text-fluid-h2 font-medium tracking--5 mb-[24px] md:mb-[32px] lg:mb-[40px] text-black">
         Supercharge Sales with{" "}
         <span className="text-[#C2185B]">Powerful POS</span> Capabilities
-      </h2>
-      <p className="text-[#000000B2] leading-snug mb-[24px] md:mb-[32px] lg:mb-[40px] text-fluid-caption tracking--2 max-w-2xl mx-auto ">
+      </ScrollReveal>
+      <ScrollReveal as="p" containerClassName="text-[#000000B2] leading-snug mb-[24px] md:mb-[32px] lg:mb-[40px] text-fluid-caption tracking--2 max-w-2xl mx-auto ">
         Empower your front-end team and delight your customers with
         <span className="font-bold"> intuitive, high-speed transactions:</span>
-      </p>
+      </ScrollReveal>
 
       <div className="flex flex-col items-center relative">
         {/* Marquee Card */}
