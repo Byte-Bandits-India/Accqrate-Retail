@@ -4,10 +4,18 @@ import { LoadingContext } from "../utils/LoadingContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import AccordionCard from "../components/ui/accordion";
+
+
+// import scrollreveal for text animations
+import ScrollReveal from "../components/ui/ScrollReveal";
+
+
 export default function Transform() {
   const { loading } = useContext(LoadingContext);
   const [isVisible, setIsVisible] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+
+
 
   // Intersection Observer to trigger animation
   useEffect(() => {
@@ -137,15 +145,15 @@ export default function Transform() {
 
   return (
     <>
-      <h1 className="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px md:mt-[56px] lg:mt-[80px] px-24px md:px-[32px]">
+      <ScrollReveal as="h1" containerClassName="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px md:mt-[56px] lg:mt-[80px] px-24px md:px-[32px]">
         Transform Your Retail Operations with{" "}
         <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
-      </h1>
-      <p className="text-center text-fluid-caption mt-16px md:mt-[32px] px-24px md:px-[32px] lg:mt-[40px] font-light tracking--2  text-black  ">
+      </ScrollReveal>
+      <ScrollReveal as="p" containerClassName="text-center text-fluid-caption mt-16px md:mt-[32px] px-24px md:px-[32px] lg:mt-[40px] font-light tracking--2  text-black  ">
         Get up and running in minutes, not days. Accqrate Retail’s cloud-native
         architecture means you can onboard each outlet effortlessly—no dedicated
         POS hardware, no complex installations.
-      </p>
+      </ScrollReveal>
       <section id="transformSection" className={sectionPadding}>
         {/* Grid Layout: 1 col mobile, 2 col tablet, 4 col desktop */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[16px] w-full max-w-[1280px] mx-auto">
@@ -172,14 +180,14 @@ export default function Transform() {
           animate={isVisible ? "visible" : "hidden"}
         >
           {/* On mobile → max-w, on md+ → full width */}
-          <div className="max-w-[1168px] mx-auto text-left md:max-w-full">
+          <ScrollReveal as="div" containerClassName="max-w-[1168px] mx-auto text-left md:max-w-full">
             <p className="font-light leading-snug text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5">
               “We set up 5 new outlets in under an hour no IT team needed.”
             </p>
             <p className="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end">
               — Retail Owner, Jeddah
             </p>
-          </div>
+          </ScrollReveal>
         </motion.div>
       </section>
     </>
