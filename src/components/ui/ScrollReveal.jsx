@@ -19,10 +19,9 @@ const ScrollReveal = ({
 }) => {
   const containerRef = useRef(null);
 
-  // split text into words for stagger animation if children is string
+  // Split text into words if children is string
   const splitText = useMemo(() => {
     if (typeof children !== "string") return children;
-
     return children.split(/(\s+)/).map((word, index) => {
       if (word.match(/^\s+$/)) return word;
       return (
@@ -40,6 +39,9 @@ const ScrollReveal = ({
     const scroller = scrollContainerRef?.current || window;
     const triggers = [];
 
+    // Ensure ScrollTrigger refreshes after layout is ready
+    ScrollTrigger.refresh();
+
     // Rotation animation
     triggers.push(
       gsap.fromTo(
@@ -53,19 +55,15 @@ const ScrollReveal = ({
             scroller,
             start: "top bottom",
             end: rotationEnd,
-            scrub: true
+            scrub: true,
+            invalidateOnRefresh: true // ✅ Fix for initial render issues
           }
         }
       ).scrollTrigger
     );
 
-    // Determine target elements: words for text, container itself for elements
-    let targets;
-    if (typeof children === "string") {
-      targets = el.querySelectorAll(".word");
-    } else {
-      targets = [el];
-    }
+    // Determine target elements
+    const targets = typeof children === "string" ? el.querySelectorAll(".word") : [el];
 
     // Opacity animation
     triggers.push(
@@ -81,7 +79,8 @@ const ScrollReveal = ({
             scroller,
             start: "top bottom-=20%",
             end: wordAnimationEnd,
-            scrub: true
+            scrub: true,
+            invalidateOnRefresh: true
           }
         }
       ).scrollTrigger
@@ -102,7 +101,8 @@ const ScrollReveal = ({
               scroller,
               start: "top bottom-=20%",
               end: wordAnimationEnd,
-              scrub: true
+              scrub: true,
+              invalidateOnRefresh: true
             }
           }
         ).scrollTrigger
@@ -127,9 +127,7 @@ const ScrollReveal = ({
   return (
     <Component ref={containerRef} className={`my-5 ${containerClassName}`}>
       {typeof children === "string" ? (
-        <span className={`text-center ${textClassName}`}>
-          {splitText}
-        </span>
+        <span className={`text-center ${textClassName}`}>{splitText}</span>
       ) : (
         children
       )}
