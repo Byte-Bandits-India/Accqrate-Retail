@@ -1,8 +1,5 @@
 import { useEffect, useRef, useMemo } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import gsap from "gsap";
 
 const ScrollReveal = ({
   children,
@@ -11,11 +8,11 @@ const ScrollReveal = ({
   baseOpacity = 0.2,
   baseRotation = 2,
   blurStrength = 2,
-  containerClassName = "", 
+  containerClassName = "",
   textClassName = "",
   rotationEnd = "bottom bottom",
   wordAnimationEnd = "bottom bottom",
-  as = "h2" // dynamic tag
+  as = "h2", // dynamic tag
 }) => {
   const containerRef = useRef(null);
 
@@ -33,68 +30,56 @@ const ScrollReveal = ({
   }, [children]);
 
   useEffect(() => {
-    if (typeof window === "undefined") return; // SSR-safe
-    const el = containerRef.current;
-    if (!el) return;
+    if (typeof window === "undefined") return; // ✅ SSR safe
 
-    const scroller = scrollContainerRef?.current || window;
-    const triggers = [];
+    let triggers = [];
+    let ctx;
 
-    // Ensure ScrollTrigger refreshes after layout is ready
-    ScrollTrigger.refresh();
+    (async () => {
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
 
-    // Rotation animation
-    triggers.push(
-      gsap.fromTo(
-        el,
-        { transformOrigin: "0% 50%", rotate: baseRotation },
-        {
-          rotate: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: el,
-            scroller,
-            start: "top bottom",
-            end: rotationEnd,
-            scrub: true,
-            invalidateOnRefresh: true // Fix for initial render issues
+      const el = containerRef.current;
+      if (!el) return;
+
+      const scroller = scrollContainerRef?.current || window;
+
+      // Ensure ScrollTrigger refreshes after layout is ready
+      ScrollTrigger.refresh();
+
+      // Rotation animation
+      triggers.push(
+        gsap.fromTo(
+          el,
+          { transformOrigin: "0% 50%", rotate: baseRotation },
+          {
+            rotate: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el,
+              scroller,
+              start: "top bottom",
+              end: rotationEnd,
+              scrub: true,
+              invalidateOnRefresh: true,
+            },
           }
-        }
-      ).scrollTrigger
-    );
+        ).scrollTrigger
+      );
 
-    // Determine target elements
-    const targets = typeof children === "string" ? el.querySelectorAll(".word") : [el];
+      // Determine target elements
+      const targets =
+        typeof children === "string"
+          ? el.querySelectorAll(".word")
+          : [el];
 
-    // Opacity animation
-    triggers.push(
-      gsap.fromTo(
-        targets,
-        { opacity: baseOpacity, willChange: "opacity" },
-        {
-          opacity: 1,
-          stagger: typeof children === "string" ? 0.05 : 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: el,
-            scroller,
-            start: "top bottom-=20%",
-            end: wordAnimationEnd,
-            scrub: true,
-            invalidateOnRefresh: true
-          }
-        }
-      ).scrollTrigger
-    );
-
-    // Blur animation
-    if (enableBlur) {
+      // Opacity animation
       triggers.push(
         gsap.fromTo(
           targets,
-          { filter: typeof children === "string" ? `blur(${blurStrength}px)` : "blur(0px)" },
+          { opacity: baseOpacity, willChange: "opacity" },
           {
-            filter: "blur(0px)",
+            opacity: 1,
             stagger: typeof children === "string" ? 0.05 : 0,
             ease: "none",
             scrollTrigger: {
@@ -103,15 +88,45 @@ const ScrollReveal = ({
               start: "top bottom-=20%",
               end: wordAnimationEnd,
               scrub: true,
-              invalidateOnRefresh: true
-            }
+              invalidateOnRefresh: true,
+            },
           }
         ).scrollTrigger
       );
-    }
 
-    // Cleanup triggers
-    return () => triggers.forEach(trigger => trigger.kill());
+      // Blur animation
+      if (enableBlur) {
+        triggers.push(
+          gsap.fromTo(
+            targets,
+            {
+              filter:
+                typeof children === "string"
+                  ? `blur(${blurStrength}px)`
+                  : "blur(0px)",
+            },
+            {
+              filter: "blur(0px)",
+              stagger: typeof children === "string" ? 0.05 : 0,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el,
+                scroller,
+                start: "top bottom-=20%",
+                end: wordAnimationEnd,
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
+            }
+          ).scrollTrigger
+        );
+      }
+    })();
+
+    // Cleanup
+    return () => {
+      triggers.forEach((trigger) => trigger.kill());
+    };
   }, [
     scrollContainerRef,
     enableBlur,
@@ -120,7 +135,7 @@ const ScrollReveal = ({
     rotationEnd,
     wordAnimationEnd,
     blurStrength,
-    children
+    children,
   ]);
 
   const Component = as;
