@@ -188,17 +188,16 @@ export default function Transform() {
             animate={isVisible ? "visible" : "hidden"}
           >
             {/* On mobile → max-w, on md+ → full width */}
-            <ScrollReveal
-              as="div"
-              containerClassName="mx-auto text-left md:max-w-4xl "
+            <div
+              className="mx-auto text-left md:max-w-4xl "
             >
-              <p className="font-light leading-snug text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5">
+              <ScrollReveal as= "p" containerClassName="font-light leading-snug text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5">
                 “We set up 5 new outlets in under an hour no IT team needed.”
-              </p>
-              <p className="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end">
+              </ScrollReveal>
+              <ScrollReveal as="p" containerClassName="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end">
                 — Retail Owner, Jeddah
-              </p>
-            </ScrollReveal>
+              </ScrollReveal>
+            </div>
           </motion.div>
         </section>
       </div>

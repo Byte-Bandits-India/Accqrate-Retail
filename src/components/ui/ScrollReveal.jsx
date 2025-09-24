@@ -11,7 +11,7 @@ const ScrollReveal = ({
   containerClassName = "",
   textClassName = "",
   rotationEnd = "bottom bottom",
-  wordAnimationEnd = "bottom bottom",
+  wordAnimationEnd = "bottom 60%", // better end for smoothness
   as = "h2", // dynamic tag
 }) => {
   const containerRef = useRef(null);
@@ -33,7 +33,6 @@ const ScrollReveal = ({
     if (typeof window === "undefined") return; // ✅ SSR safe
 
     let triggers = [];
-    let ctx;
 
     (async () => {
       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
@@ -44,10 +43,10 @@ const ScrollReveal = ({
 
       const scroller = scrollContainerRef?.current || window;
 
-      // Ensure ScrollTrigger refreshes after layout is ready
+      // Ensure refresh after layout ready
       ScrollTrigger.refresh();
 
-      // Rotation animation
+      // Rotation effect on the whole container
       triggers.push(
         gsap.fromTo(
           el,
@@ -67,25 +66,32 @@ const ScrollReveal = ({
         ).scrollTrigger
       );
 
-      // Determine target elements
+      // Target words (if string) or the container itself
       const targets =
         typeof children === "string"
           ? el.querySelectorAll(".word")
           : [el];
 
-      // Opacity animation
+      // Sequential word reveal animation
       triggers.push(
         gsap.fromTo(
           targets,
-          { opacity: baseOpacity, willChange: "opacity" },
+          {
+            opacity: baseOpacity,
+            y: 20,
+            filter: enableBlur ? `blur(${blurStrength}px)` : "blur(0px)",
+            willChange: "opacity, transform, filter",
+          },
           {
             opacity: 1,
-            stagger: typeof children === "string" ? 0.05 : 0,
-            ease: "none",
+            y: 0,
+            filter: "blur(0px)",
+            ease: "power2.out",
+            stagger: 0.08, // 👈 appear one by one
             scrollTrigger: {
               trigger: el,
               scroller,
-              start: "top bottom-=20%",
+              start: "top bottom-=10%",
               end: wordAnimationEnd,
               scrub: true,
               invalidateOnRefresh: true,
@@ -93,39 +99,10 @@ const ScrollReveal = ({
           }
         ).scrollTrigger
       );
-
-      // Blur animation
-      if (enableBlur) {
-        triggers.push(
-          gsap.fromTo(
-            targets,
-            {
-              filter:
-                typeof children === "string"
-                  ? `blur(${blurStrength}px)`
-                  : "blur(0px)",
-            },
-            {
-              filter: "blur(0px)",
-              stagger: typeof children === "string" ? 0.05 : 0,
-              ease: "none",
-              scrollTrigger: {
-                trigger: el,
-                scroller,
-                start: "top bottom-=20%",
-                end: wordAnimationEnd,
-                scrub: true,
-                invalidateOnRefresh: true,
-              },
-            }
-          ).scrollTrigger
-        );
-      }
     })();
 
-    // Cleanup
     return () => {
-      triggers.forEach((trigger) => trigger.kill());
+      triggers.forEach((t) => t.kill());
     };
   }, [
     scrollContainerRef,
@@ -143,7 +120,7 @@ const ScrollReveal = ({
   return (
     <Component ref={containerRef} className={`my-5 ${containerClassName}`}>
       {typeof children === "string" ? (
-        <span className={`text-center ${textClassName}`}>{splitText}</span>
+        <span className={`inline-block ${textClassName}`}>{splitText}</span>
       ) : (
         children
       )}
