@@ -235,7 +235,7 @@ const LangCountryDropdown = ({
         <img
           src={countries.find((c) => c.name === selectedCountry)?.flag}
           alt={selectedCountry}
-          className="w-5 h-5"
+          className="w-[30px] h-[30px"
         />
         <span className="text-black truncate text-sm lg:text-base">
           {languages.find((l) => l.name === selectedLanguage)?.display} /{" "}
@@ -299,6 +299,24 @@ const LangCountryDropdown = ({
   );
 };
 
+// ===================== SVG Arrow Component =====================
+const Arrow45 = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-3 h-3 transform -rotate-45"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M5 12h14M12 5l7 7-7 7"
+    />
+  </svg>
+);
+
 const Header = () => {
   const [activeMenu, setActiveMenu] = useState("products");
   const [activeSection, setActiveSection] = useState("Business Solution");
@@ -328,15 +346,11 @@ const Header = () => {
       setHeaderHeight(h);
     };
     const handleResize = () => {
-      // Close mobile menu when switching to desktop
-      if (window.innerWidth >= 1280) {
-        setIsMobileMenuOpen(false);
-      }
+      if (window.innerWidth >= 1280) setIsMobileMenuOpen(false);
       computeHeaderHeight();
     };
     computeHeaderHeight();
     window.addEventListener("resize", handleResize);
-    // Recompute on font/icon load which can affect header height
     window.addEventListener("load", computeHeaderHeight);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -348,7 +362,6 @@ const Header = () => {
     setExpandedSections((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  // Get the current active menu data
   const activeMenuData = menus.find((menu) => menu.id === activeMenu);
 
   return (
@@ -361,7 +374,7 @@ const Header = () => {
               <img
                 src="/images/logo.svg"
                 alt="Accqrate Logo"
-                className="h-[25px] md:h-9 lg:h-10 w-auto cursor-pointer max-w-[115px] sm:max-w-[100px] md:max-w-[140px]"
+                className="h-[1.625rem] w-auto cursor-pointer max-w-[115px] sm:max-w-[100px] md:max-w-[140px]"
               />
             </Link>
 
@@ -383,7 +396,7 @@ const Header = () => {
                         }
                       }}
                     >
-                      <NavigationMenuTrigger className="text-[14px] text-gray-600 data-[state=open]:text-[#534ED3] data-[state=open]:bg-transparent hover:bg-transparent hover:text-[#534ED3] focus:bg-transparent">
+                      <NavigationMenuTrigger className="text-[0.875rem] text-gray-600 data-[state=open]:text-[#534ED3] data-[state=open]:bg-transparent hover:bg-transparent hover:text-[#534ED3] focus:bg-transparent">
                         {title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent
@@ -545,7 +558,7 @@ const Header = () => {
                               href="/book-demo"
                               className="inline-flex items-center justify-center gap-2 py-2 px-6 rounded-[80px] text-[14px] hover:text-black"
                             >
-                              Book Demo →
+                              Book a Demo →
                             </Link>
                             <span
                               role="separator"
@@ -568,8 +581,8 @@ const Header = () => {
             </nav>
           </div>
 
-          {/* Right Section (≥1280px) */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          {/* Right section */}
+          <div className="hidden xl:flex items-center gap-2 shrink-0">
             <LangCountryDropdown
               selectedLanguage={selectedLanguage}
               setSelectedLanguage={setSelectedLanguage}
@@ -582,26 +595,22 @@ const Header = () => {
 
             <Link
               href="/request-demo"
-              className="hidden xl:inline-flex items-center gap-2 text-[#F05A28] py-3 px-6 rounded-[80px] text-[14px] border border-[#F05A28]"
+              className="hidden xl:inline-flex items-center justify-center gap-2 text-[#F05A28] h-[41px] w-[155px] rounded-[80px] text-[14px] border border-[#F05A28]"
             >
               Contact Sales
             </Link>
 
             <Link
               href="/request-demo"
-              className="hidden xl:inline-flex items-center gap-2 text-white py-3 px-4 rounded-[80px] text-[14px] bg-[#F05A28]"
+              className="hidden xl:inline-flex items-center justify-center gap-2 text-white h-[41px] w-[155px] rounded-[80px] text-[14px] bg-[#F05A28]"
             >
-              REQUEST DEMO
-              <img
-                src="/images/NavBar/line/Arrow3.svg"
-                alt="Accqrate Logo"
-                className="h-2"
-              />
+              Book a Demo
+              <Arrow45 />
             </Link>
           </div>
 
-          {/* Mobile/Tablet (<1280px) */}
-          <div className="flex md:flex lg:hidden items-center gap-3">
+          {/* Mobile / Tablet */}
+          <div className="flex md:flex xl:hidden items-center gap-3">
             <LangCountryDropdown
               selectedLanguage={selectedLanguage}
               setSelectedLanguage={setSelectedLanguage}
@@ -626,7 +635,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu (<1280px) */}
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="xl:hidden fixed top-[70px] md:top-[80px] left-0 w-full h-screen overflow-y-auto bg-white px-6 md:px-[32px] py-4 z-[999]">
           <Accordion type="single" collapsible className="w-full">
@@ -657,17 +666,19 @@ const Header = () => {
                             {section.subItems.map((item, i) => (
                               <li
                                 key={i}
-                                className="flex items-center gap-2 text-[#737373] text-[14px] py-2 cursor-pointer border-b border-gray-100"
-                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="flex items-center gap-2 text-[#737373] text-[14px] py-2 cursor-pointer border-b border-gray-200 hover:text-[#534ED3]"
                               >
-                                {(item.img || item.icon) && (
+                                {item.img && (
                                   <img
-                                    src={item.img || item.icon}
+                                    src={item.img}
                                     alt={item.title}
                                     className="w-5 h-5"
                                   />
                                 )}
-                                <Link href={item.href}>{item.title}</Link>
+                                <Link href={item.href} className="flex-1">
+                                  {item.title}
+                                </Link>
+                                <Arrow45 />
                               </li>
                             ))}
                           </ul>
@@ -679,7 +690,6 @@ const Header = () => {
               </AccordionItem>
             ))}
           </Accordion>
-
           {/* CTA Buttons */}
           <div className="mt-10 flex gap-4">
             <Link
