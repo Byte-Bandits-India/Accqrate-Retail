@@ -5,17 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import AccordionCard from "../components/ui/accordion";
 
-
 // import scrollreveal for text animations
 import ScrollReveal from "../components/ui/ScrollReveal";
-
 
 export default function Transform() {
   const { loading } = useContext(LoadingContext);
   const [isVisible, setIsVisible] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
-
 
   // Intersection Observer to trigger animation
   useEffect(() => {
@@ -34,7 +30,7 @@ export default function Transform() {
   }, []);
 
   const sectionPadding =
-    "mt-24px md:mt-[32px] lg:mt-[40px] px-24px md:px-[32px] max-w-[1280px] mx-auto";
+    "mt-24px md:mt-[32px] lg:mt-[40px] px-24px md:px-[32px] w-full max-w-[1350px] mx-auto";
 
   if (loading || !isVisible) {
     return (
@@ -145,18 +141,26 @@ export default function Transform() {
 
   return (
     <>
-      <ScrollReveal as="h1" containerClassName="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px md:mt-[56px] lg:mt-[80px] px-24px md:px-[32px]">
-        Transform Your Retail Operations with{" "}
-        <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
-      </ScrollReveal>
-      <ScrollReveal as="p" containerClassName="text-center text-fluid-caption mt-16px md:mt-[32px] px-24px md:px-[32px] lg:mt-[40px] font-light tracking--2  text-black  ">
-        Get up and running in minutes, not days. Accqrate Retail’s cloud-native
-        architecture means you can onboard each outlet effortlessly—no dedicated
-        POS hardware, no complex installations.
-      </ScrollReveal>
+      <div className="md:max-w-5xl mx-auto">
+        <ScrollReveal
+          as="h1"
+          containerClassName="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px md:mt-[56px] lg:mt-[80px] px-24px md:px-[32px]"
+        >
+          Transform Your Retail Operations with{" "}
+          <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
+        </ScrollReveal>
+        <ScrollReveal
+          as="p"
+          containerClassName="text-center text-fluid-caption mt-16px md:mt-[32px] px-24px md:px-[32px] lg:mt-[40px] font-light tracking--2 w-full max-w-[1280px] mx-auto  text-black  "
+        >
+          Get up and running in minutes, not days. Accqrate Retail’s
+          cloud-native architecture means you can onboard each outlet
+          effortlessly—no dedicated POS hardware, no complex installations.
+        </ScrollReveal>
+      </div>
       <section id="transformSection" className={sectionPadding}>
         {/* Grid Layout: 1 col mobile, 2 col tablet, 4 col desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[16px] w-full max-w-[1280px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[16px]">
           {cards.map((card, idx) => (
             <AccordionCard
               key={idx}
@@ -169,27 +173,35 @@ export default function Transform() {
           ))}
         </div>
       </section>
-      <section
-        id="ownerSection"
-        className="bg-[#F2F2F2] w-full max-w-[1280px] mx-auto mt-24px md:mt-[32px] lg:mt-[40px] rounded-lg px-24px py-8 lg:py-10"
-      >
-        <motion.div
-          className="w-full"
-          variants={variant}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
+      <div className="px-6 md:px-[32px] max-w-[1350px] mx-auto">
+        <section
+          id="ownerSection"
+          className="bg-[#F2F2F2] rounded-lg mx-auto
+              px-6 sm:px-6 md:p-10
+              h-auto sm:h-[110px] md:h-[129px] lg:h-[182px]
+              flex flex-col items-center justify-center mt-6 md:mt-[32px] lg:mt-[40px]"
         >
-          {/* On mobile → max-w, on md+ → full width */}
-          <ScrollReveal as="div" containerClassName="max-w-[1168px] mx-auto text-left md:max-w-full">
-            <p className="font-light leading-snug text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5">
-              “We set up 5 new outlets in under an hour no IT team needed.”
-            </p>
-            <p className="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end">
-              — Retail Owner, Jeddah
-            </p>
-          </ScrollReveal>
-        </motion.div>
-      </section>
+          <motion.div
+            className="w-full"
+            variants={variant}
+            initial="hidden"
+            animate={isVisible ? "visible" : "hidden"}
+          >
+            {/* On mobile → max-w, on md+ → full width */}
+            <ScrollReveal
+              as="div"
+              containerClassName="mx-auto text-left md:max-w-4xl "
+            >
+              <p className="font-light leading-snug text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5">
+                “We set up 5 new outlets in under an hour no IT team needed.”
+              </p>
+              <p className="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end">
+                — Retail Owner, Jeddah
+              </p>
+            </ScrollReveal>
+          </motion.div>
+        </section>
+      </div>
     </>
   );
 }
