@@ -55,9 +55,8 @@ export default function AccordionCard({ title, desc, video, isOpen, onToggle }) 
       initial={false}
       animate={{ height: isOpen ? "auto" : 126 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
-      // 👇 default gray background on desktop, pink otherwise
       className={cn(
-        "rounded-lg w-full overflow-hidden transition-colors duration-300 md:!h-[299px] lg:!h-[350px]",
+        "relative rounded-lg w-full overflow-hidden transition-colors duration-300 md:!h-[299px] lg:!h-[350px]",
         isDesktop
           ? isOpen
             ? "bg-[#C2185B] text-white"
@@ -67,20 +66,29 @@ export default function AccordionCard({ title, desc, video, isOpen, onToggle }) 
       onMouseEnter={() => isDesktop && onToggle(true)}
       onMouseLeave={() => isDesktop && onToggle(false)}
     >
+      {/* Header Row */}
       <div
-        className="flex justify-between items-center px-10 py-6 cursor-pointer"
+        className="px-10 py-6 cursor-pointer"
         onClick={() => !isDesktop && onToggle(!isOpen)}
       >
         <h1 className="font-medium text-[24px] leading-snug text-left">
           {title}
         </h1>
+      </div>
+
+      {/* Chevron fixed to first line, right edge */}
+      <div
+        className="absolute top-8 right-4 md:right-6 cursor-pointer"
+        onClick={() => !isDesktop && onToggle(!isOpen)}
+      >
         {isOpen ? (
-          <ChevronUp className="w-5 h-5 ml-auto" />
+          <ChevronUp className="w-5 h-5" />
         ) : (
-          <ChevronDown className="w-5 h-5 ml-auto" />
+          <ChevronDown className="w-5 h-5" />
         )}
       </div>
 
+      {/* Dropdown Content */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -104,6 +112,7 @@ export default function AccordionCard({ title, desc, video, isOpen, onToggle }) 
         )}
       </AnimatePresence>
     </motion.div>
+
   );
 }
 
