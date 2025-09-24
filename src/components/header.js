@@ -366,7 +366,7 @@ const Header = () => {
 
   return (
     <header ref={headerRef} className="z-50 m-0 p-0 w-full bg-white lg:border">
-      <div className="w-full px-6 pt-6 lg:pt-0 md:px-[32px]">
+      <div className="w-full px-6 pt-6 xl:pt-0 md:px-[32px]">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
           <div className="logo-container flex items-center justify-around gap-6">
@@ -381,7 +381,7 @@ const Header = () => {
             {/* Desktop Nav (≥1280px) with shadcn Navigation Menu */}
             <nav
               ref={navRef}
-              className="hidden lg:flex items-center justify-around xl:gap-5 2xl:gap-10 text-[14px] text-gray-600 flex-1"
+              className="hidden xl:flex items-center justify-around xl:gap-5 2xl:gap-10 text-[14px] text-gray-600 flex-1"
             >
               <NavigationMenu className="w-full">
                 <NavigationMenuList className="py-4">
