@@ -103,6 +103,7 @@ export default function Pos() {
             </div>
           ))}
         </section>
+        
       </>
     );
   }
