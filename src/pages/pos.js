@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Skeleton from "../components/skeleton";
 import AccordionCard from "../components/ui/AccordionSilverCard";
-import {
-  Accordion,
-} from "@/src/components/ui/accordion";
+import { Accordion } from "@/src/components/ui/accordion";
 import { motion } from "framer-motion";
 
-// Custom ScrollReveal component for better animation control
+// Custom ScrollReveal component
 import ScrollReveal from "../components/ui/ScrollReveal";
 
 export default function Pos() {
@@ -39,7 +37,7 @@ export default function Pos() {
     };
   }, []);
 
-  // Variants for staggered animation
+  // Variants for POS animations
   const containerVariant = {
     hidden: { opacity: 0 },
     visible: {
@@ -53,12 +51,25 @@ export default function Pos() {
     visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
-  const itemVariantRight = {
-    hidden: { x: 50, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
+  // ERP-specific variants (video-only animation)
+  const erpVideoContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.4, when: "beforeChildren" },
+    },
   };
 
-  // Skeleton Loader for pro-level experience
+  const videoVariantLeft = {
+    hidden: { x: -120, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+  };
+
+  // Skeleton Loader
   if (!isPosVisible && !isErpVisible) {
     return (
       <>
@@ -96,7 +107,7 @@ export default function Pos() {
     );
   }
 
-  // Features for ERP Section
+  // ERP Features
   const erpFeatures = [
     {
       text: "Central procurement: Manage suppliers and POs across all locations.",
@@ -133,7 +144,11 @@ export default function Pos() {
             />
           </motion.div>
 
-          <Accordion type="single" collapsible className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+          <Accordion
+            type="single"
+            collapsible
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6"
+          >
             <AccordionCard value="card-1" icon="/images/instant.png" title="Direct Interface to Tax Portals">
               Extra details about <b>Instant Access</b> will appear here when expanded.
             </AccordionCard>
@@ -148,8 +163,15 @@ export default function Pos() {
       </section>
 
       {/* ERP Section */}
-      <section id="erpSection" className="px-6 md:px-8 max-w-[1200px] mx-auto text-center mt-24 md:mt-32">
-        <motion.div variants={containerVariant} initial="hidden" animate={isErpVisible ? "visible" : "hidden"}>
+      <section
+        id="erpSection"
+        className="px-6 md:px-8 max-w-[1200px] mx-auto text-center mt-24 md:mt-32"
+      >
+        <motion.div
+          variants={erpVideoContainer}
+          initial="hidden"
+          animate={isErpVisible ? "visible" : "hidden"}
+        >
           <ScrollReveal
             as="h2"
             containerClassName="text-fluid-h2 font-medium tracking-tight leading-tight"
@@ -165,19 +187,25 @@ export default function Pos() {
             as="p"
             containerClassName="text-fluid-caption text-[#737373] mt-6 md:mt-8 lg:mt-10 max-w-4xl mx-auto"
           >
-            As your business grows, Accqrate Retail grows with you. Flip the switch to add procurement, finance, HR and supply-chain modules—no data migration, no downtime.
+            As your business grows, Accqrate Retail grows with you. Flip the switch to add
+            procurement, finance, HR and supply-chain modules—no data migration, no downtime.
           </ScrollReveal>
 
           {erpFeatures.map((feature, i) => (
-            <motion.div
+            <div
               key={i}
               className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mt-6 md:mt-8 lg:mt-10"
-              variants={itemVariantRight}
             >
+              {/* Text stays static */}
               <p className="flex-1 text-left leading-snug text-fluid-h3 text-[#C2185B] font-light max-w-lg">
                 {feature.text}
               </p>
-              <div className="flex-1 flex justify-center">
+
+              {/* Video slides in left-to-right */}
+              <motion.div
+                className="flex-1 flex justify-center"
+                variants={videoVariantLeft}
+              >
                 <video
                   src={feature.video}
                   muted
@@ -186,8 +214,8 @@ export default function Pos() {
                   playsInline
                   className="w-full max-w-md h-auto rounded-lg"
                 />
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           ))}
         </motion.div>
       </section>
