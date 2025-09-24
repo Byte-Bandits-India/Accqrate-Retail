@@ -68,7 +68,7 @@ export default function Accqrate() {
       <section
         className={`w-full px-24px md:px-[32px] flex flex-col items-center`}
       >
-        <h2 className="text-center text-fluid-h1 leading-tight tracking--5 font-semibold  mt-82px mt:px-[90px] lg:mt-[125px] ">
+        <h2 className="text-center text-fluid-h1 leading-tight tracking--5 font-semibold  mt-82px md:mt:px-[90px] lg:mt-[125px] ">
           <span className="text-black ">Accqrate</span>{" "}
           <span className="text-[#C2185B] ">Retail</span>
         </h2>
