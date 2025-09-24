@@ -5,6 +5,8 @@ import {
   Accordion,
 } from "@/src/components/ui/accordion";
 import { motion } from "framer-motion";
+
+// Custom ScrollReveal component for better animation control
 import ScrollReveal from "../components/ui/ScrollReveal";
 
 export default function Pos() {
