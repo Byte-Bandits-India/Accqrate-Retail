@@ -66,9 +66,9 @@ export default function Accqrate() {
     <>
       {/* Accqrate Section */}
       <section
-        className={`w-full px-24px md:px-[32px] flex flex-col items-center`}
+        className={`w-full px-24px md:px-[32px] flex flex-col items-center text-[#333333]`}
       >
-        <h2 className="text-center text-fluid-h1 leading-tight tracking--5 font-semibold  mt-82px md:mt:px-[90px] lg:mt-[125px] ">
+        <h2 className="text-center text-fluid-h1 leading-tight tracking--5 font-semibold  mt-82px">
           <span className="text-[#333333] ">Accqrate</span>{" "}
           <span className="text-[#C2185B] ">Retail</span>
         </h2>
@@ -83,7 +83,7 @@ export default function Accqrate() {
 
         <p
           lines={2}
-          className="text-center text-fluid-body font-light tracking--2 leading-tight md:font-semibold text-black mt-32px md:mt-[40px]"
+          className="text-center text-fluid-body font-light tracking--2 leading-tight md:font-semibold mt-32px md:mt-[40px]"
         >
           All-in-one retail management, designed for speed and flexibility
         </p>
@@ -135,7 +135,7 @@ export default function Accqrate() {
         <div className={containerClasses}>
           {/* Text */}
           <motion.div
-            className="flex flex-col justify-center flex-1"
+            className="flex flex-col justify-center flex-1 text-[#333333]"
             initial={{ opacity: 0, x: -50 }} // start hidden, left
             whileInView={{ opacity: 1, x: 0 }} // fade in, slide right
             viewport={{ once: false, amount: 0.3 }} // animate every time in view
@@ -147,7 +147,7 @@ export default function Accqrate() {
                 E-Invoicing Compliance
               </span>
             </h2>
-            <p className=" text-black mx-auto mt-32px md:mt-[40px] text-fluid-h3 md:max-w-[500px] sm:text-base tracking--2 font-normal">
+            <p className="mx-auto mt-32px md:mt-[40px] text-fluid-h3 md:max-w-[500px] sm:text-base tracking--2 font-normal">
               <span className="font-semibold text-black">100% ZATCA</span> phase
               2 compliance: Issue e-invoice receipts with every sale, no extra
               fees
