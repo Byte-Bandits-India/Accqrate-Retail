@@ -56,7 +56,7 @@ export default function AccordionCard({ title, desc, video, isOpen, onToggle }) 
       animate={{ height: isOpen ? "auto" : 126 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
       className={cn(
-        "relative rounded-lg w-full overflow-hidden transition-colors duration-300 md:!h-[299px] lg:!h-[350px]",
+        "relative rounded-lg w-full overflow-hidden transition-colors duration-300 md:!h-[299px] lg:!h-[350px] text-[#333333]",
         isDesktop
           ? isOpen
             ? "bg-[#C2185B] text-white"

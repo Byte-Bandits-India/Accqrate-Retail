@@ -48,7 +48,11 @@ export default function Pos() {
 
   const itemVariant = {
     hidden: { x: -50, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   // ERP-specific variants (video-only animation)
@@ -78,7 +82,10 @@ export default function Pos() {
             <Skeleton height="220px" width="100%" className="rounded-lg mb-6" />
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-gray-200 rounded-lg p-4 flex flex-col gap-2">
+                <div
+                  key={i}
+                  className="bg-gray-200 rounded-lg p-4 flex flex-col gap-2"
+                >
                   <Skeleton height="45px" width="45px" className="mb-2" />
                   <Skeleton height="24px" width="80%" className="mb-2" />
                   <Skeleton height="16px" width="60%" />
@@ -98,12 +105,15 @@ export default function Pos() {
                 <Skeleton height="20px" width="60%" />
               </div>
               <div className="flex-1 flex justify-center">
-                <Skeleton height="220px" width="100%" className="rounded-lg max-w-md" />
+                <Skeleton
+                  height="220px"
+                  width="100%"
+                  className="rounded-lg max-w-md"
+                />
               </div>
             </div>
           ))}
         </section>
-        
       </>
     );
   }
@@ -127,7 +137,10 @@ export default function Pos() {
   return (
     <>
       {/* POS Section */}
-      <section id="posSection" className="px-6 md:px-8 mt-12 md:mt-24">
+      <section
+        id="posSection"
+        className="px-6 md:px-8 mt-12 md:mt-[56px] text-[#333333]"
+      >
         <motion.div
           variants={containerVariant}
           initial="hidden"
@@ -150,13 +163,27 @@ export default function Pos() {
             collapsible
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6"
           >
-            <AccordionCard value="card-1" icon="/images/instant.png" title="Direct Interface to Tax Portals">
-              Extra details about <b>Instant Access</b> will appear here when expanded.
+            <AccordionCard
+              value="card-1"
+              icon="/images/instant.png"
+              title="Direct Interface to Tax Portals"
+            >
+              Extra details about <b>Instant Access</b> will appear here when
+              expanded.
             </AccordionCard>
-            <AccordionCard value="card-2" icon="/images/invoice.png" title="Custom Invoices Templates">
-              Extra details about <b>Automated Data Migration</b> will be shown here.
+            <AccordionCard
+              value="card-2"
+              icon="/images/invoice.png"
+              title="Custom Invoices Templates"
+            >
+              Extra details about <b>Automated Data Migration</b> will be shown
+              here.
             </AccordionCard>
-            <AccordionCard value="card-3" icon="/images/audit.png" title="Audit Trails & Deletion Logs">
+            <AccordionCard
+              value="card-3"
+              icon="/images/audit.png"
+              title="Audit Trails & Deletion Logs"
+            >
               Extra details about <b>Role-Based User Setup</b> will go here.
             </AccordionCard>
           </Accordion>
@@ -166,7 +193,7 @@ export default function Pos() {
       {/* ERP Section */}
       <section
         id="erpSection"
-        className="px-6 md:px-8 max-w-[1200px] mx-auto text-center mt-24 md:mt-32"
+        className="px-6 md:px-8 max-w-[1200px] mx-auto text-center mt-[48px] md:[56px] text-[#333333]"
       >
         <motion.div
           variants={erpVideoContainer}
@@ -178,18 +205,20 @@ export default function Pos() {
             containerClassName="text-fluid-h2 font-medium tracking-tight leading-tight"
           >
             Grows with Your Business
-            <br />
+            <br className="md:hidden" />
             <span className="text-fluid-h2 font-medium">
-              Scale to Full <span className="text-[#C2185B]">ERP</span> Instantly
+              Scale to Full <span className="text-[#C2185B]">ERP</span>{" "}
+              Instantly
             </span>
           </ScrollReveal>
 
           <ScrollReveal
             as="p"
-            containerClassName="text-fluid-caption text-[#737373] mt-6 md:mt-8 lg:mt-10 max-w-4xl mx-auto"
+            containerClassName="text-fluid-caption text-[#737373] max-w-4xl mx-auto"
           >
-            As your business grows, Accqrate Retail grows with you. Flip the switch to add
-            procurement, finance, HR and supply-chain modules—no data migration, no downtime.
+            As your business grows, Accqrate Retail grows with you. Flip the
+            switch to add procurement, finance, HR and supply-chain modules—no
+            data migration, no downtime.
           </ScrollReveal>
 
           {erpFeatures.map((feature, i) => (

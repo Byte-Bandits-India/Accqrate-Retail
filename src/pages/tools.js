@@ -104,16 +104,22 @@ export default function Tools() {
     <>
       <motion.section
         id="toolsSection"
-        className="bg-white mt-48px md:mt-[56px] lg:mt-[80px] px-24px md:px-[32px] max-w-[1200px] mx-auto"
+        className="bg-white mt-48px md:mt-[56px] px-24px md:px-[32px] max-w-[1200px] mx-auto text-[#333333]"
         variants={containerVariant}
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
       >
-        <ScrollReveal as="h2" containerClassName="text-center text-fluid-h2 font-medium tracking--5 mb-[24px] md:mb-[32px] lg:mb-[40px]">
+        <ScrollReveal
+          as="h2"
+          containerClassName="text-center text-fluid-h2 font-medium tracking--5 mb-[24px]"
+        >
           Robust Control &{" "}
           <span className="text-[#C2185B] font-medium">Compliance Tools</span>
         </ScrollReveal>
-        <ScrollReveal as="p" containerClassName="text-center text-[#000000B2] tracking--2 text-fluid-caption max-w-lg mb-[24px] md:mb-[32px] lg:mb-[40px] leading-tight mx-auto">
+        <ScrollReveal
+          as="p"
+          containerClassName="text-center text-[#000000B2] tracking--2 text-fluid-caption max-w-lg mb-[24px] md:mb-[32px] lg:mb-[40px] leading-tight mx-auto"
+        >
           Maintain tight governance over your retail footprint, from terminal
           permissions to financial integrity
         </ScrollReveal>
@@ -168,7 +174,7 @@ export default function Tools() {
       {/* onboardingSection */}
       <motion.section
         id="onboardingSection"
-        className="px-6 md:px-[32px] max-w-6xl mx-auto md:mt-[56px] lg:mt-[60px] mt-48px"
+        className="px-6 md:px-[32px] max-w-6xl mx-auto md:mt-[56px] mt-48px text-[#333333]"
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
       >

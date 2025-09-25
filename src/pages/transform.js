@@ -44,7 +44,7 @@ export default function Transform() {
 
         {/* Transform Section (Cards) */}
         <section id="transformSection" className={sectionPadding}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[24px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[24px] text-[#333333]">
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
@@ -141,17 +141,17 @@ export default function Transform() {
 
   return (
     <>
-      <div className="md:max-w-5xl mx-auto">
+      <div className="md:max-w-5xl mx-auto text-[#333333]">
         <ScrollReveal
           as="h1"
-          containerClassName="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px md:mt-[56px] lg:mt-[80px] px-24px md:px-[32px]"
+          containerClassName="text-center text-fluid-h2 leading-tight tracking--5 font-semibold  mt-48px md:mt-[56px] px-24px md:px-[32px]"
         >
           Transform Your Retail Operations with{" "}
           <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
         </ScrollReveal>
         <ScrollReveal
           as="p"
-          containerClassName="text-center text-fluid-caption mt-16px md:mt-[32px] px-24px md:px-[32px] lg:mt-[40px] font-light tracking--2 w-full max-w-[1280px] mx-auto  text-black  "
+          containerClassName="text-center text-fluid-caption px-24px md:px-[32px] font-light tracking--2 w-full max-w-[1280px] mx-auto text-[#333333] "
         >
           Get up and running in minutes, not days. Accqrate Retail’s
           cloud-native architecture means you can onboard each outlet
@@ -177,7 +177,7 @@ export default function Transform() {
         <section
           id="ownerSection"
           className="bg-[#F2F2F2] rounded-lg mx-auto
-              px-6 sm:px-6 md:p-10
+              px-6 sm:px-6 md:p-10 text-[#333333]
               h-auto sm:h-[110px] md:h-[129px] lg:h-[182px]
               flex flex-col items-center justify-center mt-6 md:mt-[32px] lg:mt-[40px]"
         >
@@ -188,13 +188,17 @@ export default function Transform() {
             animate={isVisible ? "visible" : "hidden"}
           >
             {/* On mobile → max-w, on md+ → full width */}
-            <div
-              className="mx-auto text-left md:max-w-4xl "
-            >
-              <ScrollReveal as= "p" containerClassName="font-light leading-snug text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5">
+            <div className="mx-auto text-left md:max-w-4xl ">
+              <ScrollReveal
+                as="p"
+                containerClassName="font-light leading-snug text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5"
+              >
                 “We set up 5 new outlets in under an hour no IT team needed.”
               </ScrollReveal>
-              <ScrollReveal as="p" containerClassName="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end">
+              <ScrollReveal
+                as="p"
+                containerClassName="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end"
+              >
                 — Retail Owner, Jeddah
               </ScrollReveal>
             </div>
