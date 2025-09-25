@@ -95,18 +95,18 @@ export default function Choose() {
         animate={isVisible ? "visible" : "hidden"}
       >
         <motion.h2
-          className="text-fluid-h2 font-semibold py-8 lg:py-[40px] tracking--5"
+          className="text-fluid-h2 font-semibold pb-6 md:pb-0 pt-8 lg:pt-[40px] tracking--5"
           variants={fadeInLeft}
         >
           Why Choose <span className="text-[#C2185B]">Accqrate Retail?</span>
         </motion.h2>
 
         <motion.div
-          className="flex flex-col gap-12 items-center md:flex-row md:justify-center md:items-start"
+          className="flex flex-col gap-12 items-center md:flex-row md:justify-center md:items-center"
           variants={fadeInLeft}
           transition={{ delay: 0.2 }}
         >
-          <div className="relative inline-block max-w-[600px] md:max-w-[600px]">
+          <div className="relative inline-block max-w-[600px] md:max-w-[400px]">
             <Image
               src="/images/choose.svg"
               alt="Why Choose Accqrate Retail"
@@ -126,16 +126,15 @@ export default function Choose() {
           </div>
 
           <div className="max-w-[600px] text-left md:max-w-[500px]">
-            <p className="font-light  text-fluid-h3 leading-tight">
+            <p className="font-light text-fluid-h3 leading-tight">
               <span className="font-semibold tracking--2">
                 Compliance by design:
               </span>
             </p>
             <p className="text-fluid-caption tracking--2 mt-12px">
-              {" "}
               Stay ready for every regulation no last-minute changes.
             </p>
-            <ol className="md:pl-4 md:pr-20 font-light tracking--2 mb-8 space-y-4 text-fluid-caption mt-12px">
+            <ol className="md:pr-20 font-light tracking--2 mb-8 space-y-4 text-fluid-caption mt-12px">
               <li>
                 1. Device & vendor freedom: Use any hardware, any printer, no
                 lock-in.

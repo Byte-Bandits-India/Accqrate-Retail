@@ -125,50 +125,52 @@ export default function Tools() {
         </ScrollReveal>
 
         {/* Sections */}
-        {[
-          {
-            title: "User-Level Access Controls",
-            text: "Assign roles, limit functions and monitor activity logs.",
-            video: "/videos/manageroles.mp4",
-          },
-          {
-            title: "Day-End Closure & Auditor Reports",
-            text: "Generate comprehensive financial summaries midnight, festival days, or anytime.",
-            video: "/videos/dayclosure.mp4",
-          },
-          {
-            title: "Sales Returns, Credit Notes & Advance Bookings",
-            text: "Handle exchanges and pre-orders directly at the counter.",
-            video: "/videos/productsearch.mp4",
-          },
-        ].map((section, idx) => (
-          <motion.div
-            key={idx}
-            className="flex flex-col lg:flex-row lg:items-start gap-[24px] tracking--5"
-            initial={{ x: -100, opacity: 0 }}
-            animate={isVisible ? { x: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: idx * 0.2 }}
-          >
-            <div className="flex-1">
-              <h3 className="text-[#C2185B] font-semibold tracking--5 text-fluid-h3 ">
-                {section.title}:
-              </h3>
-              <p className="text-fluid-body leading-tight tracking--2">
-                {section.text}
-              </p>
-            </div>
-            <div className="flex-1 flex justify-center">
-              <video
-                src={section.video}
-                muted
-                autoPlay
-                loop
-                playsInline
-                className="w-full max-w-md rounded-lg"
-              />
-            </div>
-          </motion.div>
-        ))}
+        <div className="flex flex-col lg:flex-row lg:items-start gap-[24px] tracking--5 py-[32px] md:py-[40px] lg:py-[48px]">
+          {[
+            {
+              title: "User-Level Access Controls",
+              text: "Assign roles, limit functions and monitor activity logs.",
+              video: "/videos/manageroles.mp4",
+            },
+            {
+              title: "Day-End Closure & Auditor Reports",
+              text: "Generate comprehensive financial summaries midnight, festival days, or anytime.",
+              video: "/videos/dayclosure.mp4",
+            },
+            {
+              title: "Sales Returns, Credit Notes & Advance Bookings",
+              text: "Handle exchanges and pre-orders directly at the counter.",
+              video: "/videos/productsearch.mp4",
+            },
+          ].map((section, idx) => (
+            <motion.div
+              key={idx}
+              className="flex flex-col lg:flex-row lg:items-start gap-[24px] tracking--5 py-[16px] md:py-[20px] lg:py-[24px]"
+              initial={{ x: -100, opacity: 0 }}
+              animate={isVisible ? { x: 0, opacity: 1 } : {}}
+              transition={{ duration: 0.8, delay: idx * 0.2 }}
+            >
+              <div className="flex-1">
+                <h3 className="text-[#C2185B] font-semibold tracking--5 text-fluid-h3 ">
+                  {section.title}:
+                </h3>
+                <p className="text-fluid-body leading-tight tracking--2">
+                  {section.text}
+                </p>
+              </div>
+              <div className="flex-1 flex justify-center">
+                <video
+                  src={section.video}
+                  muted
+                  autoPlay
+                  loop
+                  playsInline
+                  className="w-full max-w-md rounded-lg"
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </motion.section>
 
       {/* onboardingSection */}
