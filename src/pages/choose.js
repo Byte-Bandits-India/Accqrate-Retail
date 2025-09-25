@@ -166,7 +166,7 @@ export default function Choose() {
           Ready to accelerate your retail business?
         </motion.h2>
         <motion.div
-          className="flex flex-col md:flex-row md:max-w-[700px] mx-auto justify-center gap-[12px] mt-24px md:mt-[32px]"
+          className="flex flex-col md:flex-row md:max-w-[700px] mx-auto justify-center gap-[20px] mt-24px md:mt-[32px] lg:mt-[40px]"
           variants={fadeInRight}
           transition={{ delay: 0.2 }}
         >
