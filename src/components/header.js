@@ -246,8 +246,9 @@ const LangCountryDropdown = ({
 
       {show && (
         <div
-          className={`absolute ${align === "right" ? "right-0" : "left-0"
-            } top-full mt-2 max-w-xs w-60 bg-white rounded-md shadow-lg z-50 p-4 text-sm text-gray-700`}
+          className={`absolute ${
+            align === "right" ? "right-0" : "left-0"
+          } top-full mt-2 max-w-xs w-60 bg-white rounded-md shadow-lg z-50 p-4 text-sm text-gray-700`}
         >
           {/* Languages */}
           <div className="mb-2 font-semibold text-black">Select Language</div>
@@ -255,10 +256,11 @@ const LangCountryDropdown = ({
             {languages.map((lang) => (
               <button
                 key={lang.code}
-                className={`px-3 py-1 rounded-full transition ${selectedLanguage === lang.name
-                  ? "bg-gray-100 text-black font-semibold"
-                  : "text-black"
-                  }`}
+                className={`px-3 py-1 rounded-full transition ${
+                  selectedLanguage === lang.name
+                    ? "bg-gray-100 text-black font-semibold"
+                    : "text-black"
+                }`}
                 onClick={() => {
                   setSelectedLanguage(lang.name);
                   setShow(false);
@@ -394,7 +396,7 @@ const Header = () => {
                         }
                       }}
                     >
-                      <NavigationMenuTrigger className="text-[0.875rem] text-gray-600 data-[state=open]:text-[#534ED3] data-[state=open]:bg-transparent hover:bg-transparent hover:text-[#534ED3] focus:bg-transparent">
+                      <NavigationMenuTrigger className="text-[0.875rem] text-[#333333] data-[state=open]:text-[#534ED3] data-[state=open]:bg-transparent hover:bg-transparent hover:text-[#534ED3] focus:bg-transparent">
                         {title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent
@@ -414,10 +416,11 @@ const Header = () => {
                                   {activeMenuData.sections.map((section) => (
                                     <li
                                       key={section.heading}
-                                      className={`cursor-pointer px-2 py-1 ${activeSection === section.heading
-                                        ? "font-semibold"
-                                        : "text-gray-700"
-                                        }`}
+                                      className={`cursor-pointer px-2 py-1 ${
+                                        activeSection === section.heading
+                                          ? "font-semibold"
+                                          : "text-gray-700"
+                                      }`}
                                       onMouseEnter={() =>
                                         setActiveSection(section.heading)
                                       }
@@ -623,8 +626,9 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen((p) => !p)}
             >
               <i
-                className={`fa-solid ${isMobileMenuOpen ? "fa-xmark" : "fa-bars"
-                  }`}
+                className={`fa-solid ${
+                  isMobileMenuOpen ? "fa-xmark" : "fa-bars"
+                }`}
               ></i>
             </button>
           </div>
@@ -633,11 +637,11 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="xl:hidden fixed top-[70px] md:top-[80px] left-0 w-full h-screen overflow-y-auto bg-white px-6 md:px-[32px] py-4 z-[999]">
+        <div className="xl:hidden fixed text-[#333333] top-[70px] md:top-[80px] left-0 w-full h-screen overflow-y-auto bg-white px-6 md:px-[32px] py-4 z-[999]">
           <Accordion type="single" collapsible className="w-full">
             {menus.map(({ id, title, sections }) => (
               <AccordionItem key={id} value={id}>
-                <AccordionTrigger className="text-gray-800 font-semibold hover:text-[#534ED3]">
+                <AccordionTrigger className="font-semibold hover:text-[#534ED3]">
                   {title}
                 </AccordionTrigger>
                 <AccordionContent>
@@ -647,7 +651,7 @@ const Header = () => {
                         key={sectionIndex}
                         value={`${id}-${section.heading}`}
                       >
-                        <AccordionTrigger className="fflex items-center justify-start gap-2 text-gray-700 font-medium">
+                        <AccordionTrigger className="fflex items-center justify-start gap-2 text-[#333333]font-medium">
                           {section.images && (
                             <img
                               src={section.images}
