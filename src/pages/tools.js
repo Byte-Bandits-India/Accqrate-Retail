@@ -125,7 +125,7 @@ export default function Tools() {
         </ScrollReveal>
 
         {/* Sections */}
-        <div className="flex flex-col lg:flex-row lg:items-start gap-[24px] tracking--5 py-[32px] md:py-[40px] lg:py-[48px]">
+        <div className="space-y-[24px] md:space-y-[32px] lg:space-y-[42px]">
           {[
             {
               title: "User-Level Access Controls",
@@ -145,12 +145,12 @@ export default function Tools() {
           ].map((section, idx) => (
             <motion.div
               key={idx}
-              className="flex flex-col lg:flex-row lg:items-start gap-[24px] tracking--5 py-[16px] md:py-[20px] lg:py-[24px]"
+              className="flex flex-col lg:flex-row lg:items-start gap-[24px] tracking--5"
               initial={{ x: -100, opacity: 0 }}
               animate={isVisible ? { x: 0, opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: idx * 0.2 }}
             >
-              <div className="flex-1">
+              <div className="flex-1 space-y-4">
                 <h3 className="text-[#C2185B] font-semibold tracking--5 text-fluid-h3 ">
                   {section.title}:
                 </h3>
