@@ -1,13 +1,14 @@
 // _app.tsx
 "use client";
 
-import React, { useEffect, useContext, createContext, ReactNode } from "react";
+import React, { useEffect, useContext } from "react";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import "../styles/globals.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Inter } from "next/font/google";
 import Layout from "../components/layout";
+import { LoadingProvider, LoadingContext } from "../utils/LoadingContext";
 
 // FONT CONFIG
 const inter = Inter({
@@ -16,33 +17,7 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-// TYPES FOR LOADING CONTEXT
-interface LoadingContextType {
-  loading: boolean;
-  setLoading: (value: boolean) => void;
-}
-
-// CREATE CONTEXT WITH DEFAULT VALUE
-export const LoadingContext = createContext<LoadingContextType>({
-  loading: false,
-  setLoading: () => {},
-});
-
-// LOADING PROVIDER
-export const LoadingProvider = ({ children }: { children: ReactNode }) => {
-  const [loading, setLoading] = React.useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 800);
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <LoadingContext.Provider value={{ loading, setLoading }}>
-      {children}
-    </LoadingContext.Provider>
-  );
-};
+// use shared LoadingContext/Provider from ../utils/LoadingContext
 
 // CUSTOM HOOK FOR MINIMUM ROUTE LOADER
 function useMinRouteLoader(minMs: number = 500) {

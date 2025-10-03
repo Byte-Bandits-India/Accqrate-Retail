@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useContext, ButtonHTMLAttributes, HTMLAttributes, VideoHTMLAttributes } from "react";
-import { LoadingContext } from "../utils/LoadingContext";
-import Skeleton from "./skeleton";
+import { LoadingContext, LoadingContextType } from "../utils/LoadingContext";
+import { Skeleton } from "./ui/skeleton";
 import Image, { ImageProps } from "next/image";
 
 // Type for CustomButton props
@@ -14,7 +14,7 @@ interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 // Default export (main component)
 export default function CustomButton({ children, width = 160, height = 44, ...props }: CustomButtonProps) {
-  const { loading } = useContext(LoadingContext);
+  const { loading } = useContext<LoadingContextType>(LoadingContext);
 
   if (loading) {
     return <Skeleton height={height} width={width} style={{ margin: "8px 0" }} />;
@@ -24,16 +24,16 @@ export default function CustomButton({ children, width = 160, height = 44, ...pr
 }
 
 // Named export CustomImage
-interface CustomImageProps extends Omit<ImageProps, "src"> {
+interface CustomImageProps extends Omit<ImageProps, "src" | "width" | "height"> {
   src: string;
   alt: string;
-  width?: number | string;
-  height?: number | string;
+  width?: number | `${number}`;
+  height?: number | `${number}`;
   className?: string;
 }
 
 export function CustomImage({ src, alt, width, height, className, ...props }: CustomImageProps) {
-  const { loading } = useContext(LoadingContext);
+  const { loading } = useContext<LoadingContextType>(LoadingContext);
 
   if (loading) {
     return <Skeleton height={height || 200} width={width || "100%"} style={{ margin: "8px 0" }} />;
@@ -50,7 +50,7 @@ interface CustomVideoProps extends VideoHTMLAttributes<HTMLVideoElement> {
 }
 
 export function CustomVideo({ width = "100%", height = 300, className, ...props }: CustomVideoProps) {
-  const { loading } = useContext(LoadingContext);
+  const { loading } = useContext<LoadingContextType>(LoadingContext);
 
   if (loading) {
     return <Skeleton height={height} width={width} style={{ margin: "8px 0" }} />;

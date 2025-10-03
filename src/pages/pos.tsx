@@ -1,12 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Skeleton from "../components/skeleton";
+import { Skeleton } from "../components/ui/skeleton";
 import AccordionCard from "../components/ui/AccordionSilverCard";
 import { Accordion } from "../components/ui/accordion";
 import { motion, Variants } from "framer-motion";
-
-// Custom ScrollReveal component
 import ScrollReveal from "../components/ui/ScrollReveal";
 
 interface ErpFeature {
@@ -44,6 +42,67 @@ const Pos: React.FC = () => {
     };
   }, []);
 
+  // Show skeleton only when both sections are not visible
+  if (!isPosVisible && !isErpVisible) {
+    return (
+      <>
+        {/* POS Section Skeleton */}
+        <section id="posSection" className="px-6 md:px-8 mt-12 md:mt-[56px]">
+          <div className="max-w-[1000px] mx-auto">
+            {/* Main Video Skeleton */}
+            <Skeleton className="w-full h-[220px] md:h-[280px] rounded-lg mb-6" />
+
+            {/* Accordion Cards Skeleton */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {[1, 2, 3].map((item) => (
+                <div key={item} className="border border-gray-200 rounded-lg p-4">
+                  {/* Icon Skeleton */}
+                  <Skeleton className="w-12 h-12 rounded-md mb-3" />
+
+                  {/* Title Skeleton */}
+                  <Skeleton className="h-6 w-3/4 mb-2" />
+
+                  {/* Content Skeleton */}
+                  <Skeleton className="h-4 w-full mb-1" />
+                  <Skeleton className="h-4 w-2/3" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ERP Section Skeleton */}
+        <section id="erpSection" className="px-6 md:px-8 mt-24 md:mt-32">
+          <div className="max-w-[1200px] mx-auto text-center">
+            {/* Heading Skeleton */}
+            <div className="max-w-4xl mx-auto mb-6">
+              <Skeleton className="h-8 md:h-10 w-3/4 mx-auto mb-4" />
+              <Skeleton className="h-6 w-5/6 mx-auto" />
+            </div>
+
+            {/* ERP Features Skeleton */}
+            <div className="space-y-8 md:space-y-12">
+              {[1, 2, 3].map((item) => (
+                <div key={item} className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+                  {/* Text Content Skeleton */}
+                  <div className="flex-1 text-left space-y-2 max-w-lg">
+                    <Skeleton className="h-6 w-4/5" />
+                    <Skeleton className="h-4 w-3/4" />
+                  </div>
+
+                  {/* Video Skeleton */}
+                  <div className="flex-1 flex justify-center">
+                    <Skeleton className="w-full max-w-md h-[200px] md:h-[250px] rounded-lg" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  }
+
   // Variants for POS animations
   const containerVariant: Variants = {
     hidden: { opacity: 0 },
@@ -79,51 +138,6 @@ const Pos: React.FC = () => {
       transition: { duration: 1, ease: "easeOut" },
     },
   };
-
-  // Skeleton Loader
-  if (!isPosVisible && !isErpVisible) {
-    return (
-      <>
-        <section id="posSection" className="px-6 mt-12 md:mt-24">
-          <div className="max-w-[1000px] mx-auto">
-            <Skeleton height="220px" width="100%" className="rounded-lg mb-6" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="bg-gray-200 rounded-lg p-4 flex flex-col gap-2"
-                >
-                  <Skeleton height="45px" width="45px" className="mb-2" />
-                  <Skeleton height="24px" width="80%" className="mb-2" />
-                  <Skeleton height="16px" width="60%" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="erpSection" className="px-6 mt-24 md:mt-32">
-          <Skeleton height="36px" width="70%" className="mx-auto mb-4" />
-          <Skeleton height="20px" width="90%" className="mx-auto mb-6" />
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="flex flex-col lg:flex-row gap-6 mt-6">
-              <div className="flex-1">
-                <Skeleton height="20px" width="80%" className="mb-2" />
-                <Skeleton height="20px" width="60%" />
-              </div>
-              <div className="flex-1 flex justify-center">
-                <Skeleton
-                  height="220px"
-                  width="100%"
-                  className="rounded-lg max-w-md"
-                />
-              </div>
-            </div>
-          ))}
-        </section>
-      </>
-    );
-  }
 
   // ERP Features
   const erpFeatures: ErpFeature[] = [

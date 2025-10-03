@@ -1,12 +1,11 @@
 "use client";
 
 import { CustomImage } from "../components/CommonComponents";
-import { useContext } from "react";
+import React, { useContext, useRef, JSX } from "react";
 import { LoadingContext } from "../utils/LoadingContext";
-import Skeleton from "../components/skeleton";
-import { motion } from "framer-motion";
+import { Skeleton } from "../components/ui/skeleton"
+import { motion, useInView } from "framer-motion";
 import ButtonGroup from "../components/ui/ButtonGroup";
-import React from "react";
 
 interface ButtonProps {
   text: string;
@@ -17,10 +16,10 @@ interface ButtonProps {
   borderColor?: string;
 }
 
-const Accqrate: React.FC = () => {
+const Accqrate: React.FC = (): JSX.Element => {
   const { loading } = useContext(LoadingContext);
-
-  const sectionPadding = "px-4 py-8 md:py-12 md:px-6";
+  const heroRef = useRef<HTMLElement>(null);
+  const isVisible = useInView(heroRef);
 
   const sectionClasses = "w-full bg-[#F2F2F2] mt-32px md:mt-[40px] pt-[32px]";
   const containerClasses =
@@ -29,45 +28,50 @@ const Accqrate: React.FC = () => {
   if (loading) {
     return (
       <>
-        {/* Accqrate Section */}
-        <section className="w-full px-24px flex flex-col items-center">
-          <Skeleton height="48px" width="240px" className="mt-82px mb-8" />
-          <Skeleton height="24px" width="60%" className="mb-4" />
-          <Skeleton height="20px" width="70%" className="mb-4" />
-          <Skeleton height="20px" width="50%" className="mb-6" />
-          <Skeleton height="18px" width="80%" className="mb-12" />
+        {/* Accqrate Section Skeleton */}
+        <section
+          className="w-full px-6 md:px-8 flex flex-col items-center text-[#333333] mt-20"
+        >
+          {/* Main Heading Skeleton */}
+          <Skeleton className="h-12 md:h-16 w-64 md:w-80 mx-auto mb-8" />
 
-          <div className="flex justify-center gap-4">
-            <Skeleton height="44px" width="160px" />
-            <Skeleton height="44px" width="160px" />
+          {/* Subheading Skeleton */}
+          <Skeleton className="h-8 md:h-10 w-72 md:w-96 mx-auto mb-6" />
+
+          {/* Description Line 1 */}
+          <Skeleton className="h-6 w-80 md:w-[500px] mx-auto mb-4" />
+
+          {/* Description Line 2 */}
+          <Skeleton className="h-5 w-72 md:w-[400px] mx-auto mb-8" />
+
+          {/* Buttons Skeleton */}
+          <div className="flex gap-4 mb-12">
+            <Skeleton className="h-12 w-40 rounded-full" />
+            <Skeleton className="h-12 w-40 rounded-full" />
           </div>
         </section>
 
-        {/* Dashboard Section */}
-        <section className="w-full flex items-center justify-center mt-32px box-border px-24px">
-          <Skeleton
-            height="400px"
-            width="100%"
-            className="mx-auto max-w-[1200px] rounded-lg"
-          />
+        {/* Dashboard Section Skeleton */}
+        <section className="w-full flex items-center justify-center px-6 md:px-8 mb-12">
+          <div className="relative w-full max-w-[1200px]">
+            <Skeleton className="w-full h-[300px] md:h-[400px] rounded-lg" />
+          </div>
         </section>
 
-        {/* Built Section */}
-        <section className={sectionClasses}>
-          <div className={containerClasses}>
-            {/* Text side */}
-            <div className="flex flex-col justify-center flex-1">
-              <Skeleton height="36px" width="70%" className="mb-6" />
-              <Skeleton height="20px" width="80%" className="mb-3" />
-              <Skeleton height="20px" width="60%" className="mb-3" />
+        {/* Built Section Skeleton */}
+        <section className="w-full bg-[#F2F2F2] mt-8 md:mt-10 pt-8">
+          <div className="flex flex-col lg:flex-row justify-between max-w-[1300px] mx-auto gap-6 px-6 md:px-8 items-center">
+            {/* Text Content Skeleton */}
+            <div className="flex flex-col justify-center flex-1 space-y-4">
+              <Skeleton className="h-8 md:h-10 w-48 md:w-56" />
+              <Skeleton className="h-6 w-full max-w-[400px]" />
+              <Skeleton className="h-6 w-3/4 max-w-[350px]" />
             </div>
 
-            {/* Image side */}
-            <Skeleton
-              height="250px"
-              width="250px"
-              className="mx-auto rounded-md"
-            />
+            {/* Image Skeleton */}
+            <div className="flex justify-center w-full lg:w-auto">
+              <Skeleton className="h-[200px] md:h-[250px] w-[200px] md:w-[250px] rounded-lg" />
+            </div>
           </div>
         </section>
       </>

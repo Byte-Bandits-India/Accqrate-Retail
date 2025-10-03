@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic"; 
+import dynamic from "next/dynamic";
 
 import Choose from "./choose";
 import Tools from "./tools";

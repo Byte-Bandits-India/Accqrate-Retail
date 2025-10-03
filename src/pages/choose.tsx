@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useState, useEffect } from "react";
-import Skeleton from "../components/skeleton";
+import { Skeleton } from "../components/ui/skeleton";
 import { LoadingContext } from "../utils/LoadingContext";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
