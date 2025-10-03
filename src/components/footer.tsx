@@ -2,7 +2,7 @@
 
 import React, { useContext, useState, useEffect, JSX } from "react";
 import { LoadingContext } from "../utils/LoadingContext";
-import { Skeleton } from "../components/ui/skeleton";
+import { Skeleton } from "./ui/skeleton";
 
 interface Section {
   title: string;
