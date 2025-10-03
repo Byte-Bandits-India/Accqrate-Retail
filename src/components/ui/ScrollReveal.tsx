@@ -30,8 +30,8 @@ const ScrollReveal = <T extends keyof JSX.IntrinsicElements = "h2">({
   wordAnimationEnd = "bottom 60%",
   as = "h2" as T,
 }: ScrollRevealProps<T>) => {
-  // Correctly type the ref based on the 'as' element
-  const containerRef = useRef<HTMLElement & SVGElement | null>(null);
+  // Relax the ref typing to avoid JSX intrinsic element prop unions mismatch
+  const containerRef = useRef<any>(null);
 
   // Split text into words
   const splitText = useMemo(() => {
@@ -48,7 +48,8 @@ const ScrollReveal = <T extends keyof JSX.IntrinsicElements = "h2">({
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    let triggers: gsap.core.ScrollTrigger[] = [];
+    // Use a relaxed type to avoid relying on gsap.core types for ScrollTrigger
+    let triggers: any[] = [];
 
     (async () => {
       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
@@ -77,7 +78,7 @@ const ScrollReveal = <T extends keyof JSX.IntrinsicElements = "h2">({
               invalidateOnRefresh: true,
             },
           }
-        ).scrollTrigger as gsap.core.ScrollTrigger
+        ).scrollTrigger as any
       );
 
       // Opacity/Y/blur animation
@@ -108,7 +109,7 @@ const ScrollReveal = <T extends keyof JSX.IntrinsicElements = "h2">({
               invalidateOnRefresh: true,
             },
           }
-        ).scrollTrigger as gsap.core.ScrollTrigger
+        ).scrollTrigger as any
       );
     })();
 
@@ -124,16 +125,16 @@ const ScrollReveal = <T extends keyof JSX.IntrinsicElements = "h2">({
     children,
   ]);
 
-  const Component = as;
+  const ComponentTag: any = as;
 
   return (
-    <Component ref={containerRef as any} className={containerClassName}>
+    <ComponentTag ref={containerRef} className={containerClassName}>
       {typeof children === "string" ? (
         <span className={textClassName}>{splitText}</span>
       ) : (
         children
       )}
-    </Component>
+    </ComponentTag>
   );
 };
 

@@ -2,8 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { LoadingContext, LoadingProvider } from "../utils/LoadingContext";
 import "../styles/globals.css";
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import { Inter } from "next/font/google";
 import Layout from "../components/layout";
