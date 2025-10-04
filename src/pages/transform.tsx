@@ -107,14 +107,14 @@ export default function Transform(): JSX.Element {
       <div className="md:max-w-5xl mx-auto text-[#333333]">
         <ScrollReveal
           as="h1"
-          containerClassName="text-center text-fluid-h2 leading-tight tracking--5 font-semibold mt-48px md:mt-[56px] px-24px md:px-[32px]"
+          containerClassName="text-center text-[24px] md:text-fluid-h2 leading-tight tracking--5 font-medium mt-48px md:mt-[56px] px-24px md:px-[32px]"
         >
           Transform Your Retail Operations with{" "}
           <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
         </ScrollReveal>
         <ScrollReveal
           as="p"
-          containerClassName="text-center text-fluid-caption px-24px md:px-[32px] font-light tracking--2 w-full max-w-[1280px] mx-auto text-[#333333]"
+          containerClassName="text-center text-fluid-caption px-24px md:px-[32px] font-light tracking--2 mt-[24px] md:mt-[32px] w-full max-w-[1280px] mx-auto text-[#333333]"
         >
           Get up and running in minutes, not days. Accqrate Retail’s cloud-native architecture means you can onboard each outlet effortlessly—no dedicated POS hardware, no complex installations.
         </ScrollReveal>
@@ -138,7 +138,7 @@ export default function Transform(): JSX.Element {
       <div className="px-6 md:px-[32px] max-w-[1350px] mx-auto">
         <section
           id="ownerSection"
-          className="bg-[#F2F2F2] rounded-lg mx-auto px-6 sm:px-6 md:p-10 text-[#333333] h-auto sm:h-[110px] md:h-[129px] lg:h-[182px] flex flex-col items-center justify-center mt-6 md:mt-[32px] lg:mt-[40px]"
+          className="bg-[#F2F2F2] rounded-lg mx-auto px-6 sm:px-6 md:p-10 text-[#333333] h-[102px] sm:h-[110px] md:h-[129px] lg:h-[182px] flex flex-col items-center justify-center mt-6 md:mt-[32px] lg:mt-[40px]"
         >
           <motion.div className="w-full" variants={variant} initial="hidden" animate={isVisible ? "visible" : "hidden"}>
             <div className="mx-auto text-left md:max-w-4xl">

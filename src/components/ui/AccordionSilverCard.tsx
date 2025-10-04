@@ -16,10 +16,10 @@ const AccordionCard: React.FC<AccordionCardProps> = ({ value, icon, title, child
   return (
     <AccordionItem
       value={value}
-      className="flex flex-col justify-center bg-gradient-to-r from-[#E6E6E6] to-[#C8C8C8] w-full h-auto rounded-lg p-[24px]"
+      className="flex flex-col justify-center bg-gradient-to-r from-[#E6E6E6] to-[#C8C8C8] w-full h-auto rounded-lg px-[24px]"
     >
       <AccordionTrigger className="flex justify-between items-start w-full hover:no-underline">
-        <div className="flex flex-col items-start gap-[24px]">
+        <div className="flex flex-col items-start gap-[16px]">
           <img
             src={icon}
             alt={title}

@@ -144,15 +144,15 @@ export default function Tools(): JSX.Element {
       >
         <ScrollReveal
           as="h2"
-          containerClassName="text-center text-fluid-h2 font-medium tracking--5 mb-[24px]"
+          containerClassName="text-center text-[24px] md:text-fluid-h2 font-medium tracking--5 mb-[24px]"
         >
-          Robust Control & <span className="text-[#C2185B] font-medium">Compliance Tools</span>
+          Robust Control & <span className="text-[#C2185B] font-medium">Compliance <br className="md:hidden" /> Tools</span>
         </ScrollReveal>
         <ScrollReveal
           as="p"
-          containerClassName="text-center text-[#000000B2] tracking--2 text-fluid-caption max-w-lg mb-[24px] md:mb-[32px] lg:mb-[40px] leading-tight mx-auto"
+          containerClassName="text-center text-[#000000B2] tracking--2 text-[14px] md:text-fluid-caption max-w-lg mb-[24px] md:mb-[32px] lg:mb-[40px] leading-tight mx-auto"
         >
-          Maintain tight governance over your retail footprint, from terminal permissions to financial integrity
+          Maintain tight governance over your retail footprint,<br className="md:hidden" /> from terminal permissions to financial integrity
         </ScrollReveal>
 
         <div className="space-y-[24px] md:space-y-[32px] lg:space-y-[42px]">
@@ -165,10 +165,10 @@ export default function Tools(): JSX.Element {
               transition={{ duration: 0.8, delay: idx * 0.2 }}
             >
               <div className="flex-1 space-y-4">
-                <h3 className="text-[#C2185B] font-semibold tracking--5 text-fluid-h3 ">
+                <h3 className="text-[#C2185B] text-[20px] font-semibold tracking--5 md:text-fluid-h3 ">
                   {section.title}:
                 </h3>
-                <p className="text-fluid-body leading-tight tracking--2">{section.text}</p>
+                <p className="text-[14px] md:text-fluid-body leading-tight tracking--2">{section.text}</p>
               </div>
               <div className="flex-1 flex justify-center">
                 <video

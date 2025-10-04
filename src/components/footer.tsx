@@ -126,7 +126,7 @@ export default function Footer(): JSX.Element {
   }
 
   return (
-    <footer id="footerSection" className="bg-white border-t border-gray-200 font-inter min-h-full mt-[5%]">
+    <footer id="footerSection" className="bg-white font-inter min-h-full mt-[5%]">
       {showSections && (
         <div className="flex justify-between flex-nowrap max-w-[1400px] mx-auto px-4 py-10 text-black gap-8 overflow-x-auto">
           {sections.map((section, idx) => (
@@ -144,12 +144,12 @@ export default function Footer(): JSX.Element {
         <div className="flex flex-wrap justify-center gap-3 my-4 mt-5 mx-auto">
           {socialLinks.map(({ href, src }, idx) => (
             <a key={idx} href={href} target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-110">
-              <img src={src} alt="social icon" className="w-6 h-6 sm:w-5 sm:h-5" />
+              <img src={src} alt="social icon" className="w-[18px] h-[18px] sm:w-5 sm:h-5" />
             </a>
           ))}
         </div>
 
-        <div className="border-t border-black/25 w-full my-2 mx-auto py-8 text-center text-xs text-gray-600">
+        <div className="border-t border-black/25 w-full my-2 mx-auto py-[14px] text-center text-xs text-gray-600">
           © Copyright 2021 - 2025{" "}
           <span className="text-[#194BED] text-sm leading-6 font-medium">Accqrate</span>, All rights reserved.
         </div>

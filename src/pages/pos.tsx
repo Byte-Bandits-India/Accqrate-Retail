@@ -9,6 +9,7 @@ import ScrollReveal from "../components/ui/ScrollReveal";
 
 interface ErpFeature {
   text: string;
+  subtext: string;
   video: string;
 }
 
@@ -142,15 +143,18 @@ const Pos: React.FC = () => {
   // ERP Features
   const erpFeatures: ErpFeature[] = [
     {
-      text: "Central procurement: Manage suppliers and POs across all locations.",
+      text: "Central procurement:",
+      subtext: "Manage suppliers and POs across all locations.",
       video: "/videos/pos.mp4",
     },
     {
-      text: "Real-time inventory: See live stock updates and automate reordering.",
+      text: "Real-time inventory:",
+      subtext: "See live stock updates and automate reordering.",
       video: "/videos/dashboard.mp4",
     },
     {
-      text: "Safety-stock alerts: Never run out, never over-order.",
+      text: "Safety-stock alerts: ",
+      subtext: "Never run out, never over-order.",
       video: "/videos/crm.mp4",
     },
   ];
@@ -160,7 +164,7 @@ const Pos: React.FC = () => {
       {/* POS Section */}
       <section
         id="posSection"
-        className="px-6 md:px-8 mt-12 md:mt-[56px] text-[#333333]"
+        className="px-6 md:px-8 mt-8 md:mt-[56px] text-[#333333]"
       >
         <motion.div
           variants={containerVariant}
@@ -182,7 +186,7 @@ const Pos: React.FC = () => {
           <Accordion
             type="single"
             collapsible
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[16px] mt-6"
           >
             <AccordionCard
               value="card-1"
@@ -223,18 +227,16 @@ const Pos: React.FC = () => {
         >
           <ScrollReveal
             as="h2"
-            containerClassName="text-fluid-h2 font-medium tracking-tight leading-tight"
+            containerClassName="text-[24px] md:text-fluid-h2 font-medium tracking-tight leading-tight"
           >
-            Grows with Your Business
-            <br className="md:hidden" />
-            <span className="text-fluid-h2 font-medium">
-              Scale to Full <span className="text-[#C2185B]">ERP</span> Instantly
-            </span>
+            Grows with Your Business Scale to Full
+            <span className="text-[#C2185B]"> ERP </span>Instantly
+
           </ScrollReveal>
 
           <ScrollReveal
             as="p"
-            containerClassName="text-fluid-caption text-[#737373] max-w-4xl mx-auto"
+            containerClassName="text-[14px] md:text-fluid-caption text-[#737373] max-w-4xl mx-auto mt-6 md:mt-8 lg:mt-10 font-light leading-snug"
           >
             As your business grows, Accqrate Retail grows with you. Flip the
             switch to add procurement, finance, HR and supply-chain modules—no
@@ -247,9 +249,13 @@ const Pos: React.FC = () => {
               className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mt-6 md:mt-8 lg:mt-10"
             >
               {/* Text stays static */}
-              <p className="flex-1 text-left leading-snug text-fluid-h3 text-[#C2185B] font-light max-w-lg">
-                {feature.text}
-              </p>
+              <div className="flex-1">
+                <p className="text-left leading-snug text-[24px] md:text-fluid-h3 text-[#C2185B] font-light max-w-lg">
+                  {feature.text}
+                </p>
+                <p className="text-left text-[14px] mt-[16px]">{feature.subtext}</p>
+              </div>
+
 
               {/* Video slides in left-to-right */}
               <motion.div

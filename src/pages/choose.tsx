@@ -97,7 +97,7 @@ const Choose: React.FC = () => {
         animate={isVisible ? "visible" : "hidden"}
       >
         <motion.h2
-          className="text-fluid-h2 font-semibold pb-6 md:pb-0 pt-8 lg:pt-[40px] tracking--5"
+          className="text-fluid-h2 font-semibold pb-6 md:pb-0 pt-6 lg:pt-[40px] tracking--5"
           variants={fadeInLeft}
         >
           Why Choose <span className="text-[#C2185B]">Accqrate Retail?</span>

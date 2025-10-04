@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"components/ui/ScrollReveal.tsx -> gsap/ScrollTrigger\":{\"id\":\"components/ui/ScrollReveal.tsx -> gsap/ScrollTrigger\",\"files\":[\"static/chunks/_pages-dir-browser_node_modules_gsap_ScrollTrigger_js.js\"]}}"
