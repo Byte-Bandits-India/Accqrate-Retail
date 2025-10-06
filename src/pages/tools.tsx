@@ -3,10 +3,7 @@
 import React, { useContext, useState, useEffect, ReactNode, JSX } from "react";
 import { Skeleton } from "../components/ui/skeleton";
 import { LoadingContext } from "../utils/LoadingContext";
-import { motion, Variants } from "framer-motion";
-
-// import scrollreveal for text animations
-import ScrollReveal from "../components/ui/ScrollReveal";
+import FadeUp from "../components/ui/FadeUp";
 
 interface Section {
   title?: string;
@@ -94,16 +91,6 @@ export default function Tools(): JSX.Element {
     );
   }
 
-  const containerVariant: Variants = {
-    hidden: { x: -100, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-
-  const cardVariant: Variants = {
-    hidden: { x: 100, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-
   const toolsSections: Section[] = [
     {
       title: "User-Level Access Controls",
@@ -135,34 +122,26 @@ export default function Tools(): JSX.Element {
 
   return (
     <>
-      <motion.section
+      <section
         id="toolsSection"
         className="bg-white mt-48px md:mt-[64px] px-24px md:px-[32px] max-w-[1200px] mx-auto text-[#333333]"
-        variants={containerVariant}
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
       >
-        <ScrollReveal
-          as="h2"
-          containerClassName="text-center text-[24px] md:text-[32px] lg:text-fluid-h2 font-medium tracking-heading mb-[24px]"
-        >
-          Robust Control & <span className="text-[#C2185B] font-medium">Compliance <br className="md:hidden" /> Tools</span>
-        </ScrollReveal>
-        <ScrollReveal
-          as="p"
-          containerClassName="text-center text-[#000000B2] tracking-para text-[14px] md:text-fluid-caption max-w-lg mb-[24px] md:mb-[48px] leading-tight mx-auto"
-        >
-          Maintain tight governance over your retail footprint,<br className="md:hidden" /> from <br className="hidden md:block" /> terminal permissions to financial integrity
-        </ScrollReveal>
+        <FadeUp>
+          <h2 className="text-center text-[24px] md:text-[32px] lg:text-fluid-h2 font-medium tracking-heading mb-[24px]"
+          >
+            Robust Control & <span className="text-[#C2185B] font-medium">Compliance <br className="md:hidden" /> Tools</span>
+          </h2>
+          <p className="text-center text-[#000000B2] tracking-para text-[14px] md:text-fluid-caption max-w-lg mb-[24px] md:mb-[48px] leading-tight mx-auto"
+          >
+            Maintain tight governance over your retail footprint,<br className="md:hidden" /> from <br className="hidden md:block" /> terminal permissions to financial integrity
+          </p>
+        </FadeUp>
 
         <div className="space-y-[24px] md:space-y-[32px] lg:space-y-[42px]">
           {toolsSections.map((section, idx) => (
-            <motion.div
+            <FadeUp
               key={idx}
               className="flex flex-col lg:flex-row lg:items-start gap-[24px] tracking--5"
-              initial={{ x: -100, opacity: 0 }}
-              animate={isVisible ? { x: 0, opacity: 1 } : {}}
-              transition={{ duration: 0.8, delay: idx * 0.2 }}
             >
               <div className="flex-1 space-y-4">
                 <h3 className="text-[#C2185B] text-[20px] md:text-[24px] font-semibold tracking-heading lg:text-fluid-h3 ">
@@ -180,30 +159,25 @@ export default function Tools(): JSX.Element {
                   className="w-full max-w-md rounded-lg"
                 />
               </div>
-            </motion.div>
+            </FadeUp>
           ))}
         </div>
-      </motion.section>
+      </section>
 
-      <motion.section
+      <section
         id="onboardingSection"
         className="px-6 md:px-[32px] max-w-6xl mx-auto md:mt-[56px] mt-48px text-[#333333]"
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
       >
-        <motion.h2
+        <FadeUp
           className="text-center font-medium md:text-[32px] text-fluid-h2 mb-[24px] md:mb-[62px] tracking-heading leading-tight"
-          variants={cardVariant}
         >
           Fast Data Onboarding & Customization
-        </motion.h2>
+        </FadeUp>
 
         {onboardingItems.map((item, idx) => (
-          <motion.div
+          <FadeUp
             key={idx}
             className="bg-gray-100 border border-pink-700 rounded-xl p-6 mb-[24px] md:mb-[32px] lg:mb-[40px] shadow-sm mx-auto"
-            variants={cardVariant}
-            transition={{ delay: idx * 0.2 }}
           >
             <div className="video-wrapper overflow-hidden rounded-xl">
               <video
@@ -220,9 +194,9 @@ export default function Tools(): JSX.Element {
             <p className="text-center font-semibold text-fluid-caption mt-12px tracking--2">
               {item.text}
             </p>
-          </motion.div>
+          </FadeUp>
         ))}
-      </motion.section>
+      </section>
     </>
   );
 }

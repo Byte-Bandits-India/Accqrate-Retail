@@ -4,11 +4,9 @@ import { useContext, useState, useEffect } from "react";
 import { Skeleton } from "../components/ui/skeleton";
 import { LoadingContext } from "../utils/LoadingContext";
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";
-
 // import scrollreveal for text animations
-import ScrollReveal from "../components/ui/ScrollReveal";
 import React from "react";
+import FadeUp from "../components/ui/FadeUp";
 
 const Choose: React.FC = () => {
   const { loading } = useContext(LoadingContext);
@@ -78,37 +76,24 @@ const Choose: React.FC = () => {
     );
   }
 
-  const fadeInLeft: Variants = {
-    hidden: { x: -100, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-
-  const fadeInRight: Variants = {
-    hidden: { x: 100, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-
   return (
     <>
-      <motion.section
+      <section
         id="chooseSection"
         className="bg-[#F2F2F2] text-center font-sans min-h-full m-0 mt-48px md:mt-[64px] md:px-[32px] px-24px text-[#333333]"
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
       >
-        <motion.h2
-          className="text-fluid-h2 md:text-[32px] font-semibold pb-6 md:pb-0 pt-6 lg:pt-[40px] tracking-heading"
-          variants={fadeInLeft}
-        >
-          Why Choose <span className="text-[#C2185B]">Accqrate Retail?</span>
-        </motion.h2>
+        <FadeUp>
+          <h2
+            className="text-fluid-h2 md:text-[32px] font-semibold pb-6 md:pb-0 pt-6 lg:pt-[40px] tracking-heading"
+          >
+            Why Choose <span className="text-[#C2185B]">Accqrate Retail?</span>
+          </h2>
+        </FadeUp>
 
-        <motion.div
+        <div
           className="flex flex-col gap-12 items-center md:flex-row md:justify-center md:items-center"
-          variants={fadeInLeft}
-          transition={{ delay: 0.2 }}
         >
-          <div className="relative inline-block max-w-[600px] md:max-w-[400px]">
+          <FadeUp className="relative inline-block max-w-[600px] md:max-w-[400px]">
             <Image
               src="/images/choose.svg"
               alt="Why Choose Accqrate Retail"
@@ -125,9 +110,9 @@ const Choose: React.FC = () => {
               className="absolute right-0 bottom-0 md:bottom-16 md:right-[-10px] w-[100px] h-auto pointer-events-none"
               loading="lazy"
             />
-          </div>
+          </FadeUp>
 
-          <div className="max-w-[600px] text-left md:max-w-[500px]">
+          <FadeUp className="max-w-[600px] text-left md:max-w-[500px]">
             <p className="font-light text-fluid-h3 leading-tight">
               <span className="font-semibold tracking--2">Compliance by design:</span>
             </p>
@@ -139,36 +124,34 @@ const Choose: React.FC = () => {
               <li>2. Future-proof scaling: Grow from single store POS to a full ERP suite, no re-implementation.</li>
               <li>3. Total control: See your data, operations, and compliance in real time.</li>
             </ol>
-          </div>
-        </motion.div>
-      </motion.section>
+          </FadeUp>
+        </div>
+      </section>
 
-      <motion.section
+      <section
         id="readySection"
         className="mt-48px px-24px text-center min-h-full md:mt-[64px] md:px-[32px] text-[#333333]"
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
+
       >
-        <motion.h2 className="font-semibold text-fluid-h2 md:text-[32px] tracking-heading leading-tight" variants={fadeInRight}>
-          Ready to accelerate your retail business?
-        </motion.h2>
-        <motion.div
+        <FadeUp>
+          <h2 className="font-semibold text-fluid-h2 md:text-[32px] tracking-heading leading-tight">
+            Ready to accelerate your retail business?
+          </h2>
+        </FadeUp>
+        <FadeUp
           className="flex flex-col md:flex-row md:max-w-[700px] mx-auto justify-center gap-[20px] mt-24px md:mt-[32px] lg:mt-[40px]"
-          variants={fadeInRight}
-          transition={{ delay: 0.2 }}
+
         >
           {buttons.map((label, idx) => (
-            <motion.button
+            <button
               key={idx}
               className="bg-[#C2185C] text-fluid-caption hover:bg-pink-800 text-white font-light rounded-[5px] md:rounded-[53px] px-6 py-4 w-[260px] md:w-[300px] mx-auto text-center transition-colors"
-              variants={fadeInRight}
-              transition={{ delay: 0.3 + idx * 0.2 }}
             >
               {label}
-            </motion.button>
+            </button>
           ))}
-        </motion.div>
-      </motion.section>
+        </FadeUp>
+      </section>
     </>
   );
 };

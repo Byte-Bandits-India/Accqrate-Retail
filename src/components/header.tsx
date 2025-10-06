@@ -669,7 +669,7 @@ const Header: React.FC = () => {
                   show={showLangCountryDropdown}
                   setShow={setShowLangCountryDropdown}
                   align="right"
-                  className="hidden md:flex" // ✅ now works
+                  className="hidden md:flex"
                 />
 
                 <button

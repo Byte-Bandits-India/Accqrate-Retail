@@ -4,8 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Skeleton } from "../components/ui/skeleton";
 import AccordionCard from "../components/ui/AccordionSilverCard";
 import { Accordion } from "../components/ui/accordion";
-import { motion, Variants } from "framer-motion";
-import ScrollReveal from "../components/ui/ScrollReveal";
+import FadeUp from "../components/ui/FadeUp";
 
 interface ErpFeature {
   text: string;
@@ -104,42 +103,6 @@ const Pos: React.FC = () => {
     );
   }
 
-  // Variants for POS animations
-  const containerVariant: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, when: "beforeChildren" },
-    },
-  };
-
-  const itemVariant: Variants = {
-    hidden: { x: -50, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
-
-  // ERP-specific variants (video-only animation)
-  const erpVideoContainer: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.4, when: "beforeChildren" },
-    },
-  };
-
-  const videoVariantLeft: Variants = {
-    hidden: { x: -120, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 1, ease: "easeOut" },
-    },
-  };
-
   // ERP Features
   const erpFeatures: ErpFeature[] = [
     {
@@ -166,13 +129,10 @@ const Pos: React.FC = () => {
         id="posSection"
         className="px-6 md:px-8 mt-8 md:mt-[56px] text-[#333333]"
       >
-        <motion.div
-          variants={containerVariant}
-          initial="hidden"
-          animate={isPosVisible ? "visible" : "hidden"}
+        <div
           className="max-w-[1000px] mx-auto"
         >
-          <motion.div variants={itemVariant}>
+          <div>
             <video
               src="/videos/barcode.mp4"
               muted
@@ -181,7 +141,7 @@ const Pos: React.FC = () => {
               playsInline
               className="w-full h-auto object-contain rounded-lg"
             />
-          </motion.div>
+          </div>
 
           <Accordion
             type="single"
@@ -212,7 +172,7 @@ const Pos: React.FC = () => {
               Extra details about <b>Role-Based User Setup</b> will go here.
             </AccordionCard>
           </Accordion>
-        </motion.div>
+        </div>
       </section>
 
       {/* ERP Section */}
@@ -220,47 +180,43 @@ const Pos: React.FC = () => {
         id="erpSection"
         className="px-6 md:px-8 max-w-[1200px] mx-auto text-center mt-[48px] md:mt-[64px] text-[#333333]"
       >
-        <motion.div
-          variants={erpVideoContainer}
-          initial="hidden"
-          animate={isErpVisible ? "visible" : "hidden"}
+        <div
         >
-          <ScrollReveal
-            as="h2"
-            containerClassName="text-[24px] md:text-[32px] lg:text-fluid-h2 font-medium tracking-heading leading-tight"
-          >
-            Grows with Your Business Scale <br className="hidden md:block" /> to Full
-            <span className="text-[#C2185B]"> ERP </span>Instantly
+          <FadeUp>
+            <h2 className="text-[24px] md:text-[32px] lg:text-fluid-h2 font-medium tracking-heading leading-tight"
+            >
+              Grows with Your Business Scale <br className="hidden md:block" /> to Full
+              <span className="text-[#C2185B]"> ERP </span>Instantly
 
-          </ScrollReveal>
+            </h2>
 
-          <ScrollReveal
-            as="p"
-            containerClassName="text-[14px] md:text-fluid-caption text-[#737373] tracking-para max-w-4xl mx-auto mt-6 md:mt-[32px] lg:mt-10 font-light leading-snug"
-          >
-            As your business grows, Accqrate Retail grows with you. Flip the
-            switch <br className="hidden md:block" /> to add procurement, finance, HR and supply-chain modules—no
-            data <br className="hidden md:block" /> migration, no downtime.
-          </ScrollReveal>
+            <p className="text-[14px] md:text-fluid-caption text-[#737373] tracking-para max-w-4xl mx-auto mt-6 md:mt-[32px] lg:mt-10 font-light leading-snug"
+            >
+              As your business grows, Accqrate Retail grows with you. Flip the
+              switch <br className="hidden md:block" /> to add procurement, finance, HR and supply-chain modules—no
+              data <br className="hidden md:block" /> migration, no downtime.
+            </p>
+          </FadeUp>
 
           {erpFeatures.map((feature, i) => (
-            <div
+            <FadeUp
               key={i}
               className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mt-6 md:mt-[48px] lg:mt-10"
             >
               {/* Text stays static */}
               <div className="flex-1">
-                <h1 className="text-left leading-snug text-[24px] tracking-heading lg:text-fluid-h3 text-[#C2185B] font-light max-w-lg">
+                <h1 className="text-left leading-snug text-[24px] tracking-heading lg:text-[32px] text-[#C2185B] font-normal max-w-lg">
                   {feature.text}
+                  <span className="hidden lg:inline"> {feature.subtext} </span>
+                  <span className="lg:hidden"> {/* Alternative content for mobile if needed */}</span>
                 </h1>
-                <p className="text-left text-[14px] md:text-[16px] tracking-para mt-[16px]">{feature.subtext}</p>
+                <p className="text-left text-[14px] md:text-[16px] tracking-para mt-[16px] lg:hidden">{feature.subtext}</p>
               </div>
 
 
               {/* Video slides in left-to-right */}
-              <motion.div
+              <div
                 className="flex-1 flex justify-center"
-                variants={videoVariantLeft}
               >
                 <video
                   src={feature.video}
@@ -270,10 +226,10 @@ const Pos: React.FC = () => {
                   playsInline
                   className="w-full max-w-md h-auto rounded-lg"
                 />
-              </motion.div>
-            </div>
+              </div>
+            </FadeUp>
           ))}
-        </motion.div>
+        </div>
       </section>
     </>
   );

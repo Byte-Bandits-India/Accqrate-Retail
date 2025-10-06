@@ -4,8 +4,8 @@ import { CustomImage } from "../components/CommonComponents";
 import React, { useContext, useRef, JSX } from "react";
 import { LoadingContext } from "../utils/LoadingContext";
 import { Skeleton } from "../components/ui/skeleton"
-import { motion, useInView } from "framer-motion";
 import ButtonGroup from "../components/ui/ButtonGroup";
+import FadeUp from "../components/ui/FadeUp";
 
 interface ButtonProps {
   text: string;
@@ -19,7 +19,6 @@ interface ButtonProps {
 const Accqrate: React.FC = (): JSX.Element => {
   const { loading } = useContext(LoadingContext);
   const heroRef = useRef<HTMLElement>(null);
-  const isVisible = useInView(heroRef);
 
   const sectionClasses = "w-full bg-[#F2F2F2] mt-32px md:mt-[40px] pt-[32px]";
   const containerClasses =
@@ -151,12 +150,8 @@ const Accqrate: React.FC = (): JSX.Element => {
       <section className={sectionClasses}>
         <div className={containerClasses}>
           {/* Text */}
-          <motion.div
+          <FadeUp
             className="flex flex-col justify-center flex-1 text-[#333333]"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8 }}
           >
             <h2 className="text-[20px] md:text-[24px] lg:text-fluid-h2 font-semibold text-[#C2185B] tracking-heading">
               Built-In{" "}
@@ -164,20 +159,16 @@ const Accqrate: React.FC = (): JSX.Element => {
                 E-Invoicing Compliance
               </span>
             </h2>
-            <p className="mx-auto mt-24px md:text-[18px] md:mt-[40px] text-[16px] lg:text-fluid-h3 md:max-w-[500px] sm:text-base tracking-para font-normal">
+            <p className="mx-auto mt-24px md:text-[18px] md:mt-[40px] text-[16px] lg:text-fluid-h3 sm:text-base tracking-para font-normal">
               <span className="font-bold text-black">100% ZATCA</span> phase
-              2 compliance: Issue e-invoice <br className="hidden md:block" /> receipts with every sale, no extra
+              2 compliance: Issue e-invoice <br className="hidden md:block lg:hidden" /> receipts <br className="hidden lg:block" /> with every sale, no extra
               fees
             </p>
-          </motion.div>
+          </FadeUp>
 
           {/* Image */}
-          <motion.div
+          <FadeUp
             className="sm:flex sm:justify-center w-auto"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
           >
             <CustomImage
               src="/images/zatak.svg"
@@ -186,7 +177,7 @@ const Accqrate: React.FC = (): JSX.Element => {
               height={350}
               className="h-[200px] md:h-[250px]"
             />
-          </motion.div>
+          </FadeUp>
         </div>
       </section>
     </>

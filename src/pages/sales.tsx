@@ -1,8 +1,6 @@
 import Image from "next/image";
 import React, { FC } from "react";
-
-// IMPORT SCROLLREVEAL FOR TEXT ANIMATIONS
-import ScrollReveal from "../components/ui/ScrollReveal";
+import FadeUp from "../components/ui/FadeUp";
 
 interface ImageItem {
   src: string;
@@ -37,21 +35,19 @@ const Sales: FC = () => {
 
   return (
     <section className="bg-white text-center px-24px md:px-[32px] mt-48px md:mt-[64px] text-[#333333]">
-      <ScrollReveal
-        as="h2"
-        containerClassName="text-[24px] md:text-[32px] lg:text-fluid-h2 font-medium tracking-heading leading-tight mb-[24px]"
-      >
-        Supercharge Sales with <span className="text-[#C2185B]">Powerful</span>
-        <br className="block md:hidden" />
-        <span className="text-[#C2185B]"> POS <br className="hidden md:block" /> </span>
-        Capabilities
-      </ScrollReveal>
-      <ScrollReveal
-        as="p"
-        containerClassName="text-[#000000B2] leading-snug mb-[24px] md:mb-[32px] lg:mb-[40px] text-center text-[14px] md:text-fluid-caption tracking-para max-w-2xl mx-auto "
-      >
-        Empower your front-end team and delight your <br className="md:hidden" />customers with <br className="hidden md:block" /> intuitive, high-speed transactions:
-      </ScrollReveal>
+      <FadeUp>
+        <h2 className="text-[24px] md:text-[32px] lg:text-fluid-h2 font-medium tracking-heading leading-tight mb-[20px]"
+        >
+          Supercharge Sales with <span className="text-[#C2185B]">Powerful</span>
+          <br className="block md:hidden" />
+          <span className="text-[#C2185B]"> POS <br className="hidden md:block lg:hidden" /> </span>
+          Capabilities
+        </h2>
+        <p className="text-[#000000B2] leading-snug mb-[24px] md:mb-[32px] lg:mb-[40px] text-center text-[14px] md:text-[16px] tracking-para "
+        >
+          Empower your front-end team and delight your <br className="md:hidden" />customers <br className="hidden lg:block" /> with <br className="hidden md:block lg:hidden" /> intuitive, high-speed transactions:
+        </p>
+      </FadeUp>
 
       <div className="flex flex-col items-center relative">
         {/* MARQUEE CARD */}

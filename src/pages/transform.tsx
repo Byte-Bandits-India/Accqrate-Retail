@@ -3,9 +3,8 @@
 import React, { useContext, useState, useEffect, JSX } from "react";
 import { Skeleton } from "../components/ui/skeleton"
 import { LoadingContext } from "../utils/LoadingContext";
-import { motion, Variants, easeOut } from "framer-motion";
 import { AccordionCard } from "../components/ui/accordion";
-import ScrollReveal from "../components/ui/ScrollReveal";
+import FadeUp from "../components/ui/FadeUp";
 
 interface Card {
   title: string;
@@ -96,29 +95,20 @@ export default function Transform(): JSX.Element {
     { title: "Auto-Print & Cut", desc: "Receipts print, cut and display for customers instantly.", video: "/videos/card4.mp4" },
   ];
 
-  // FIXED FRAMER MOTION VARIANT
-  const variant: Variants = {
-    hidden: { x: 100, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: easeOut } },
-  };
-
   return (
     <>
-      <div className="md:max-w-5xl mx-auto text-[#333333]">
-        <ScrollReveal
-          as="h1"
-          containerClassName="text-center text-[24px] md:text-[32px] lg:text-fluid-h2 leading-tight tracking-heading leading-tight font-medium mt-48px md:mt-[56px] px-24px md:px-[32px]"
+      <FadeUp className="md:max-w-5xl mx-auto text-[#333333]">
+        <h1
+          className="text-center text-[24px] md:text-[32px] lg:text-fluid-h2 tracking-heading leading-tight font-normal mt-48px md:mt-[56px] px-24px md:px-[32px]"
         >
           Transform Your Retail Operations with{" "} <br className="hidden md:block" />
           <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
-        </ScrollReveal>
-        <ScrollReveal
-          as="p"
-          containerClassName="text-center md:text-[16px] text-fluid-caption px-24px md:px-[32px] font-light tracking-para mt-[24px] md:mt-[32px] w-full max-w-[1280px] mx-auto text-[#333333]"
+        </h1>
+        <p className="text-center md:text-[16px] lg:text-fluid-body px-24px md:px-[32px] font-light tracking-para mt-[24px] md:mt-[32px] w-full max-w-[1280px] mx-auto text-[#000000]"
         >
           Get up and running in minutes, not days. Accqrate Retail’s cloud-native <br className="hidden md:block" /> architecture means you can onboard each outlet effortlessly—no dedicated POS <br className="hidden md:block" /> hardware, no complex installations.
-        </ScrollReveal>
-      </div>
+        </p>
+      </FadeUp>
 
       <section id="transformSection" className={sectionPadding}>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-[16px]">
@@ -135,29 +125,25 @@ export default function Transform(): JSX.Element {
         </div>
       </section>
 
-      <div className="px-6 md:px-[32px] max-w-[1350px] mx-auto">
+      <FadeUp className="px-6 md:px-[32px] max-w-[1350px] mx-auto">
         <section
           id="ownerSection"
           className="bg-[#F2F2F2] rounded-lg mx-auto px-6 sm:px-6 md:p-10 text-[#333333] h-[102px] sm:h-[110px] md:h-[129px] lg:h-[182px] flex flex-col items-center justify-center mt-6 md:mt-[32px] lg:mt-[40px]"
         >
-          <motion.div className="w-full" variants={variant} initial="hidden" animate={isVisible ? "visible" : "hidden"}>
+          <div className="w-full">
             <div className="mx-auto text-left md:max-w-4xl">
-              <ScrollReveal
-                as="p"
-                containerClassName="font-light leading-snug text-fluid-caption tracking-para md:text-fluid-body lg:text-fluid-h3 mb-5"
+              <p className="font-light leading-snug text-fluid-caption tracking-para md:text-fluid-body lg:text-fluid-h3 mb-5"
               >
                 “We set up 5 new outlets in under an hour no IT team needed.”
-              </ScrollReveal>
-              <ScrollReveal
-                as="p"
-                containerClassName="text-gray-500 text-xs sm:text-base tracking-para md:text-fluid-body flex justify-end"
+              </p>
+              <p className="text-gray-500 text-xs sm:text-base tracking-para md:text-fluid-body flex justify-end"
               >
                 — Retail Owner, Jeddah
-              </ScrollReveal>
+              </p>
             </div>
-          </motion.div>
+          </div>
         </section>
-      </div>
+      </FadeUp>
     </>
   );
 }

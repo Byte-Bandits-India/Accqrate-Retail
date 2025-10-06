@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   html, body {
     @apply w-full h-full overflow-x-hidden bg-white text-black m-0 p-0 box-border;
@@ -44,8 +43,6 @@
     @apply max-w-[10px];
   }
 }
-
-
 
 @layer utilities {
    [data-next-badge] {
@@ -92,3 +89,15 @@
     letter-spacing: -0.02em; /* for paragraphs */
   }
 }
+
+/* FIXED AOS STYLES - Remove the problematic rules */
+/* Only keep the transition properties */
+[data-aos] {
+  transition-property: opacity, transform;
+}
+
+/* Remove these problematic lines completely:
+html.aos-init [data-aos] {
+  opacity: 0 !important;
+}
+*/
