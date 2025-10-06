@@ -461,7 +461,7 @@ const Header: React.FC = () => {
         className="xl:sticky xl:top-0 z-50 m-0 p-0 w-full bg-white xl:border-b border-gray-200"
       >
         <div className="max-w-[1440px] mx-auto">
-          <div className="w-full px-6 pt-6 lg:pt-0 md:px-[32px]">
+          <div className="w-full px-6 pt-6 xl:pt-0 md:px-[32px]">
             <div className="flex items-center justify-between gap-4">
               {/* Logo */}
               <div className="logo-container flex items-center justify-around gap-6">
@@ -474,13 +474,13 @@ const Header: React.FC = () => {
                 </Link>
 
                 {/* Desktop Nav */}
-                <nav ref={navRef} className="hidden lg:flex items-center justify-around xl:gap-5 2xl:gap-10 text-[14px] text-gray-600 flex-1">
+                <nav ref={navRef} className="hidden xl:flex items-center justify-around xl:gap-5 2xl:gap-10 text-[14px] text-gray-600 flex-1">
                   <div className="w-full">
                     <ul className="flex items-center py-4 space-x-6">
                       {menus.map((menu) => (
                         <li key={menu.id} className="relative">
                           <button
-                            className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors ${activeMenu === menu.id ? "text-[#534ED3]" : "text-gray-600 hover:text-gray-900"}`}
+                            className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors hover:bg-[#f0f3ff] ${activeMenu === menu.id ? "text-[#534ED3]" : "text-gray-700  hover:text-[#534ED3]"} `}
                             onClick={() => handleMenuClick(menu.id)}
                           >
                             <span>{menu.title}</span>
@@ -508,7 +508,10 @@ const Header: React.FC = () => {
                                         {activeMenuData.sections.map((section) => (
                                           <li
                                             key={section.heading}
-                                            className={`cursor-pointer px-2 py-1 ${activeSection === section.heading ? "font-semibold text-[#534ED3]" : "text-gray-700"}`}
+                                            className={`cursor-pointer px-2 py-2 rounded-md transition-colors duration-200 ${activeSection === section.heading
+                                              ? "font-medium text-[#534ED3] bg-[#f0f3ff]"
+                                              : "text-gray-700 hover:bg-[#f0f3ff] hover:text-[#534ED3]"
+                                              }`}
                                             onClick={() => handleSectionChange(section.heading)}
                                           >
                                             <div className="flex items-center gap-2">
@@ -551,7 +554,6 @@ const Header: React.FC = () => {
                                       {activeMenuData.sections.map((section, index) => (
                                         <div key={index} className="border-r last:border-r-0 pr-6 last:pr-0">
                                           <h3 className="font-semibold text-lg mb-2">{section.heading}</h3>
-                                          <p className="text-sm text-gray-500 mb-4">{section.description}</p>
                                           <ul className="space-y-4">
                                             {section.subItems.map((item, i) => (
                                               <ResourcesListItem
@@ -561,7 +563,6 @@ const Header: React.FC = () => {
                                                 img={item.icon}
                                                 onClick={handleMenuItemClick}
                                               >
-                                                {item.description}
                                               </ResourcesListItem>
                                             ))}
                                           </ul>
@@ -602,20 +603,33 @@ const Header: React.FC = () => {
                                 <div className="mt-auto -mx-8 -mb-10 bg-[#F7F8FF] flex justify-end py-4 gap-4 rounded-b-xl">
                                   <Link
                                     href="/book-demo"
-                                    className="inline-flex items-center justify-center gap-2 py-2 px-6 rounded-[80px] text-[14px] hover:text-black"
+                                    className="group inline-flex items-center justify-center gap-2 py-2 px-6 rounded-[80px] text-[14px] hover:text-[#534ED3] transition-colors"
                                     onClick={handleMenuItemClick}
                                   >
-                                    Book a Demo →
+                                    Book a Demo
+                                    <span className="inline-block transform transition-transform duration-300 ease-out group-hover:translate-x-1">
+                                      →
+                                    </span>
                                   </Link>
-                                  <span role="separator" aria-orientation="vertical" className="self-center h-8 w-px bg-gray-300"></span>
+
+                                  <span
+                                    role="separator"
+                                    aria-orientation="vertical"
+                                    className="self-center h-8 w-px bg-gray-300"
+                                  ></span>
+
                                   <Link
                                     href="/contact-sales"
-                                    className="inline-flex items-center gap-2 py-2 px-6 rounded-[80px] text-[14px] hover:text-black"
+                                    className="group inline-flex items-center gap-2 py-2 px-6 rounded-[80px] text-[14px] hover:text-[#534ED3] transition-colors"
                                     onClick={handleMenuItemClick}
                                   >
-                                    Contact Sales →
+                                    Contact Sales
+                                    <span className="inline-block transform transition-transform duration-300 ease-out group-hover:translate-x-1">
+                                      →
+                                    </span>
                                   </Link>
                                 </div>
+
                               </div>
                             </div>
                           )}
@@ -654,15 +668,6 @@ const Header: React.FC = () => {
 
               {/* Mobile / Tablet */}
               <div className="flex md:flex xl:hidden items-center gap-3">
-                <LangCountryDropdown
-                  selectedLanguage={selectedLanguage}
-                  setSelectedLanguage={setSelectedLanguage}
-                  selectedCountry={selectedCountry}
-                  setSelectedCountry={setSelectedCountry}
-                  show={showLangCountryDropdown}
-                  setShow={setShowLangCountryDropdown}
-                  align="right"
-                />
                 <button
                   className="block bg-transparent border-none text-gray-700 text-2xl cursor-pointer shrink-0"
                   aria-label="Toggle mobile menu"
@@ -773,7 +778,7 @@ const ResourcesListItem = React.forwardRef<HTMLAnchorElement, ResourcesListItemP
       <li>
         <a
           ref={ref}
-          className="flex items-start space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-50 focus:bg-gray-50 cursor-pointer"
+          className="flex items-start space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#f0f3ff] hover:text-[#534ED3] focus:bg-[#f0f3ff] cursor-pointer"
           onClick={onClick}
           {...props}
         >
