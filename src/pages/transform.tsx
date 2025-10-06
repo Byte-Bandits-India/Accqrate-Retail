@@ -107,14 +107,14 @@ export default function Transform(): JSX.Element {
       <div className="md:max-w-5xl mx-auto text-[#333333]">
         <ScrollReveal
           as="h1"
-          containerClassName="text-center text-[24px] md:text-fluid-h2 leading-tight tracking--5 font-medium mt-48px md:mt-[56px] px-24px md:px-[32px]"
+          containerClassName="text-center text-[24px] md:text-fluid-h2 leading-tight tracking-heading leading-tight font-medium mt-48px md:mt-[56px] px-24px md:px-[32px]"
         >
           Transform Your Retail Operations with{" "}
           <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
         </ScrollReveal>
         <ScrollReveal
           as="p"
-          containerClassName="text-center text-fluid-caption px-24px md:px-[32px] font-light tracking--2 mt-[24px] md:mt-[32px] w-full max-w-[1280px] mx-auto text-[#333333]"
+          containerClassName="text-center text-fluid-caption px-24px md:px-[32px] font-light tracking-para mt-[24px] md:mt-[32px] w-full max-w-[1280px] mx-auto text-[#333333]"
         >
           Get up and running in minutes, not days. Accqrate Retail’s cloud-native architecture means you can onboard each outlet effortlessly—no dedicated POS hardware, no complex installations.
         </ScrollReveal>
@@ -144,13 +144,13 @@ export default function Transform(): JSX.Element {
             <div className="mx-auto text-left md:max-w-4xl">
               <ScrollReveal
                 as="p"
-                containerClassName="font-light leading-snug text-fluid-caption md:text-fluid-body lg:text-fluid-h3 mb-5"
+                containerClassName="font-light leading-snug text-fluid-caption tracking-para md:text-fluid-body lg:text-fluid-h3 mb-5"
               >
                 “We set up 5 new outlets in under an hour no IT team needed.”
               </ScrollReveal>
               <ScrollReveal
                 as="p"
-                containerClassName="text-gray-500 text-xs sm:text-base md:text-fluid-body flex justify-end"
+                containerClassName="text-gray-500 text-xs sm:text-base tracking-para md:text-fluid-body flex justify-end"
               >
                 — Retail Owner, Jeddah
               </ScrollReveal>

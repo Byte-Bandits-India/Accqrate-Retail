@@ -99,7 +99,7 @@ const AccordionCard: React.FC<AccordionCardProps> = ({ title, desc, video, isOpe
     >
       {/* Header Row */}
       <div className="px-10 py-6 cursor-pointer" onClick={() => !isDesktop && onToggle(!isOpen)}>
-        <h1 className="font-medium text-[24px] leading-snug text-left">{title}</h1>
+        <h1 className="font-medium text-[24px] tracking-heading leading-snug text-left">{title}</h1>
       </div>
 
       {/* Chevron fixed to first line, right edge */}
@@ -129,7 +129,7 @@ const AccordionCard: React.FC<AccordionCardProps> = ({ title, desc, video, isOpe
                 loop
                 muted
                 playsInline
-                className="w-full h-[200px] md:h-[157px] rounded-lg object-contain"
+                className="w-full h-[200px] md:h-[157px] tracking-para rounded-lg object-contain"
               />
             )}
           </motion.div>

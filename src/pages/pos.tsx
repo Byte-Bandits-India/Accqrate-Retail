@@ -227,7 +227,7 @@ const Pos: React.FC = () => {
         >
           <ScrollReveal
             as="h2"
-            containerClassName="text-[24px] md:text-fluid-h2 font-medium tracking-tight leading-tight"
+            containerClassName="text-[24px] md:text-fluid-h2 font-medium tracking-heading leading-tight"
           >
             Grows with Your Business Scale to Full
             <span className="text-[#C2185B]"> ERP </span>Instantly
@@ -236,7 +236,7 @@ const Pos: React.FC = () => {
 
           <ScrollReveal
             as="p"
-            containerClassName="text-[14px] md:text-fluid-caption text-[#737373] max-w-4xl mx-auto mt-6 md:mt-8 lg:mt-10 font-light leading-snug"
+            containerClassName="text-[14px] md:text-fluid-caption text-[#737373] tracking-para max-w-4xl mx-auto mt-6 md:mt-8 lg:mt-10 font-light leading-snug"
           >
             As your business grows, Accqrate Retail grows with you. Flip the
             switch to add procurement, finance, HR and supply-chain modules—no
@@ -250,10 +250,10 @@ const Pos: React.FC = () => {
             >
               {/* Text stays static */}
               <div className="flex-1">
-                <p className="text-left leading-snug text-[24px] md:text-fluid-h3 text-[#C2185B] font-light max-w-lg">
+                <h1 className="text-left leading-snug text-[24px] tracking-heading md:text-fluid-h3 text-[#C2185B] font-light max-w-lg">
                   {feature.text}
-                </p>
-                <p className="text-left text-[14px] mt-[16px]">{feature.subtext}</p>
+                </h1>
+                <p className="text-left text-[14px] tracking-para mt-[16px]">{feature.subtext}</p>
               </div>
 
 
