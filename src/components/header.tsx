@@ -469,18 +469,18 @@ const Header: React.FC = () => {
                   <img
                     src="/images/logo.svg"
                     alt="Accqrate Logo"
-                    className="h-[1.625rem] w-auto cursor-pointer max-w-[115px] sm:max-w-[100px] md:max-w-[140px]"
+                    className="h-[1.620rem] w-auto cursor-pointer max-w-[115px] sm:max-w-[100px] md:max-w-[140px]"
                   />
                 </Link>
 
                 {/* Desktop Nav */}
                 <nav ref={navRef} className="hidden xl:flex items-center justify-around xl:gap-5 2xl:gap-10 text-[14px] text-gray-600 flex-1">
                   <div className="w-full">
-                    <ul className="flex items-center py-4 space-x-6">
+                    <ul className="flex items-center py-4 space-x-2">
                       {menus.map((menu) => (
                         <li key={menu.id} className="relative">
                           <button
-                            className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors hover:bg-[#f0f3ff] ${activeMenu === menu.id ? "text-[#534ED3]" : "text-gray-700  hover:text-[#534ED3]"} `}
+                            className={`flex items-center gap-1 px-3 py-2 font-normal rounded-md transition-colors hover:bg-[#f0f3ff] ${activeMenu === menu.id ? "text-[#534ED3]" : "text-gray-700  hover:text-[#534ED3]"} `}
                             onClick={() => handleMenuClick(menu.id)}
                           >
                             <span>{menu.title}</span>
@@ -509,7 +509,7 @@ const Header: React.FC = () => {
                                           <li
                                             key={section.heading}
                                             className={`cursor-pointer px-2 py-2 rounded-md transition-colors duration-200 ${activeSection === section.heading
-                                              ? "font-medium text-[#534ED3] bg-[#f0f3ff]"
+                                              ? "text-[#534ED3] bg-[#f0f3ff]"
                                               : "text-gray-700 hover:bg-[#f0f3ff] hover:text-[#534ED3]"
                                               }`}
                                             onClick={() => handleSectionChange(section.heading)}
@@ -673,7 +673,12 @@ const Header: React.FC = () => {
                   aria-label="Toggle mobile menu"
                   onClick={() => setIsMobileMenuOpen((p) => !p)}
                 >
-                  <i className={`fa-solid ${isMobileMenuOpen ? "fa-xmark" : "fa-bars"}`}></i>
+                  <div className="w-[36px] h-[20px] flex items-center justify-center">
+                    <i
+                      className={`fa-solid ${isMobileMenuOpen ? "fa-xmark" : "fa-bars"
+                        } text-[28px]`}
+                    ></i>
+                  </div>
                 </button>
               </div>
             </div>
