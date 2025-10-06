@@ -164,7 +164,7 @@ const Accqrate: React.FC = (): JSX.Element => {
                 E-Invoicing Compliance
               </span>
             </h2>
-            <p className="mx-auto mt-32px md:mt-[40px] text-[20px] md:text-fluid-h3 md:max-w-[500px] sm:text-base tracking-para font-normal">
+            <p className="mx-auto mt-24px md:mt-[40px] text-[16px] md:text-fluid-h3 md:max-w-[500px] sm:text-base tracking-para font-normal">
               <span className="font-bold text-black">100% ZATCA</span> phase
               2 compliance: Issue e-invoice receipts with every sale, no extra
               fees
