@@ -272,7 +272,7 @@ const countries: Country[] = [
 // ===================== Components =====================
 
 // Language & Country Dropdown
-const LangCountryDropdown: React.FC<LangCountryDropdownProps> = ({
+const LangCountryDropdown: React.FC<LangCountryDropdownProps & { className?: string }> = ({
   selectedLanguage,
   setSelectedLanguage,
   selectedCountry,
@@ -280,6 +280,7 @@ const LangCountryDropdown: React.FC<LangCountryDropdownProps> = ({
   show,
   setShow,
   align = "left",
+  className = "", // accept className
 }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -294,7 +295,7 @@ const LangCountryDropdown: React.FC<LangCountryDropdownProps> = ({
   }, [setShow]);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className={`relative ${className}`} ref={dropdownRef}>
       <button
         className="flex items-center justify-between gap-2 w-36 lg:w-44 px-3 py-2 rounded-md"
         onClick={() => setShow(!show)}
@@ -313,8 +314,7 @@ const LangCountryDropdown: React.FC<LangCountryDropdownProps> = ({
 
       {show && (
         <div
-          className={`absolute ${align === "right" ? "right-0" : "left-0"
-            } top-full mt-2 max-w-xs w-60 bg-white rounded-md shadow-lg z-50 p-4 text-sm text-gray-700`}
+          className={`absolute ${align === "right" ? "right-0" : "left-0"} top-full mt-2 max-w-xs w-60 bg-white rounded-md shadow-lg z-50 p-4 text-sm text-gray-700`}
         >
           {/* Languages */}
           <div className="mb-2 font-semibold text-black">Select Language</div>
@@ -322,10 +322,7 @@ const LangCountryDropdown: React.FC<LangCountryDropdownProps> = ({
             {languages.map((lang) => (
               <button
                 key={lang.code}
-                className={`px-3 py-1 rounded-full transition ${selectedLanguage === lang.name
-                  ? "bg-gray-100 text-black font-semibold"
-                  : "text-black"
-                  }`}
+                className={`px-3 py-1 rounded-full transition ${selectedLanguage === lang.name ? "bg-gray-100 text-black font-semibold" : "text-black"}`}
                 onClick={() => {
                   setSelectedLanguage(lang.name);
                   setShow(false);
@@ -349,11 +346,7 @@ const LangCountryDropdown: React.FC<LangCountryDropdownProps> = ({
                   setShow(false);
                 }}
               >
-                <img
-                  src={country.flag}
-                  alt={country.name}
-                  className="w-5 h-5 mr-2"
-                />
+                <img src={country.flag} alt={country.name} className="w-5 h-5 mr-2" />
                 <span className="text-black">{country.name}</span>
               </div>
             ))}
@@ -363,6 +356,7 @@ const LangCountryDropdown: React.FC<LangCountryDropdownProps> = ({
     </div>
   );
 };
+
 
 // Arrow
 const Arrow45: React.FC = () => (
@@ -666,8 +660,7 @@ const Header: React.FC = () => {
                 </Link>
               </div>
 
-              {/* Mobile / Tablet */}
-              <div className="flex md:flex xl:hidden items-center gap-3">
+              <div className="flex xl:hidden items-center gap-3">
                 <LangCountryDropdown
                   selectedLanguage={selectedLanguage}
                   setSelectedLanguage={setSelectedLanguage}
@@ -676,17 +669,16 @@ const Header: React.FC = () => {
                   show={showLangCountryDropdown}
                   setShow={setShowLangCountryDropdown}
                   align="right"
+                  className="hidden md:flex" // ✅ now works
                 />
+
                 <button
                   className="block bg-transparent border-none text-gray-700 text-2xl cursor-pointer shrink-0"
                   aria-label="Toggle mobile menu"
                   onClick={() => setIsMobileMenuOpen((p) => !p)}
                 >
                   <div className="w-[36px] h-[20px] flex items-center justify-center">
-                    <i
-                      className={`fa-solid ${isMobileMenuOpen ? "fa-xmark" : "fa-bars"
-                        } text-[28px]`}
-                    ></i>
+                    <i className={`fa-solid ${isMobileMenuOpen ? "fa-xmark" : "fa-bars"} text-[28px]`}></i>
                   </div>
                 </button>
               </div>
