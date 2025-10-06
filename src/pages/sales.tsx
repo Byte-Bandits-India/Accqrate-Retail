@@ -39,16 +39,18 @@ const Sales: FC = () => {
     <section className="bg-white text-center px-24px md:px-[32px] mt-48px md:mt-[56px] text-[#333333]">
       <ScrollReveal
         as="h2"
-        containerClassName="text-[24px] md:text-fluid-h2 font-medium tracking--5 mb-[24px]"
+        containerClassName="text-[24px] md:text-fluid-h2 font-medium tracking-[-0.02em] mb-[24px]"
       >
-        Supercharge Sales with <span className="text-[#C2185B]">Powerful POS</span> Capabilities
+        Supercharge Sales with <span className="text-[#C2185B]">Powerful</span>
+        <br className="block md:hidden" />
+        <span className="text-[#C2185B]"> POS </span>
+        Capabilities
       </ScrollReveal>
       <ScrollReveal
         as="p"
         containerClassName="text-[#000000B2] leading-snug mb-[24px] md:mb-[32px] lg:mb-[40px] text-center text-[14px] md:text-fluid-caption tracking--2 max-w-2xl mx-auto "
       >
-        Empower your front-end team and delight your customers <br className="md:hidden" /> with
-        <span className=""> intuitive, high-speed transactions:</span>
+        Empower your front-end team and delight your <br className="md:hidden" />customers with intuitive, high-speed transactions:
       </ScrollReveal>
 
       <div className="flex flex-col items-center relative">

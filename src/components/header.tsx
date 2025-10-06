@@ -476,7 +476,7 @@ const Header: React.FC = () => {
                 {/* Desktop Nav */}
                 <nav ref={navRef} className="hidden xl:flex items-center justify-around xl:gap-5 2xl:gap-10 text-[14px] text-gray-600 flex-1">
                   <div className="w-full">
-                    <ul className="flex items-center py-4 space-x-2">
+                    <ul className="flex items-center py-4">
                       {menus.map((menu) => (
                         <li key={menu.id} className="relative">
                           <button
