@@ -107,16 +107,16 @@ export default function Transform(): JSX.Element {
       <div className="md:max-w-5xl mx-auto text-[#333333]">
         <ScrollReveal
           as="h1"
-          containerClassName="text-center text-[24px] md:text-fluid-h2 leading-tight tracking-heading leading-tight font-medium mt-48px md:mt-[56px] px-24px md:px-[32px]"
+          containerClassName="text-center text-[24px] md:text-[32px] lg:text-fluid-h2 leading-tight tracking-heading leading-tight font-medium mt-48px md:mt-[56px] px-24px md:px-[32px]"
         >
-          Transform Your Retail Operations with{" "}
+          Transform Your Retail Operations with{" "} <br className="hidden md:block" />
           <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
         </ScrollReveal>
         <ScrollReveal
           as="p"
-          containerClassName="text-center text-fluid-caption px-24px md:px-[32px] font-light tracking-para mt-[24px] md:mt-[32px] w-full max-w-[1280px] mx-auto text-[#333333]"
+          containerClassName="text-center md:text-[16px] text-fluid-caption px-24px md:px-[32px] font-light tracking-para mt-[24px] md:mt-[32px] w-full max-w-[1280px] mx-auto text-[#333333]"
         >
-          Get up and running in minutes, not days. Accqrate Retail’s cloud-native architecture means you can onboard each outlet effortlessly—no dedicated POS hardware, no complex installations.
+          Get up and running in minutes, not days. Accqrate Retail’s cloud-native <br className="hidden md:block" /> architecture means you can onboard each outlet effortlessly—no dedicated POS <br className="hidden md:block" /> hardware, no complex installations.
         </ScrollReveal>
       </div>
 

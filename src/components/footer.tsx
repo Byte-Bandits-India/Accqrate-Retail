@@ -141,15 +141,15 @@ export default function Footer(): JSX.Element {
       )}
 
       <div>
-        <div className="flex flex-wrap justify-center gap-3 my-4 mt-5 mx-auto">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-[20px] my-5 md:mb-6 mt-5 md:mt-[89px] mx-auto">
           {socialLinks.map(({ href, src }, idx) => (
             <a key={idx} href={href} target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-110">
-              <img src={src} alt="social icon" className="w-[18px] h-[18px] sm:w-5 sm:h-5" />
+              <img src={src} alt="social icon" className="w-[18px] h-[18px] md:w-[25px] md:h-[25px] " />
             </a>
           ))}
         </div>
 
-        <div className="border-t border-black/25 w-full my-2 mx-auto py-[14px] text-center text-xs text-gray-600">
+        <div className="border-t border-black/25 w-full mx-auto py-[14px] md:py-[24px] text-center text-xs text-gray-600 px-6">
           © Copyright 2021 - 2025{" "}
           <span className="text-[#194BED] text-sm leading-6 font-medium">Accqrate</span>, All rights reserved.
         </div>

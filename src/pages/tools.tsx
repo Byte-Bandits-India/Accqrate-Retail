@@ -137,22 +137,22 @@ export default function Tools(): JSX.Element {
     <>
       <motion.section
         id="toolsSection"
-        className="bg-white mt-48px md:mt-[56px] px-24px md:px-[32px] max-w-[1200px] mx-auto text-[#333333]"
+        className="bg-white mt-48px md:mt-[64px] px-24px md:px-[32px] max-w-[1200px] mx-auto text-[#333333]"
         variants={containerVariant}
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
       >
         <ScrollReveal
           as="h2"
-          containerClassName="text-center text-[24px] md:text-fluid-h2 font-medium tracking-heading mb-[24px]"
+          containerClassName="text-center text-[24px] md:text-[32px] lg:text-fluid-h2 font-medium tracking-heading mb-[24px]"
         >
           Robust Control & <span className="text-[#C2185B] font-medium">Compliance <br className="md:hidden" /> Tools</span>
         </ScrollReveal>
         <ScrollReveal
           as="p"
-          containerClassName="text-center text-[#000000B2] tracking-para text-[14px] md:text-fluid-caption max-w-lg mb-[24px] md:mb-[32px] lg:mb-[40px] leading-tight mx-auto"
+          containerClassName="text-center text-[#000000B2] tracking-para text-[14px] md:text-fluid-caption max-w-lg mb-[24px] md:mb-[48px] leading-tight mx-auto"
         >
-          Maintain tight governance over your retail footprint,<br className="md:hidden" /> from terminal permissions to financial integrity
+          Maintain tight governance over your retail footprint,<br className="md:hidden" /> from <br className="hidden md:block" /> terminal permissions to financial integrity
         </ScrollReveal>
 
         <div className="space-y-[24px] md:space-y-[32px] lg:space-y-[42px]">
@@ -165,10 +165,10 @@ export default function Tools(): JSX.Element {
               transition={{ duration: 0.8, delay: idx * 0.2 }}
             >
               <div className="flex-1 space-y-4">
-                <h3 className="text-[#C2185B] text-[20px] font-semibold tracking-heading md:text-fluid-h3 ">
+                <h3 className="text-[#C2185B] text-[20px] md:text-[24px] font-semibold tracking-heading lg:text-fluid-h3 ">
                   {section.title}:
                 </h3>
-                <p className="text-[14px] md:text-fluid-body leading-tight tracking-para">{section.text}</p>
+                <p className="text-[14px] md:text-[18px] lg:text-fluid-body leading-tight tracking-para">{section.text}</p>
               </div>
               <div className="flex-1 flex justify-center">
                 <video
@@ -192,7 +192,7 @@ export default function Tools(): JSX.Element {
         animate={isVisible ? "visible" : "hidden"}
       >
         <motion.h2
-          className="text-center font-medium text-fluid-h2 mb-[24px] md:mb-[32px] lg:mb-[40px] tracking-heading leading-tight"
+          className="text-center font-medium md:text-[32px] text-fluid-h2 mb-[24px] md:mb-[62px] tracking-heading leading-tight"
           variants={cardVariant}
         >
           Fast Data Onboarding & Customization

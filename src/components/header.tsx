@@ -668,6 +668,15 @@ const Header: React.FC = () => {
 
               {/* Mobile / Tablet */}
               <div className="flex md:flex xl:hidden items-center gap-3">
+                <LangCountryDropdown
+                  selectedLanguage={selectedLanguage}
+                  setSelectedLanguage={setSelectedLanguage}
+                  selectedCountry={selectedCountry}
+                  setSelectedCountry={setSelectedCountry}
+                  show={showLangCountryDropdown}
+                  setShow={setShowLangCountryDropdown}
+                  align="right"
+                />
                 <button
                   className="block bg-transparent border-none text-gray-700 text-2xl cursor-pointer shrink-0"
                   aria-label="Toggle mobile menu"

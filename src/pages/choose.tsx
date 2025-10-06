@@ -92,12 +92,12 @@ const Choose: React.FC = () => {
     <>
       <motion.section
         id="chooseSection"
-        className="bg-[#F2F2F2] text-center font-sans min-h-full m-0 mt-48px md:mt-[56px] md:px-[32px] px-24px text-[#333333]"
+        className="bg-[#F2F2F2] text-center font-sans min-h-full m-0 mt-48px md:mt-[64px] md:px-[32px] px-24px text-[#333333]"
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
       >
         <motion.h2
-          className="text-fluid-h2 font-semibold pb-6 md:pb-0 pt-6 lg:pt-[40px] tracking-heading"
+          className="text-fluid-h2 md:text-[32px] font-semibold pb-6 md:pb-0 pt-6 lg:pt-[40px] tracking-heading"
           variants={fadeInLeft}
         >
           Why Choose <span className="text-[#C2185B]">Accqrate Retail?</span>
@@ -145,11 +145,11 @@ const Choose: React.FC = () => {
 
       <motion.section
         id="readySection"
-        className="mt-48px px-24px text-center min-h-full md:mt-[56px] md:px-[32px] text-[#333333]"
+        className="mt-48px px-24px text-center min-h-full md:mt-[64px] md:px-[32px] text-[#333333]"
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
       >
-        <motion.h2 className="font-semibold text-fluid-h2 tracking-heading leading-tight" variants={fadeInRight}>
+        <motion.h2 className="font-semibold text-fluid-h2 md:text-[32px] tracking-heading leading-tight" variants={fadeInRight}>
           Ready to accelerate your retail business?
         </motion.h2>
         <motion.div
@@ -160,7 +160,7 @@ const Choose: React.FC = () => {
           {buttons.map((label, idx) => (
             <motion.button
               key={idx}
-              className="bg-[#C2185C] text-fluid-caption hover:bg-pink-800 text-white font-light rounded-lg px-6 py-4 w-[260px] md:w-[300px] mx-auto text-center transition-colors"
+              className="bg-[#C2185C] text-fluid-caption hover:bg-pink-800 text-white font-light rounded-[5px] md:rounded-[53px] px-6 py-4 w-[260px] md:w-[300px] mx-auto text-center transition-colors"
               variants={fadeInRight}
               transition={{ delay: 0.3 + idx * 0.2 }}
             >

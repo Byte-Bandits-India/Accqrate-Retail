@@ -84,12 +84,12 @@ const Accqrate: React.FC = (): JSX.Element => {
       <section
         className={`w-full px-24px md:px-[32px] flex flex-col items-center text-[#333333]`}
       >
-        <h2 className="text-center text-[36px] md:text-fluid-h1 leading-tight tracking-heading font-semibold mt-82px">
+        <h2 className="text-center text-[36px] md:text-[54px] lg:text-fluid-h1 leading-tight tracking-heading font-semibold mt-82px">
           <span className="text-[#333333] ">Accqrate</span>{" "}
           <span className="text-[#C2185B] ">Retail</span>
         </h2>
 
-        <p className="text-center text-[20px] md:text-fluid-h2 leading-tight tracking-para font-light mt-32px md:mt-[40px]">
+        <p className="text-center text-[20px] md:text-[24px] lg:text-fluid-h2 leading-tight tracking-para font-light mt-32px md:mt-[40px]">
           Your Modern{" "}
           <span className="text-[#C2185C] font-medium">
             ZATCA Compliant
@@ -99,14 +99,14 @@ const Accqrate: React.FC = (): JSX.Element => {
         </p>
 
         <p
-          className="text-center text-[14px] md:text-fluid-body font-medium tracking-para leading-tight md:font-semibold mt-32px md:mt-[40px]"
+          className="text-center text-[14px] md:text-[18px] lg:text-fluid-body font-medium tracking-para leading-tight md:font-semibold mt-32px md:mt-[40px]"
           style={{ WebkitLineClamp: 2 }}
         >
-          All-in-one retail management, designed for<br className="block md:hidden" /> speed and flexibility
+          All-in-one retail management, designed for<br className="block lg:hidden" /> speed and flexibility
         </p>
 
-        <p className="max-w-[700px] text-center text-[14px] md:text-fluid-body tracking-para font-normal text-[#737373] mt-[16px] md:mt-[24px]">
-          Launch your store in minutes, manage everything in one place - from
+        <p className="max-w-[700px] text-center text-[14px] md:text-[16px] lg:text-fluid-body tracking-para font-normal text-[#737373] mt-[16px] md:mt-[24px]">
+          Launch your store in minutes, manage everything in one place  <br className="hidden md:block" />- from
           sales to stock, from any device
         </p>
 
@@ -132,7 +132,7 @@ const Accqrate: React.FC = (): JSX.Element => {
       </section>
 
       {/* Dashboard Section */}
-      <section className="w-full flex items-center justify-center box-border px-24px md:px-[32px]">
+      <section className="w-full flex items-center justify-center box-border mt-8 md:mt-[46px] px-24px md:px-[32px]">
         <div className="relative w-full max-w-[1200px] overflow-visible">
           <video
             src="/videos/accqratedashboard.mp4"
@@ -158,15 +158,15 @@ const Accqrate: React.FC = (): JSX.Element => {
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-[20px] md:text-fluid-h2 font-semibold text-[#C2185B] tracking-heading">
+            <h2 className="text-[20px] md:text-[24px] lg:text-fluid-h2 font-semibold text-[#C2185B] tracking-heading">
               Built-In{" "}
               <span className="text-[#C2185B] font-semibold tracking--2">
                 E-Invoicing Compliance
               </span>
             </h2>
-            <p className="mx-auto mt-24px md:mt-[40px] text-[16px] md:text-fluid-h3 md:max-w-[500px] sm:text-base tracking-para font-normal">
+            <p className="mx-auto mt-24px md:text-[18px] md:mt-[40px] text-[16px] lg:text-fluid-h3 md:max-w-[500px] sm:text-base tracking-para font-normal">
               <span className="font-bold text-black">100% ZATCA</span> phase
-              2 compliance: Issue e-invoice receipts with every sale, no extra
+              2 compliance: Issue e-invoice <br className="hidden md:block" /> receipts with every sale, no extra
               fees
             </p>
           </motion.div>
