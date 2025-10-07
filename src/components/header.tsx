@@ -16,6 +16,8 @@ import {
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
 import { IoChevronDown } from "react-icons/io5";
+import { useRouter, usePathname } from "next/navigation";
+
 
 // ===================== Type Definitions =====================
 interface SubItem {
@@ -91,85 +93,85 @@ const menus = [
     sections: [
       {
         heading: "Business Solution",
-        images: "/images/NavBar/line/pro1.svg",
+        images: "/images/business/books/NavBar/line/pro1.svg",
         subItems: [
           {
             title: "Accqrate Books",
             description: "Manage customer relationships efficiently.",
-            img: "/images/NavBar/fill/Books.svg",
-            href: "/products/crm",
+            img: "/images/business/books/NavBar/fill/Books.svg",
+            href: "/business/books",
           },
           {
             title: "Accqrate CRM",
             description: "Manage customer relationships efficiently.",
-            img: "/images/NavBar/fill/crm.svg",
+            img: "/images/business/books/NavBar/fill/crm.svg",
             href: "/products/crm",
           },
           {
             title: "Accqrate Plan360",
             description: "Automate HR workflows and employee management.",
-            img: "/images/NavBar/fill/plan.svg",
+            img: "/images/business/books/NavBar/fill/plan.svg",
             href: "/products/hr",
           },
           {
             title: "Accqrate Service",
             description: "Manage customer relationships efficiently.",
-            img: "/images/NavBar/fill/service.svg",
+            img: "/images/business/books/NavBar/fill/service.svg",
             href: "/products/crm",
           },
           {
             title: "Accqrate People",
             description: "Manage customer relationships efficiently.",
-            img: "/images/NavBar/fill/people.svg",
+            img: "/images/business/books/NavBar/fill/people.svg",
             href: "/products/crm",
           },
           {
             title: "Accqrate Retail",
             description: "Automate HR workflows and employee management.",
-            img: "/images/NavBar/fill/retail.svg",
-            href: "/products/hr",
+            img: "/images/business/books/NavBar/fill/retail.svg",
+            href: "/business/retail",
           },
           {
             title: "Accqrate Factory",
             description: "Manage customer relationships efficiently.",
-            img: "/images/NavBar/fill/Factory.svg",
+            img: "/images/business/books/NavBar/fill/Factory.svg",
             href: "/products/crm",
           },
           {
             title: "Accqrate Filehub",
             description: "Automate HR workflows and employee management.",
-            img: "/images/NavBar/fill/Filehub.svg",
+            img: "/images/business/books/NavBar/fill/Filehub.svg",
             href: "/products/hr",
           },
         ],
       },
       {
         heading: "Enterprise Solution",
-        images: "/images/NavBar/line/pro2.svg",
+        images: "/images/business/books/NavBar/line/pro2.svg",
         subItems: [
           {
             title: "Accqrate ONE",
             description: "End-to-end ERP for large enterprises.",
-            img: "/images/NavBar/fill/one.svg",
+            img: "/images/business/books/NavBar/fill/one.svg",
             href: "/products/erp",
           },
         ],
       },
       {
         heading: "E-Invoicing Solution",
-        images: "/images/NavBar/line/pro3.svg",
+        images: "/images/business/books/NavBar/line/pro3.svg",
         subItems: [
           {
             title: "Standalone E-invoicing Solution",
             description: "Sample content will be replaced",
-            href: "/images/",
-            img: "/images/NavBar/fill/standalone.svg",
+            href: "images/business/books/",
+            img: "/images/business/books/NavBar/fill/standalone.svg",
           },
           {
             title: "E-invoicing Integration Solution",
             description: "Sample content will be replaced",
-            href: "/images/NavBar/fill/e-invoice.svg",
-            img: "/images/NavBar/fill/e-invoice.svg",
+            href: "images/business/books/NavBar/fill/e-invoice.svg",
+            img: "/images/business/books/NavBar/fill/e-invoice.svg",
           },
         ],
       },
@@ -188,13 +190,13 @@ const menus = [
             title: "About us",
             description: "Insights, tips and industry news",
             href: "/resources/blog",
-            icon: "/images/NavBar/line/about.svg",
+            icon: "/images/business/books/NavBar/line/about.svg",
           },
           {
             title: "Blogs",
             description: "Live and recorded sessions from experts",
             href: "/resources/webinars",
-            icon: "/images/NavBar/line/blog.svg",
+            icon: "/images/business/books/NavBar/line/blog.svg",
           },
         ],
       },
@@ -206,13 +208,13 @@ const menus = [
             title: "Announcements",
             description: "Find answers to common questions",
             href: "/resources/help",
-            icon: "/images/NavBar/line/anounce.svg",
+            icon: "/images/business/books/NavBar/line/anounce.svg",
           },
           {
             title: "FAQs",
             description: "Connect with other users",
             href: "/resources/forum",
-            icon: "/images/NavBar/line/faq.svg",
+            icon: "/images/business/books/NavBar/line/faq.svg",
           },
         ],
       },
@@ -224,13 +226,13 @@ const menus = [
             title: "Webinars",
             description: "In-depth analysis and research",
             href: "/resources/whitepapers",
-            icon: "/images/NavBar/line/webinars.svg",
+            icon: "/images/business/books/NavBar/line/webinars.svg",
           },
           {
             title: "VAT Calculator",
             description: "Real-world success stories",
             href: "/resources/case-studies",
-            icon: "/images/NavBar/line/cal.svg",
+            icon: "/images/business/books/NavBar/line/cal.svg",
           },
         ],
       },
@@ -264,9 +266,9 @@ const languages: Language[] = [
 ];
 
 const countries: Country[] = [
-  { name: "Saudi Arabia", code: "SA", flag: "/images/flag-saudi-arabia.svg" },
-  { name: "UAE", code: "AE", flag: "/images/flag-uae.svg" },
-  { name: "Oman", code: "OM", flag: "/images/flag-oman.svg" },
+  { name: "Saudi Arabia", code: "SA", flag: "/images/business/books/flag-saudi-arabia.svg" },
+  { name: "UAE", code: "AE", flag: "/images/business/books/flag-uae.svg" },
+  { name: "Oman", code: "OM", flag: "/images/business/books/flag-oman.svg" },
 ];
 
 // ===================== Components =====================
@@ -373,6 +375,8 @@ const Arrow45: React.FC = () => (
 );
 
 const Header: React.FC = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [activeMenu, setActiveMenu] = useState<string>("");
   const [activeSection, setActiveSection] = useState<string>("Business Solution");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -384,6 +388,19 @@ const Header: React.FC = () => {
   const navRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleRouteChange = () => setIsMobileMenuOpen(false);
+    router.events?.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events?.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router]);
+
 
   useEffect(() => {
     const computeHeaderHeight = () => {
@@ -461,7 +478,7 @@ const Header: React.FC = () => {
               <div className="logo-container flex items-center justify-around gap-6">
                 <Link href="/" className="shrink-0">
                   <img
-                    src="/images/logo.svg"
+                    src="/images/business/books/logo.svg"
                     alt="Accqrate Logo"
                     className="h-[1.620rem] w-auto cursor-pointer max-w-[115px] sm:max-w-[100px] md:max-w-[140px]"
                   />
@@ -669,7 +686,7 @@ const Header: React.FC = () => {
                   show={showLangCountryDropdown}
                   setShow={setShowLangCountryDropdown}
                   align="right"
-                  className="hidden md:flex"
+                  className="hidden md:flex" // ✅ now works
                 />
 
                 <button
@@ -698,8 +715,10 @@ const Header: React.FC = () => {
                       <Accordion type="single" collapsible className="pl-4">
                         {sections.map((section, sectionIndex) => (
                           <AccordionItem key={sectionIndex} value={`${id}-${section.heading}`}>
-                            <AccordionTrigger className="fflex items-center justify-start gap-2 text-gray-700 font-medium">
-                              {section.images && <img src={section.images} alt={section.heading} className="w-4 h-4" />}
+                            <AccordionTrigger className="flex items-center justify-start gap-2 text-gray-700 font-medium">
+                              {section.images && (
+                                <img src={section.images} alt={section.heading} className="w-4 h-4" />
+                              )}
                               <span>{section.heading}</span>
                             </AccordionTrigger>
                             <AccordionContent>
@@ -709,8 +728,14 @@ const Header: React.FC = () => {
                                     key={i}
                                     className="flex items-center gap-2 text-[#737373] text-[14px] py-2 cursor-pointer border-b border-gray-200 hover:text-[#534ED3]"
                                   >
-                                    {item.img && <img src={item.img} alt={item.title} className="w-5 h-5" />}
-                                    <Link href={item.href} className="flex-1">
+                                    {item.img && (
+                                      <img src={item.img} alt={item.title} className="w-5 h-5" />
+                                    )}
+                                    <Link
+                                      href={item.href}
+                                      className="flex-1"
+                                      onClick={() => setIsMobileMenuOpen(false)}
+                                    >
                                       {item.title}
                                     </Link>
                                     <Arrow45 />
@@ -725,6 +750,7 @@ const Header: React.FC = () => {
                   </AccordionItem>
                 ))}
               </Accordion>
+
               {/* CTA Buttons */}
               <div className="mt-10 flex gap-4">
                 <Link
