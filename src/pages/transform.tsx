@@ -99,12 +99,12 @@ export default function Transform(): JSX.Element {
     <>
       <FadeUp className="md:max-w-5xl mx-auto text-[#333333]">
         <h1
-          className="text-center text-[24px] md:text-[32px] lg:text-fluid-h2 tracking-heading leading-tight font-normal mt-48px md:mt-[56px] px-24px md:px-[32px]"
+          className="text-center text-fluid-h2 tracking-heading leading-tight font-normal mt-48px md:mt-[56px] px-24px md:px-[32px]"
         >
           Transform Your Retail Operations with{" "} <br className="hidden md:block" />
           <span className="text-[#C2185B]"> Zero-Hassle </span> Onboarding
         </h1>
-        <p className="text-center md:text-[16px] lg:text-fluid-body px-24px md:px-[32px] font-light tracking-para mt-[24px] md:mt-[32px] w-full max-w-[1280px] mx-auto text-[#000000]"
+        <p className="text-center text-fluid-small lg:text-[16px] px-24px md:px-[32px] font-light tracking-para mt-[24px] md:mt-[32px] w-full max-w-[1280px] mx-auto text-[#000000]"
         >
           Get up and running in minutes, not days. Accqrate Retail’s cloud-native <br className="hidden md:block" /> architecture means you can onboard each outlet effortlessly—no dedicated POS <br className="hidden md:block" /> hardware, no complex installations.
         </p>
@@ -132,11 +132,11 @@ export default function Transform(): JSX.Element {
         >
           <div className="w-full">
             <div className="mx-auto text-left md:max-w-4xl">
-              <p className="font-light leading-snug text-fluid-caption tracking-para md:text-fluid-body lg:text-fluid-h3 mb-5"
+              <p className="font-light leading-snug text-fluid-small tracking-para md:text-fluid-body lg:text-[20px] mb-5"
               >
                 “We set up 5 new outlets in under an hour no IT team needed.”
               </p>
-              <p className="text-gray-500 text-xs sm:text-base tracking-para md:text-fluid-body flex justify-end"
+              <p className="text-gray-500 text-fluid-small tracking-para flex justify-end"
               >
                 — Retail Owner, Jeddah
               </p>

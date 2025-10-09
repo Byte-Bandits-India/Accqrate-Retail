@@ -84,7 +84,7 @@ const Choose: React.FC = () => {
       >
         <FadeUp>
           <h2
-            className="text-fluid-h2 md:text-[32px] font-semibold pb-6 md:pb-0 pt-6 lg:pt-[40px] tracking-heading"
+            className="text-fluid-h2 font-medium pb-6 md:pb-0 pt-6 lg:pt-[40px] tracking-heading"
           >
             Why Choose <span className="text-[#C2185B]">Accqrate Retail?</span>
           </h2>
@@ -114,12 +114,12 @@ const Choose: React.FC = () => {
 
           <FadeUp className="max-w-[600px] text-left md:max-w-[500px]">
             <p className="font-light text-fluid-h3 leading-tight">
-              <span className="font-semibold tracking--2">Compliance by design:</span>
+              <span className="font-medium tracking--2">Compliance by design:</span>
             </p>
-            <p className="text-fluid-caption tracking-para mt-12px">
+            <p className="text-fluid-small tracking-para mt-12px">
               Stay ready for every regulation no last-minute changes.
             </p>
-            <ol className="md:pr-20 font-light tracking-para mb-8 space-y-4 text-fluid-caption mt-12px">
+            <ol className="md:pr-20 font-light tracking-para mb-8 space-y-4 text-fluid-small mt-12px">
               <li>1. Device & vendor freedom: Use any hardware, any printer, no lock-in.</li>
               <li>2. Future-proof scaling: Grow from single store POS to a full ERP suite, no re-implementation.</li>
               <li>3. Total control: See your data, operations, and compliance in real time.</li>
@@ -134,7 +134,7 @@ const Choose: React.FC = () => {
 
       >
         <FadeUp>
-          <h2 className="font-semibold text-fluid-h2 md:text-[32px] tracking-heading leading-tight">
+          <h2 className="font-medium text-fluid-h2 tracking-heading leading-tight">
             Ready to accelerate your retail business?
           </h2>
         </FadeUp>

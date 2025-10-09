@@ -127,11 +127,11 @@ export default function Tools(): JSX.Element {
         className="bg-white mt-48px md:mt-[64px] px-24px md:px-[32px] max-w-[1200px] mx-auto text-[#333333]"
       >
         <FadeUp>
-          <h2 className="text-center text-[24px] md:text-[32px] lg:text-fluid-h2 font-medium tracking-heading mb-[24px]"
+          <h2 className="text-center text-fluid-h2 font-medium tracking-heading mb-[24px]"
           >
             Robust Control & <span className="text-[#C2185B] font-medium">Compliance <br className="md:hidden" /> Tools</span>
           </h2>
-          <p className="text-center text-[#000000B2] tracking-para text-[14px] md:text-fluid-caption max-w-lg mb-[24px] md:mb-[48px] leading-tight mx-auto"
+          <p className="text-center text-[#000000B2] tracking-para text-fluid-small max-w-lg mb-[24px] md:mb-[48px] leading-tight mx-auto"
           >
             Maintain tight governance over your retail footprint,<br className="md:hidden" /> from <br className="hidden md:block" /> terminal permissions to financial integrity
           </p>
@@ -144,7 +144,7 @@ export default function Tools(): JSX.Element {
               className="flex flex-col lg:flex-row lg:items-start gap-[24px] tracking--5"
             >
               <div className="flex-1 space-y-4">
-                <h3 className="text-[#C2185B] text-[20px] md:text-[24px] font-semibold tracking-heading lg:text-fluid-h3 ">
+                <h3 className="text-[#C2185B] font-medium tracking-heading text-fluid-h3 ">
                   {section.title}:
                 </h3>
                 <p className="text-[14px] md:text-[18px] lg:text-fluid-body leading-tight tracking-para">{section.text}</p>
@@ -169,7 +169,7 @@ export default function Tools(): JSX.Element {
         className="px-6 md:px-[32px] max-w-6xl mx-auto md:mt-[56px] mt-48px text-[#333333]"
       >
         <FadeUp
-          className="text-center font-medium md:text-[32px] text-fluid-h2 mb-[24px] md:mb-[62px] tracking-heading leading-tight"
+          className="text-center font-medium text-fluid-h2 mb-[24px] md:mb-[62px] tracking-heading leading-tight"
         >
           Fast Data Onboarding & Customization
         </FadeUp>

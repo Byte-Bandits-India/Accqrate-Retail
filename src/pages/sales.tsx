@@ -36,14 +36,14 @@ const Sales: FC = () => {
   return (
     <section className="bg-white text-center px-24px md:px-[32px] mt-48px md:mt-[64px] text-[#333333]">
       <FadeUp>
-        <h2 className="text-[24px] md:text-[32px] lg:text-fluid-h2 font-medium tracking-heading leading-tight mb-[20px]"
+        <h2 className="text-fluid-h2 font-medium tracking-heading leading-tight mb-[20px]"
         >
           Supercharge Sales with <span className="text-[#C2185B]">Powerful</span>
           <br className="block md:hidden" />
           <span className="text-[#C2185B]"> POS <br className="hidden md:block lg:hidden" /> </span>
           Capabilities
         </h2>
-        <p className="text-[#000000B2] leading-snug mb-[24px] md:mb-[32px] lg:mb-[40px] text-center text-[14px] md:text-[16px] tracking-para "
+        <p className="text-[#000000B2] leading-snug mb-[24px] md:mb-[32px] lg:mb-[40px] text-center text-fluid-small tracking-para "
         >
           Empower your front-end team and delight your <br className="md:hidden" />customers <br className="hidden lg:block" /> with <br className="hidden md:block lg:hidden" /> intuitive, high-speed transactions:
         </p>
@@ -71,7 +71,7 @@ const Sales: FC = () => {
         {videoCards.map((card, idx) => (
           <div
             key={idx}
-            className="sticky h-[300px] md:h-[450px] mt-24px md:mt-[32px] border border-gray-400 top-10 bg-white rounded-2xl shadow-xl p-6 max-w-4xl w-full"
+            className="sticky h-[300px] md:h-[450px] mt-24px md:mt-[32px] border border-gray-400 top-10 md:top-20 bg-white rounded-2xl shadow-xl p-6 max-w-4xl w-full"
             style={{ zIndex: 20 + idx }}
           >
             <div className="text-fluid-h3 font-bold text-[#C2185B] text-center mb-5">{card.title}</div>

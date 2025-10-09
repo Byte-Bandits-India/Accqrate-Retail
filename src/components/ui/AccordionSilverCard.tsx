@@ -27,7 +27,7 @@ const AccordionCard: React.FC<AccordionCardProps> = ({ value, icon, title, child
               alt={title}
               className="w-[45px] h-[45px] md:h-[34.56px] md:w-[31.75px]"
             />
-            <span className="text-fluid-body text-left font-normal">{title}</span>
+            <span className="text-[20px] md:text-fluid-body text-left font-normal">{title}</span>
           </div>
         </AccordionTrigger>
 

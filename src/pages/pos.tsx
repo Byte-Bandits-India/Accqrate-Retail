@@ -183,14 +183,14 @@ const Pos: React.FC = () => {
         <div
         >
           <FadeUp>
-            <h2 className="text-[24px] md:text-[32px] lg:text-fluid-h2 font-medium tracking-heading leading-tight"
+            <h2 className="text-fluid-h2 font-medium tracking-heading leading-tight"
             >
               Grows with Your Business Scale <br className="hidden md:block" /> to Full
               <span className="text-[#C2185B]"> ERP </span>Instantly
 
             </h2>
 
-            <p className="text-[14px] md:text-fluid-caption text-[#737373] tracking-para max-w-4xl mx-auto mt-6 md:mt-[32px] lg:mt-10 font-light leading-snug"
+            <p className="text-fluid-small text-[#737373] tracking-para max-w-4xl mx-auto mt-6 md:mt-[32px] lg:mt-10 font-light leading-snug"
             >
               As your business grows, Accqrate Retail grows with you. Flip the
               switch <br className="hidden md:block" /> to add procurement, finance, HR and supply-chain modules—no
@@ -205,12 +205,12 @@ const Pos: React.FC = () => {
             >
               {/* Text stays static */}
               <div className="flex-1">
-                <h1 className="text-left leading-snug text-[24px] tracking-heading lg:text-[32px] text-[#C2185B] font-normal max-w-lg">
+                <h1 className="text-left leading-snug text-fluid-h3 tracking-heading  text-[#C2185B] font-medium max-w-lg">
                   {feature.text}
                   <span className="hidden lg:inline"> {feature.subtext} </span>
                   <span className="lg:hidden"> {/* Alternative content for mobile if needed */}</span>
                 </h1>
-                <p className="text-left text-[14px] md:text-[16px] tracking-para mt-[16px] lg:hidden">{feature.subtext}</p>
+                <p className="text-left text-fluid-body tracking-para mt-[16px] lg:hidden">{feature.subtext}</p>
               </div>
 
 
